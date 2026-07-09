@@ -72,6 +72,24 @@
       .faq-item { transition: all 0.2s ease; cursor: pointer; }
       .faq-item:hover { background: #1a2332; }
 
+      .carousel-container { position: relative; overflow: hidden; border-radius: 1rem; }
+      .carousel-track { display: flex; transition: transform 0.5s cubic-bezier(.4,0,.2,1); }
+      .carousel-slide { min-width: 100%; position: relative; }
+      .carousel-slide img { width: 100%; height: 400px; object-fit: cover; display: block; }
+      .carousel-slide::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(10,15,26,0.3) 0%, rgba(10,15,26,0.7) 100%); }
+      .carousel-btn { position: absolute; top: 50%; transform: translateY(-50%); z-index: 10; width: 48px; height: 48px; border-radius: 50%; background: rgba(255,255,255,0.1); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.2); color: white; font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: all 0.2s ease; }
+      .carousel-btn:hover { background: #F59E0B; color: #0A0F1A; border-color: #F59E0B; }
+      .carousel-btn.prev { left: 16px; }
+      .carousel-btn.next { right: 16px; }
+      .carousel-dots { display: flex; justify-content: center; gap: 8px; margin-top: 16px; }
+      .carousel-dot { width: 8px; height: 8px; border-radius: 4px; background: rgba(255,255,255,0.3); cursor: pointer; transition: all 0.3s ease; border: none; }
+      .carousel-dot.active { background: #F59E0B; width: 24px; }
+      .carousel-label { position: absolute; bottom: 20px; left: 20px; z-index: 10; background: rgba(10,15,26,0.8); backdrop-filter: blur(8px); padding: 8px 16px; border-radius: 8px; border: 1px solid rgba(255,255,255,0.1); }
+      @media (max-width: 768px) {
+        .carousel-slide img { height: 250px; }
+        .carousel-btn { width: 40px; height: 40px; font-size: 16px; }
+      }
+
       @media (max-width: 768px) {
         .hero-grid { flex-direction: column !important; }
         .publico-grid { flex-direction: column !important; }
@@ -88,6 +106,11 @@
         .fechamento-desc { width: 100% !important; }
         .modulo-img img { height: 120px; }
         .camada-img { height: 140px; }
+        .carousel-track { transition: transform 0.5s cubic-bezier(.4,0,.2,1); }
+        .carousel-btn { transition: all 0.2s ease; }
+        .carousel-btn:hover { background: #F59E0B; color: #0A0F1A; }
+        .carousel-dot { transition: all 0.3s ease; }
+        .carousel-dot.active { background: #F59E0B; width: 24px; }
       }
     </style>
   </head>
@@ -129,6 +152,52 @@
             <img src="img/hero-microscope.jpg" alt="Microscopia urinária — cristais e elementos do sedimento urinário" loading="eager" />
           </div>
         </div>
+      </section>
+
+      <!-- CARROSSEL -->
+      <section class="section-padding box-border w-full p-[48px_20px] md:p-[0px_60px]">
+        <div class="flex flex-col gap-4 mb-6">
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-2 bg-[#F59E0B] rounded-full"></span>
+            <span class="text-[12px] md:text-[13px] font-semibold text-[#F59E0B] uppercase tracking-wider">Veja o conteúdo</span>
+          </div>
+          <h2 class="text-[28px] md:text-[40px] font-bold text-[#F9FAFB]">Um passeio pelo curso</h2>
+        </div>
+        <div class="carousel-container" id="carousel">
+          <div class="carousel-track" id="carouselTrack">
+            <div class="carousel-slide">
+              <img src="img/slide-01.jpg" alt="Slide 1 — Visão geral do curso de Urianálise" loading="lazy" />
+              <div class="carousel-label"><span class="text-[13px] md:text-[14px] font-semibold text-[#F9FAFB]">Visão Geral</span></div>
+            </div>
+            <div class="carousel-slide">
+              <img src="img/slide-02.jpg" alt="Slide 2 — Introdução à Urianálise" loading="lazy" />
+              <div class="carousel-label"><span class="text-[13px] md:text-[14px] font-semibold text-[#F9FAFB]">Introdução</span></div>
+            </div>
+            <div class="carousel-slide">
+              <img src="img/slide-03.jpg" alt="Slide 3 — Anatomia e Fisiologia" loading="lazy" />
+              <div class="carousel-label"><span class="text-[13px] md:text-[14px] font-semibold text-[#F9FAFB]">Anatomia e Fisiologia</span></div>
+            </div>
+            <div class="carousel-slide">
+              <img src="img/slide-04.jpg" alt="Slide 4 — Cuidados Pré-Analíticos" loading="lazy" />
+              <div class="carousel-label"><span class="text-[13px] md:text-[14px] font-semibold text-[#F9FAFB]">Pré-Analítico</span></div>
+            </div>
+            <div class="carousel-slide">
+              <img src="img/slide-05.jpg" alt="Slide 5 — Análise Física" loading="lazy" />
+              <div class="carousel-label"><span class="text-[13px] md:text-[14px] font-semibold text-[#F9FAFB]">Análise Física</span></div>
+            </div>
+            <div class="carousel-slide">
+              <img src="img/slide-06.jpg" alt="Slide 6 — Análise Química" loading="lazy" />
+              <div class="carousel-label"><span class="text-[13px] md:text-[14px] font-semibold text-[#F9FAFB]">Análise Química</span></div>
+            </div>
+            <div class="carousel-slide">
+              <img src="img/slide-07.jpg" alt="Slide 7 — Microscopia Urinária" loading="lazy" />
+              <div class="carousel-label"><span class="text-[13px] md:text-[14px] font-semibold text-[#F9FAFB]">Microscopia</span></div>
+            </div>
+          </div>
+          <button class="carousel-btn prev" onclick="moveCarousel(-1)" aria-label="Slide anterior">&#10094;</button>
+          <button class="carousel-btn next" onclick="moveCarousel(1)" aria-label="Próximo slide">&#10095;</button>
+        </div>
+        <div class="carousel-dots" id="carouselDots"></div>
       </section>
 
       <div class="section-divider"></div>
@@ -559,5 +628,59 @@
       </footer>
 
     </div>
+
+    <script>
+      // Carousel
+      const track = document.getElementById('carouselTrack');
+      const slides = track.querySelectorAll('.carousel-slide');
+      const dotsContainer = document.getElementById('carouselDots');
+      let currentSlide = 0;
+      let autoPlayInterval;
+
+      // Create dots
+      slides.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+        dot.setAttribute('aria-label', 'Slide ' + (i + 1));
+        dot.onclick = () => goToSlide(i);
+        dotsContainer.appendChild(dot);
+      });
+
+      function updateCarousel() {
+        track.style.transform = 'translateX(-' + (currentSlide * 100) + '%)';
+        dotsContainer.querySelectorAll('.carousel-dot').forEach((d, i) => {
+          d.classList.toggle('active', i === currentSlide);
+        });
+      }
+
+      function goToSlide(index) {
+        currentSlide = index;
+        updateCarousel();
+        resetAutoPlay();
+      }
+
+      function moveCarousel(dir) {
+        currentSlide = (currentSlide + dir + slides.length) % slides.length;
+        updateCarousel();
+        resetAutoPlay();
+      }
+
+      function resetAutoPlay() {
+        clearInterval(autoPlayInterval);
+        autoPlayInterval = setInterval(() => moveCarousel(1), 4000);
+      }
+
+      // Touch/swipe support
+      let touchStartX = 0;
+      const carouselEl = document.getElementById('carousel');
+      carouselEl.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+      carouselEl.addEventListener('touchend', e => {
+        const diff = touchStartX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 50) moveCarousel(diff > 0 ? 1 : -1);
+      }, { passive: true });
+
+      // Start auto-play
+      resetAutoPlay();
+    </script>
   </body>
 </html>
