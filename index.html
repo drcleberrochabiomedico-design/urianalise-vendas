@@ -157,7 +157,7 @@
             QUERO LAUDAR COM SEGURANÇA AGORA
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
           </a>
-          <p class="text-[12px] text-[#9CA3AF]">Acesso imediato · garantia de 7 dias · hospedado na Hotmart</p>
+          <p class="text-[12px] text-[#9CA3AF]">Acesso imediato · garantia de 7 dias · <span class="text-[#EF4444] font-semibold">6x de R$ 12,57</span></p>
         </div>
         <div class="flex-1 w-full">
           <div class="hero-img-wrap w-full h-[300px] md:h-[420px]">
@@ -532,11 +532,21 @@
 
       <!-- PREÇO -->
       <section class="section-padding box-border w-full flex flex-col md:flex-row gap-[40px] md:gap-[60px] p-[48px_20px] md:p-[80px_60px] bg-[#111827] preco-grid items-start">
-        <div class="flex-1 bg-[#0A0F1A] p-8 md:p-10 rounded-2xl shadow-2xl border border-white/5">
-          <p class="text-[12px] md:text-[13px] font-semibold text-[#F59E0B] mb-4">ACESSO COMPLETO</p>
-          <p class="text-[16px] md:text-[18px] text-[#9CA3AF] line-through mb-1">R$ 158,00</p>
-          <p class="preco-title text-[48px] md:text-[64px] font-bold text-[#F59E0B] mb-1">R$ 67,00</p>
-          <p class="text-[14px] md:text-[16px] text-[#9CA3AF] mb-6">ou 12x de R$ 5,58</p>
+        <div class="flex-1 bg-[#0A0F1A] p-8 md:p-10 rounded-2xl shadow-2xl border border-[#F59E0B]/30 relative overflow-hidden">
+          <div class="absolute top-0 right-0 bg-[#EF4444] text-white text-[11px] md:text-[12px] font-bold px-4 py-2 rounded-bl-xl">
+            -58% OFF
+          </div>
+          <div class="flex items-center gap-3 mb-4">
+            <span class="text-[12px] md:text-[13px] font-semibold text-[#F59E0B] uppercase tracking-wider">Acesso Completo</span>
+            <span class="bg-[#EF4444]/20 text-[#EF4444] text-[11px] font-bold px-2 py-0.5 rounded-full animate-pulse">PROMOÇÃO</span>
+          </div>
+          <div class="flex items-baseline gap-3 mb-1">
+            <p class="text-[18px] md:text-[20px] text-[#9CA3AF] line-through">R$ 158,00</p>
+            <span class="bg-[#10B981]/20 text-[#10B981] text-[11px] font-bold px-2 py-1 rounded-full">ECONOMIZE R$ 91,00</span>
+          </div>
+          <p class="preco-title text-[52px] md:text-[72px] font-extrabold text-[#F59E0B] mb-0 leading-none">R$ 67,00</p>
+          <p class="text-[15px] md:text-[17px] text-[#F9FAFB] font-semibold mb-1">ou <span class="text-[#F59E0B] text-[20px] md:text-[22px] font-extrabold">6x de R$ 12,57</span></p>
+          <p class="text-[12px] md:text-[13px] text-[#9CA3AF] mb-6">Total: R$ 75,42 · sem juros</p>
           <a onclick="return false;" href="https://pay.hotmart.com/S102786906P?checkoutMode=2" class="hotmart-fb hotmart__button-checkout cta-btn flex items-center justify-center w-full bg-[#F59E0B] text-[#0A0F1A] font-bold text-[14px] md:text-[16px] px-8 py-5 rounded-lg no-underline mb-6">
             QUERO ME INSCREVER AGORA
           </a>
@@ -577,6 +587,10 @@
         <div class="flex-1 flex flex-col gap-6">
           <h3 class="text-[22px] md:text-[28px] font-semibold text-[#F9FAFB] leading-tight">Menos que uma consulta — e muito mais que um curso</h3>
           <p class="text-[15px] md:text-[16px] text-[#9CA3AF] leading-relaxed">Você investe R$ 67,00 e sai com uma base sólida para interpretar a urina — do pré-analítico à microscopia — e liberar laudos com muito mais confiança na sua rotina.</p>
+          <div class="bg-[#0A0F1A] p-5 rounded-xl border border-[#F59E0B]/20">
+            <p class="text-[14px] md:text-[15px] text-[#F9FAFB] font-semibold mb-2">💡 Compare:</p>
+            <p class="text-[13px] md:text-[14px] text-[#9CA3AF] leading-relaxed">Uma consulta particular custa entre R$ 150 e R$ 300. Com R$ 67 você ganha um curso completo + 3 bônus + garantia de 7 dias.</p>
+          </div>
           <p class="text-[15px] md:text-[16px] text-[#9CA3AF] leading-relaxed">Acesso com condições especiais por tempo limitado, direto na plataforma da Hotmart.</p>
         </div>
       </section>
