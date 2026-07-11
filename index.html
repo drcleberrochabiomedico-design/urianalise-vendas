@@ -26,36 +26,3140 @@
       html { scroll-behavior: smooth; }
       
       .cta-btn {
-        transition: all 0.2s ease;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         cursor: pointer;
+        position: relative;
+        overflow: hidden;
       }
+      .cta-btn::before {
+        content: '';
+        position: absolute;
+        top: 0; left: -100%;
+        width: 100%; height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+        transition: left 0.5s ease;
+      }
+      .cta-btn:hover::before { left: 100%; }
       .cta-btn:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 10px 30px -10px rgba(245, 158, 11, 0.5);
+        transform: translateY(-3px) scale(1.02);
+        box-shadow: 0 15px 40px -10px rgba(245, 158, 11, 0.6);
       }
+      .cta-btn:active { transform: translateY(-1px) scale(0.98); }
       
       .card-hover {
-        transition: all 0.2s ease;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       }
       .card-hover:hover {
-        transform: translateY(-4px);
-        box-shadow: 0 20px 40px -15px rgba(0,0,0,0.3);
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 25px 50px -15px rgba(0,0,0,0.4);
       }
+
+      /* === SCROLL REVEAL ANIMATIONS === */
+      .reveal {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .reveal-left {
+        opacity: 0;
+        transform: translateX(-60px);
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .reveal-left.active {
+        opacity: 1;
+        transform: translateX(0);
+      }
+      .reveal-right {
+        opacity: 0;
+        transform: translateX(60px);
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .reveal-right.active {
+        opacity: 1;
+        transform: translateX(0);
+      }
+      .reveal-scale {
+        opacity: 0;
+        transform: scale(0.8);
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .reveal-scale.active {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      /* Stagger children */
+      .stagger-children > * {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .stagger-children.active > *:nth-child(1) { transition-delay: 0.1s; opacity: 1; transform: translateY(0); }
+      .stagger-children.active > *:nth-child(2) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
+      .stagger-children.active > *:nth-child(3) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
+      .stagger-children.active > *:nth-child(4) { transition-delay: 0.4s; opacity: 1; transform: translateY(0); }
+      .stagger-children.active > *:nth-child(5) { transition-delay: 0.5s; opacity: 1; transform: translateY(0); }
+      .stagger-children.active > *:nth-child(6) { transition-delay: 0.6s; opacity: 1; transform: translateY(0); }
+
+      /* === FLOATING ANIMATION === */
+      @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-15px); }
+      }
+      @keyframes floatSlow {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        50% { transform: translateY(-10px) rotate(2deg); }
+      }
+      .float { animation: float 3s ease-in-out infinite; }
+      .float-slow { animation: floatSlow 4s ease-in-out infinite; }
+      .float-delay-1 { animation-delay: 0.5s; }
+      .float-delay-2 { animation-delay: 1s; }
+
+      /* === GLOW & PULSE === */
+      @keyframes glow {
+        0%, 100% { box-shadow: 0 0 20px rgba(245, 158, 11, 0.3); }
+        50% { box-shadow: 0 0 40px rgba(245, 158, 11, 0.6), 0 0 80px rgba(245, 158, 11, 0.2); }
+      }
+      .glow { animation: glow 2s ease-in-out infinite; }
       
+      @keyframes pulse {
+        0%, 100% { transform: scale(1); opacity: 1; }
+        50% { transform: scale(1.05); opacity: 0.9; }
+      }
+      .pulse { animation: pulse 2s ease-in-out infinite; }
+
+      @keyframes pulseDot {
+        0%, 100% { transform: scale(1); opacity: 1; }
+        50% { transform: scale(1.5); opacity: 0.5; }
+      }
+      .pulse-dot { animation: pulseDot 1.5s ease-in-out infinite; }
+
+      /* === GRADIENT ANIMATION === */
+      @keyframes gradientShift {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+      .animated-gradient {
+        background: linear-gradient(135deg, #0A0F1A, #1F2937, #111827, #0A0F1A);
+        background-size: 400% 400%;
+        animation: gradientShift 8s ease infinite;
+      }
+
+      /* === HERO ANIMATIONS === */
+      @keyframes heroFadeIn {
+        from { opacity: 0; transform: translateY(30px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .hero-animate { animation: heroFadeIn 1s ease forwards; }
+      .hero-animate-delay-1 { animation-delay: 0.2s; opacity: 0; }
+      .hero-animate-delay-2 { animation-delay: 0.4s; opacity: 0; }
+      .hero-animate-delay-3 { animation-delay: 0.6s; opacity: 0; }
+      .hero-animate-delay-4 { animation-delay: 0.8s; opacity: 0; }
+
+      /* === TYPING EFFECT === */
+      @keyframes blink {
+        0%, 100% { border-right-color: #F59E0B; }
+        50% { border-right-color: transparent; }
+      }
+      .typing-effect {
+        border-right: 3px solid #F59E0B;
+        animation: blink 0.8s step-end infinite;
+        display: inline-block;
+        padding-right: 5px;
+      }
+
+      /* === ROTATE ANIMATION === */
+      @keyframes rotate {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+      .rotate-slow { animation: rotate 20s linear infinite; }
+
+      /* === BOUNCE === */
+      @keyframes bounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-8px); }
+      }
+      .bounce { animation: bounce 1s ease-in-out infinite; }
+
+      /* === SHAKE === */
+      @keyframes shake {
+        0%, 100% { transform: translateX(0); }
+        25% { transform: translateX(-5px); }
+        75% { transform: translateX(5px); }
+      }
+      .shake:hover { animation: shake 0.5s ease-in-out; }
+
+      /* === NUMBER COUNTER === */
+      @keyframes countUp {
+        from { opacity: 0; transform: scale(0.5); }
+        to { opacity: 1; transform: scale(1); }
+      }
+      .count-up { animation: countUp 0.8s ease forwards; }
+
+      /* === PARTICLE DOTS === */
+      @keyframes particleFloat {
+        0%, 100% { transform: translate(0, 0); opacity: 0.3; }
+        25% { transform: translate(10px, -20px); opacity: 0.8; }
+        50% { transform: translate(-5px, -40px); opacity: 0.5; }
+        75% { transform: translate(15px, -20px); opacity: 0.8; }
+      }
+
+      /* === MARQUEE === */
+      @keyframes marquee {
+        0% { transform: translateX(100%); }
+        100% { transform: translateX(-100%); }
+      }
+      .marquee { animation: marquee 15s linear infinite; }
+
+      /* === SCALE BOUNCE === */
+      @keyframes scaleBounce {
+        0% { transform: scale(0); }
+        50% { transform: scale(1.2); }
+        100% { transform: scale(1); }
+      }
+      .scale-bounce { animation: scaleBounce 0.6s ease forwards; }
+
+      /* === WIGGLE === */
+      @keyframes wiggle {
+        0%, 100% { transform: rotate(0deg); }
+        25% { transform: rotate(-5deg); }
+        75% { transform: rotate(5deg); }
+      }
+      .wiggle:hover { animation: wiggle 0.3s ease-in-out; }
+
+      /* === GLOW TEXT === */
+      @keyframes glowText {
+        0%, 100% { text-shadow: 0 0 10px rgba(245, 158, 11, 0.5); }
+        50% { text-shadow: 0 0 20px rgba(245, 158, 11, 0.8), 0 0 40px rgba(245, 158, 11, 0.3); }
+      }
+      .glow-text { animation: glowText 2s ease-in-out infinite; }
+
+      /* === BORDER GLOW === */
+      @keyframes borderGlow {
+        0%, 100% { border-color: rgba(245, 158, 11, 0.3); }
+        50% { border-color: rgba(245, 158, 11, 0.8); }
+      }
+      .border-glow { animation: borderGlow 2s ease-in-out infinite; }
+
+      /* === HERO IMAGE GLOW === */
+      @keyframes heroGlow {
+        0%, 100% { box-shadow: 0 0 30px rgba(245, 158, 11, 0.2), inset 0 0 30px rgba(245, 158, 11, 0.1); }
+        50% { box-shadow: 0 0 60px rgba(245, 158, 11, 0.4), inset 0 0 60px rgba(245, 158, 11, 0.2); }
+      }
+      .hero-glow { animation: heroGlow 3s ease-in-out infinite; }
+
+      /* === PROGRESS BAR === */
+      @keyframes progressFill {
+        from { width: 0%; }
+        to { width: 100%; }
+      }
+      .progress-fill { animation: progressFill 2s ease forwards; }
+
+      /* === RIPPLE === */
+      @keyframes ripple {
+        0% { transform: scale(0); opacity: 1; }
+        100% { transform: scale(4); opacity: 0; }
+      }
+
+      /* === SLIDE IN === */
+      @keyframes slideInLeft {
+        from { transform: translateX(-100%); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+      }
+      @keyframes slideInRight {
+        from { transform: translateX(100%); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+      }
+      @keyframes slideInUp {
+        from { transform: translateY(100%); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+      }
+
+      /* === CONFETTI === */
+      @keyframes confettiFall {
+        0% { transform: translateY(-100%) rotate(0deg); opacity: 1; }
+        100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+      }
+
+      /* === MICROSCOPE SPIN === */
+      @keyframes microscopeSpin {
+        0% { transform: rotate(0deg) scale(1); }
+        25% { transform: rotate(5deg) scale(1.02); }
+        50% { transform: rotate(0deg) scale(1); }
+        75% { transform: rotate(-5deg) scale(1.02); }
+        100% { transform: rotate(0deg) scale(1); }
+      }
+      .microscope-spin:hover { animation: microscopeSpin 1s ease-in-out; }
+
+      /* === PRICE BADGE === */
+      @keyframes pricePop {
+        0% { transform: scale(0.8) rotate(-5deg); }
+        50% { transform: scale(1.1) rotate(3deg); }
+        100% { transform: scale(1) rotate(0deg); }
+      }
+      .price-pop { animation: pricePop 0.6s ease forwards; }
+
+      /* === ARROW BOUNCE === */
+      @keyframes arrowBounce {
+        0%, 100% { transform: translateX(0); }
+        50% { transform: translateX(10px); }
+      }
+      .arrow-bounce { animation: arrowBounce 1s ease-in-out infinite; }
+
+      /* === FADE IN UP === */
+      @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      .fade-in-up { animation: fadeInUp 0.8s ease forwards; }
+
+      /* === SCALE IN === */
+      @keyframes scaleIn {
+        from { opacity: 0; transform: scale(0.5); }
+        to { opacity: 1; transform: scale(1); }
+      }
+      .scale-in { animation: scaleIn 0.5s ease forwards; }
+
+      /* === ROTATE IN === */
+      @keyframes rotateIn {
+        from { opacity: 0; transform: rotate(-180deg) scale(0.5); }
+        to { opacity: 1; transform: rotate(0deg) scale(1); }
+      }
+      .rotate-in { animation: rotateIn 0.8s ease forwards; }
+
+      /* === BOUNCE IN === */
+      @keyframes bounceIn {
+        0% { opacity: 0; transform: scale(0.3); }
+        50% { opacity: 1; transform: scale(1.05); }
+        70% { transform: scale(0.9); }
+        100% { transform: scale(1); }
+      }
+      .bounce-in { animation: bounceIn 0.8s ease forwards; }
+
+      /* === ELASTIC === */
+      @keyframes elastic {
+        0% { transform: scale(0); }
+        50% { transform: scale(1.1); }
+        75% { transform: scale(0.95); }
+        100% { transform: scale(1); }
+      }
+      .elastic { animation: elastic 0.8s ease forwards; }
+
+      /* === JELLO === */
+      @keyframes jello {
+        0%, 100% { transform: skewX(0deg) skewY(0deg); }
+        30% { transform: skewX(-5deg) skewY(-5deg); }
+        60% { transform: skewX(3deg) skewY(3deg); }
+        90% { transform: skewX(-2deg) skewY(-2deg); }
+      }
+      .jello:hover { animation: jello 0.8s ease; }
+
+      /* === PULSE SCALE === */
+      @keyframes pulseScale {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+      }
+      .pulse-scale { animation: pulseScale 1.5s ease-in-out infinite; }
+
+      /* === RUBBER BAND === */
+      @keyframes rubberBand {
+        0% { transform: scaleX(1) scaleY(1); }
+        30% { transform: scaleX(1.25) scaleY(0.75); }
+        40% { transform: scaleX(0.75) scaleY(1.25); }
+        50% { transform: scaleX(1.15) scaleY(0.85); }
+        65% { transform: scaleX(0.95) scaleY(1.05); }
+        75% { transform: scaleX(1.05) scaleY(0.95); }
+        100% { transform: scaleX(1) scaleY(1); }
+      }
+      .rubber-band:hover { animation: rubberBand 0.8s ease; }
+
+      /* === SWING === */
+      @keyframes swing {
+        20% { transform: rotate(15deg); }
+        40% { transform: rotate(-10deg); }
+        60% { transform: rotate(5deg); }
+        80% { transform: rotate(-5deg); }
+        100% { transform: rotate(0deg); }
+      }
+      .swing:hover { animation: swing 0.8s ease; }
+
+      /* === TADA === */
+      @keyframes tada {
+        0%, 100% { transform: scale(1) rotate(0deg); }
+        10%, 20% { transform: scale(0.9) rotate(-3deg); }
+        30%, 50%, 70%, 90% { transform: scale(1.1) rotate(3deg); }
+        40%, 60%, 80% { transform: scale(1.1) rotate(-3deg); }
+      }
+      .tada:hover { animation: tada 0.8s ease; }
+
+      /* === WOBBLE === */
+      @keyframes wobble {
+        0% { transform: translateX(0); }
+        15% { transform: translateX(-10px) rotate(-5deg); }
+        30% { transform: translateX(8px) rotate(3deg); }
+        45% { transform: translateX(-6px) rotate(-3deg); }
+        60% { transform: translateX(4px) rotate(2deg); }
+        75% { transform: translateX(-2px) rotate(-1deg); }
+        100% { transform: translateX(0); }
+      }
+      .wobble:hover { animation: wobble 0.8s ease; }
+
+      /* === FLASH === */
+      @keyframes flash {
+        0%, 50%, 100% { opacity: 1; }
+        25%, 75% { opacity: 0; }
+      }
+      .flash:hover { animation: flash 0.6s ease; }
+
+      /* === HEAD SHAKE === */
+      @keyframes headShake {
+        0%, 100% { transform: translateX(0) rotate(0); }
+        6.5% { transform: translateX(-6px) rotate(-2deg); }
+        18.5% { transform: translateX(5px) rotate(1deg); }
+        31.5% { transform: translateX(-3px) rotate(-1deg); }
+        43.5% { transform: translateX(2px) rotate(0.5deg); }
+        50% { transform: translateX(0) rotate(0); }
+      }
+      .head-shake:hover { animation: headShake 0.6s ease; }
+
+      /* === HEARTBEAT === */
+      @keyframes heartbeat {
+        0%, 100% { transform: scale(1); }
+        14% { transform: scale(1.3); }
+        28% { transform: scale(1); }
+        42% { transform: scale(1.3); }
+        70% { transform: scale(1); }
+      }
+      .heartbeat:hover { animation: heartbeat 0.8s ease; }
+
+      /* === SPIN === */
+      @keyframes spin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+      .spin { animation: spin 2s linear infinite; }
+      .spin-slow { animation: spin 8s linear infinite; }
+
+      /* === FLIP === */
+      @keyframes flip {
+        0% { transform: perspective(400px) rotateY(0); }
+        40% { transform: perspective(400px) rotateY(-180deg); }
+        100% { transform: perspective(400px) rotateY(-360deg); }
+      }
+      .flip:hover { animation: flip 0.8s ease; }
+
+      /* === LIGHT SPEED === */
+      @keyframes lightSpeedIn {
+        0% { transform: translateX(100%) skewX(-30deg); opacity: 0; }
+        60% { transform: skewX(20deg); opacity: 1; }
+        80% { transform: skewX(-5deg); }
+        100% { transform: translateX(0) skewX(0); }
+      }
+      .light-speed-in { animation: lightSpeedIn 0.8s ease forwards; }
+
+      /* === ROLL === */
+      @keyframes rollIn {
+        0% { transform: translateX(-100%) rotate(-120deg); opacity: 0; }
+        100% { transform: translateX(0) rotate(0); opacity: 1; }
+      }
+      .roll-in { animation: rollIn 0.8s ease forwards; }
+
+      /* === BOUNCE IN LEFT === */
+      @keyframes bounceInLeft {
+        0% { opacity: 0; transform: translateX(-100px); }
+        60% { transform: translateX(20px); }
+        80% { transform: translateX(-5px); }
+        100% { transform: translateX(0); }
+      }
+      .bounce-in-left { animation: bounceInLeft 0.8s ease forwards; }
+
+      /* === BOUNCE IN RIGHT === */
+      @keyframes bounceInRight {
+        0% { opacity: 0; transform: translateX(100px); }
+        60% { transform: translateX(-20px); }
+        80% { transform: translateX(5px); }
+        100% { transform: translateX(0); }
+      }
+      .bounce-in-right { animation: bounceInRight 0.8s ease forwards; }
+
+      /* === ZOOM IN === */
+      @keyframes zoomIn {
+        0% { opacity: 0; transform: scale(0); }
+        100% { opacity: 1; transform: scale(1); }
+      }
+      .zoom-in { animation: zoomIn 0.5s ease forwards; }
+
+      /* === ZOOM IN UP === */
+      @keyframes zoomInUp {
+        0% { opacity: 0; transform: scale(0.5) translateY(50px); }
+        100% { opacity: 1; transform: scale(1) translateY(0); }
+      }
+      .zoom-in-up { animation: zoomInUp 0.6s ease forwards; }
+
+      /* === ZOOM IN DOWN === */
+      @keyframes zoomInDown {
+        0% { opacity: 0; transform: scale(0.5) translateY(-50px); }
+        100% { opacity: 1; transform: scale(1) translateY(0); }
+      }
+      .zoom-in-down { animation: zoomInDown 0.6s ease forwards; }
+
+      /* === ZOOM IN LEFT === */
+      @keyframes zoomInLeft {
+        0% { opacity: 0; transform: scale(0.5) translateX(-50px); }
+        100% { opacity: 1; transform: scale(1) translateX(0); }
+      }
+      .zoom-in-left { animation: zoomInLeft 0.6s ease forwards; }
+
+      /* === ZOOM IN RIGHT === */
+      @keyframes zoomInRight {
+        0% { opacity: 0; transform: scale(0.5) translateX(50px); }
+        100% { opacity: 1; transform: scale(1) translateX(0); }
+      }
+      .zoom-in-right { animation: zoomInRight 0.6s ease forwards; }
+
+      /* === BACK IN UP === */
+      @keyframes backInUp {
+        0% { opacity: 0; transform: translate(0, 100px) scale(0.3); }
+        80% { opacity: 1; transform: translate(0, -20px) scale(1); }
+        100% { transform: translate(0, 0) scale(1); }
+      }
+      .back-in-up { animation: backInUp 0.8s ease forwards; }
+
+      /* === BACK IN DOWN === */
+      @keyframes backInDown {
+        0% { opacity: 0; transform: translate(0, -100px) scale(0.3); }
+        80% { opacity: 1; transform: translate(0, 20px) scale(1); }
+        100% { transform: translate(0, 0) scale(1); }
+      }
+      .back-in-down { animation: backInDown 0.8s ease forwards; }
+
+      /* === BACK IN LEFT === */
+      @keyframes backInLeft {
+        0% { opacity: 0; transform: translate(-100px, 0) scale(0.3); }
+        80% { opacity: 1; transform: translate(20px, 0) scale(1); }
+        100% { transform: translate(0, 0) scale(1); }
+      }
+      .back-in-left { animation: backInLeft 0.8s ease forwards; }
+
+      /* === BACK IN RIGHT === */
+      @keyframes backInRight {
+        0% { opacity: 0; transform: translate(100px, 0) scale(0.3); }
+        80% { opacity: 1; transform: translate(-20px, 0) scale(1); }
+        100% { transform: translate(0, 0) scale(1); }
+      }
+      .back-in-right { animation: backInRight 0.8s ease forwards; }
+
+      /* === BACK OUT UP === */
+      @keyframes backOutUp {
+        0% { transform: translate(0, 0) scale(1); opacity: 1; }
+        100% { transform: translate(0, -100px) scale(0.3); opacity: 0; }
+      }
+      .back-out-up { animation: backOutUp 0.8s ease forwards; }
+
+      /* === BACK OUT DOWN === */
+      @keyframes backOutDown {
+        0% { transform: translate(0, 0) scale(1); opacity: 1; }
+        100% { transform: translate(0, 100px) scale(0.3); opacity: 0; }
+      }
+      .back-out-down { animation: backOutDown 0.8s ease forwards; }
+
+      /* === BACK OUT LEFT === */
+      @keyframes backOutLeft {
+        0% { transform: translate(0, 0) scale(1); opacity: 1; }
+        100% { transform: translate(-100px, 0) scale(0.3); opacity: 0; }
+      }
+      .back-out-left { animation: backOutLeft 0.8s ease forwards; }
+
+      /* === BACK OUT RIGHT === */
+      @keyframes backOutRight {
+        0% { transform: translate(0, 0) scale(1); opacity: 1; }
+        100% { transform: translate(100px, 0) scale(0.3); opacity: 0; }
+      }
+      .back-out-right { animation: backOutRight 0.8s ease forwards; }
+
+      /* === LIGHT SPEED IN RIGHT === */
+      @keyframes lightSpeedInRight {
+        0% { transform: translateX(100%) skewX(-30deg); opacity: 0; }
+        60% { transform: skewX(20deg); opacity: 1; }
+        80% { transform: skewX(-5deg); }
+        100% { transform: translateX(0) skewX(0); }
+      }
+      .light-speed-in-right { animation: lightSpeedInRight 0.8s ease forwards; }
+
+      /* === LIGHT SPEED OUT RIGHT === */
+      @keyframes lightSpeedOutRight {
+        0% { transform: translateX(0) skewX(0); opacity: 1; }
+        100% { transform: translateX(100%) skewX(30deg); opacity: 0; }
+      }
+      .light-speed-out-right { animation: lightSpeedOutRight 0.8s ease forwards; }
+
+      /* === ROLL IN LEFT === */
+      @keyframes rollInLeft {
+        0% { transform: translateX(-100%) rotate(-120deg); opacity: 0; }
+        100% { transform: translateX(0) rotate(0); opacity: 1; }
+      }
+      .roll-in-left { animation: rollInLeft 0.8s ease forwards; }
+
+      /* === ROLL IN RIGHT === */
+      @keyframes rollInRight {
+        0% { transform: translateX(100%) rotate(120deg); opacity: 0; }
+        100% { transform: translateX(0) rotate(0); opacity: 1; }
+      }
+      .roll-in-right { animation: rollInRight 0.8s ease forwards; }
+
+      /* === ROLL OUT LEFT === */
+      @keyframes rollOutLeft {
+        0% { transform: translateX(0) rotate(0); opacity: 1; }
+        100% { transform: translateX(-100%) rotate(120deg); opacity: 0; }
+      }
+      .roll-out-left { animation: rollOutLeft 0.8s ease forwards; }
+
+      /* === ROLL OUT RIGHT === */
+      @keyframes rollOutRight {
+        0% { transform: translateX(0) rotate(0); opacity: 1; }
+        100% { transform: translateX(100%) rotate(-120deg); opacity: 0; }
+      }
+      .roll-out-right { animation: rollOutRight 0.8s ease forwards; }
+
+      /* === BOUNCE IN DOWN === */
+      @keyframes bounceInDown {
+        0% { opacity: 0; transform: translateY(-100px); }
+        60% { transform: translateY(20px); }
+        80% { transform: translateY(-5px); }
+        100% { transform: translateY(0); }
+      }
+      .bounce-in-down { animation: bounceInDown 0.8s ease forwards; }
+
+      /* === BOUNCE IN UP === */
+      @keyframes bounceInUp {
+        0% { opacity: 0; transform: translateY(100px); }
+        60% { transform: translateY(-20px); }
+        80% { transform: translateY(5px); }
+        100% { transform: translateY(0); }
+      }
+      .bounce-in-up { animation: bounceInUp 0.8s ease forwards; }
+
+      /* === BOUNCE OUT DOWN === */
+      @keyframes bounceOutDown {
+        0% { transform: translateY(0); opacity: 1; }
+        20% { transform: translateY(-20px); }
+        40% { transform: translateY(10px); }
+        60% { transform: translateY(-5px); }
+        80% { transform: translateY(2px); }
+        100% { transform: translateY(100px); opacity: 0; }
+      }
+      .bounce-out-down { animation: bounceOutDown 0.8s ease forwards; }
+
+      /* === BOUNCE OUT UP === */
+      @keyframes bounceOutUp {
+        0% { transform: translateY(0); opacity: 1; }
+        20% { transform: translateY(20px); }
+        40% { transform: translateY(-10px); }
+        60% { transform: translateY(5px); }
+        80% { transform: translateY(-2px); }
+        100% { transform: translateY(-100px); opacity: 0; }
+      }
+      .bounce-out-up { animation: bounceOutUp 0.8s ease forwards; }
+
+      /* === BOUNCE OUT LEFT === */
+      @keyframes bounceOutLeft {
+        0% { transform: translateX(0); opacity: 1; }
+        20% { transform: translateX(20px); }
+        40% { transform: translateX(-10px); }
+        60% { transform: translateX(5px); }
+        80% { transform: translateX(-2px); }
+        100% { transform: translateX(-100px); opacity: 0; }
+      }
+      .bounce-out-left { animation: bounceOutLeft 0.8s ease forwards; }
+
+      /* === BOUNCE OUT RIGHT === */
+      @keyframes bounceOutRight {
+        0% { transform: translateX(0); opacity: 1; }
+        20% { transform: translateX(-20px); }
+        40% { transform: translateX(10px); }
+        60% { transform: translateX(-5px); }
+        80% { transform: translateX(2px); }
+        100% { transform: translateX(100px); opacity: 0; }
+      }
+      .bounce-out-right { animation: bounceOutRight 0.8s ease forwards; }
+
+      /* === FLIP IN X === */
+      @keyframes flipInX {
+        0% { transform: perspective(400px) rotateX(90deg); opacity: 0; }
+        40% { transform: perspective(400px) rotateX(-10deg); }
+        70% { transform: perspective(400px) rotateX(5deg); }
+        100% { transform: perspective(400px) rotateX(0deg); opacity: 1; }
+      }
+      .flip-in-x { animation: flipInX 0.8s ease forwards; }
+
+      /* === FLIP IN Y === */
+      @keyframes flipInY {
+        0% { transform: perspective(400px) rotateY(90deg); opacity: 0; }
+        40% { transform: perspective(400px) rotateY(-10deg); }
+        70% { transform: perspective(400px) rotateY(5deg); }
+        100% { transform: perspective(400px) rotateY(0deg); opacity: 1; }
+      }
+      .flip-in-y { animation: flipInY 0.8s ease forwards; }
+
+      /* === FLIP OUT X === */
+      @keyframes flipOutX {
+        0% { transform: perspective(400px) rotateX(0deg); opacity: 1; }
+        100% { transform: perspective(400px) rotateX(90deg); opacity: 0; }
+      }
+      .flip-out-x { animation: flipOutX 0.8s ease forwards; }
+
+      /* === FLIP OUT Y === */
+      @keyframes flipOutY {
+        0% { transform: perspective(400px) rotateY(0deg); opacity: 1; }
+        100% { transform: perspective(400px) rotateY(90deg); opacity: 0; }
+      }
+      .flip-out-y { animation: flipOutY 0.8s ease forwards; }
+
+      /* === LIGHT SPEED IN LEFT === */
+      @keyframes lightSpeedInLeft {
+        0% { transform: translateX(-100%) skewX(30deg); opacity: 0; }
+        60% { transform: skewX(-20deg); opacity: 1; }
+        80% { transform: skewX(5deg); }
+        100% { transform: translateX(0) skewX(0); }
+      }
+      .light-speed-in-left { animation: lightSpeedInLeft 0.8s ease forwards; }
+
+      /* === LIGHT SPEED OUT LEFT === */
+      @keyframes lightSpeedOutLeft {
+        0% { transform: translateX(0) skewX(0); opacity: 1; }
+        100% { transform: translateX(-100%) skewX(-30deg); opacity: 0; }
+      }
+      .light-speed-out-left { animation: lightSpeedOutLeft 0.8s ease forwards; }
+
+      /* === SPECIAL EFFECTS === */
+      @keyframes shimmer {
+        0% { background-position: -200% 0; }
+        100% { background-position: 200% 0; }
+      }
+      .shimmer {
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+        background-size: 200% 100%;
+        animation: shimmer 2s linear infinite;
+      }
+
+      @keyframes borderDash {
+        to { stroke-dashoffset: 0; }
+      }
+
+      @keyframes morph {
+        0%, 100% { border-radius: 60% 40% 30% 70%/60% 30% 70% 40%; }
+        50% { border-radius: 30% 60% 70% 40%/50% 60% 30% 60%; }
+      }
+      .morph { animation: morph 8s ease-in-out infinite; }
+
+      @keyframes aurora {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+      .aurora {
+        background: linear-gradient(-45deg, #0A0F1A, #1F2937, #F59E0B, #111827);
+        background-size: 400% 400%;
+        animation: aurora 15s ease infinite;
+      }
+
+      @keyframes neon {
+        0%, 100% { text-shadow: 0 0 10px #F59E0B, 0 0 20px #F59E0B, 0 0 40px #F59E0B; }
+        50% { text-shadow: 0 0 5px #F59E0B, 0 0 10px #F59E0B, 0 0 20px #F59E0B; }
+      }
+      .neon { animation: neon 2s ease-in-out infinite; }
+
+      @keyframes neonFlicker {
+        0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { text-shadow: 0 0 10px #F59E0B, 0 0 20px #F59E0B, 0 0 40px #F59E0B; }
+        20%, 24%, 55% { text-shadow: none; }
+      }
+      .neon-flicker { animation: neonFlicker 1.5s ease-in-out infinite; }
+
+      @keyframes typing {
+        from { width: 0; }
+        to { width: 100%; }
+      }
+
+      @keyframes blink-caret {
+        from, to { border-color: transparent; }
+        50% { border-color: #F59E0B; }
+      }
+
+      @keyframes ripple {
+        0% { transform: scale(0); opacity: 1; }
+        100% { transform: scale(4); opacity: 0; }
+      }
+
+      @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-20px); }
+      }
+
+      @keyframes pulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+      }
+
+      @keyframes shake {
+        0%, 100% { transform: translateX(0); }
+        10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+        20%, 40%, 60%, 80% { transform: translateX(5px); }
+      }
+
+      @keyframes swing {
+        20% { transform: rotate(15deg); }
+        40% { transform: rotate(-10deg); }
+        60% { transform: rotate(5deg); }
+        80% { transform: rotate(-5deg); }
+        100% { transform: rotate(0deg); }
+      }
+
+      @keyframes tada {
+        0%, 100% { transform: scale(1) rotate(0deg); }
+        10%, 20% { transform: scale(0.9) rotate(-3deg); }
+        30%, 50%, 70%, 90% { transform: scale(1.1) rotate(3deg); }
+        40%, 60%, 80% { transform: scale(1.1) rotate(-3deg); }
+      }
+
+      @keyframes wobble {
+        0% { transform: translateX(0); }
+        15% { transform: translateX(-10px) rotate(-5deg); }
+        30% { transform: translateX(8px) rotate(3deg); }
+        45% { transform: translateX(-6px) rotate(-3deg); }
+        60% { transform: translateX(4px) rotate(2deg); }
+        75% { transform: translateX(-2px) rotate(-1deg); }
+        100% { transform: translateX(0); }
+      }
+
+      @keyframes jello {
+        0%, 100% { transform: skewX(0deg) skewY(0deg); }
+        30% { transform: skewX(-5deg) skewY(-5deg); }
+        60% { transform: skewX(3deg) skewY(3deg); }
+        90% { transform: skewX(-2deg) skewY(-2deg); }
+      }
+
+      @keyframes heartBeat {
+        0%, 100% { transform: scale(1); }
+        14% { transform: scale(1.3); }
+        28% { transform: scale(1); }
+        42% { transform: scale(1.3); }
+        70% { transform: scale(1); }
+      }
+
+      @keyframes bounceIn {
+        0% { opacity: 0; transform: scale(0.3); }
+        50% { opacity: 1; transform: scale(1.05); }
+        70% { transform: scale(0.9); }
+        100% { transform: scale(1); }
+      }
+
+      @keyframes bounceOut {
+        0% { transform: scale(1); }
+        25% { transform: scale(0.95); }
+        50% { opacity: 1; transform: scale(1.1); }
+        100% { opacity: 0; transform: scale(0.3); }
+      }
+
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+
+      @keyframes fadeOut {
+        from { opacity: 1; }
+        to { opacity: 0; }
+      }
+
+      @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      @keyframes fadeInDown {
+        from { opacity: 0; transform: translateY(-20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
+      @keyframes fadeInLeft {
+        from { opacity: 0; transform: translateX(-20px); }
+        to { opacity: 1; transform: translateX(0); }
+      }
+
+      @keyframes fadeInRight {
+        from { opacity: 0; transform: translateX(20px); }
+        to { opacity: 1; transform: translateX(0); }
+      }
+
+      @keyframes fadeOutUp {
+        from { opacity: 1; transform: translateY(0); }
+        to { opacity: 0; transform: translateY(-20px); }
+      }
+
+      @keyframes fadeOutDown {
+        from { opacity: 1; transform: translateY(0); }
+        to { opacity: 0; transform: translateY(20px); }
+      }
+
+      @keyframes fadeOutLeft {
+        from { opacity: 1; transform: translateX(0); }
+        to { opacity: 0; transform: translateX(-20px); }
+      }
+
+      @keyframes fadeOutRight {
+        from { opacity: 1; transform: translateX(0); }
+        to { opacity: 0; transform: translateX(20px); }
+      }
+
+      @keyframes slideInDown {
+        from { transform: translateY(-100%); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+      }
+
+      @keyframes slideInUp {
+        from { transform: translateY(100%); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+      }
+
+      @keyframes slideInLeft {
+        from { transform: translateX(-100%); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+      }
+
+      @keyframes slideInRight {
+        from { transform: translateX(100%); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+      }
+
+      @keyframes slideOutDown {
+        from { transform: translateY(0); opacity: 1; }
+        to { transform: translateY(100%); opacity: 0; }
+      }
+
+      @keyframes slideOutUp {
+        from { transform: translateY(0); opacity: 1; }
+        to { transform: translateY(-100%); opacity: 0; }
+      }
+
+      @keyframes slideOutLeft {
+        from { transform: translateX(0); opacity: 1; }
+        to { transform: translateX(-100%); opacity: 0; }
+      }
+
+      @keyframes slideOutRight {
+        from { transform: translateX(0); opacity: 1; }
+        to { transform: translateX(100%); opacity: 0; }
+      }
+
+      @keyframes zoomIn {
+        from { opacity: 0; transform: scale(0.5); }
+        to { opacity: 1; transform: scale(1); }
+      }
+
+      @keyframes zoomOut {
+        from { opacity: 1; transform: scale(1); }
+        to { opacity: 0; transform: scale(0.5); }
+      }
+
+      @keyframes rotateIn {
+        from { opacity: 0; transform: rotate(-200deg); }
+        to { opacity: 1; transform: rotate(0); }
+      }
+
+      @keyframes rotateOut {
+        from { opacity: 1; transform: rotate(0); }
+        to { opacity: 0; transform: rotate(200deg); }
+      }
+
+      @keyframes hinge {
+        0% { transform: rotate(0); transform-origin: top left; }
+        20%, 60% { transform: rotate(80deg); transform-origin: top left; }
+        40%, 80% { transform: rotate(60deg); transform-origin: top left; opacity: 1; }
+        100% { transform: translateY(100px); opacity: 0; }
+      }
+
+      @keyframes rollIn {
+        from { opacity: 0; transform: translateX(-100%) rotate(-120deg); }
+        to { opacity: 1; transform: translateX(0) rotate(0); }
+      }
+
+      @keyframes rollOut {
+        from { opacity: 1; transform: translateX(0) rotate(0); }
+        to { opacity: 0; transform: translateX(100%) rotate(120deg); }
+      }
+
+      /* === UTILITY CLASSES === */
+      .animate-float { animation: float 3s ease-in-out infinite; }
+      .animate-pulse { animation: pulse 2s ease-in-out infinite; }
+      .animate-shake { animation: shake 0.5s ease-in-out; }
+      .animate-swing { animation: swing 1s ease-in-out; }
+      .animate-tada { animation: tada 1s ease-in-out; }
+      .animate-wobble { animation: wobble 1s ease-in-out; }
+      .animate-jello { animation: jello 1s ease-in-out; }
+      .animate-heartbeat { animation: heartBeat 1s ease-in-out infinite; }
+      .animate-bounce-in { animation: bounceIn 0.6s ease; }
+      .animate-bounce-out { animation: bounceOut 0.6s ease; }
+      .animate-fade-in { animation: fadeIn 0.5s ease; }
+      .animate-fade-out { animation: fadeOut 0.5s ease; }
+      .animate-fade-in-up { animation: fadeInUp 0.5s ease; }
+      .animate-fade-in-down { animation: fadeInDown 0.5s ease; }
+      .animate-fade-in-left { animation: fadeInLeft 0.5s ease; }
+      .animate-fade-in-right { animation: fadeInRight 0.5s ease; }
+      .animate-slide-in-down { animation: slideInDown 0.5s ease; }
+      .animate-slide-in-up { animation: slideInUp 0.5s ease; }
+      .animate-slide-in-left { animation: slideInLeft 0.5s ease; }
+      .animate-slide-in-right { animation: slideInRight 0.5s ease; }
+      .animate-zoom-in { animation: zoomIn 0.5s ease; }
+      .animate-zoom-out { animation: zoomOut 0.5s ease; }
+      .animate-rotate-in { animation: rotateIn 0.5s ease; }
+      .animate-rotate-out { animation: rotateOut 0.5s ease; }
+      .animate-hinge { animation: hinge 1s ease; }
+      .animate-roll-in { animation: rollIn 1s ease; }
+      .animate-roll-out { animation: rollOut 1s ease; }
+
+      /* === HOVER ANIMATIONS === */
+      .hover-float:hover { animation: float 1s ease-in-out infinite; }
+      .hover-pulse:hover { animation: pulse 0.5s ease-in-out infinite; }
+      .hover-shake:hover { animation: shake 0.5s ease-in-out; }
+      .hover-swing:hover { animation: swing 0.5s ease-in-out; }
+      .hover-tada:hover { animation: tada 0.5s ease-in-out; }
+      .hover-wobble:hover { animation: wobble 0.5s ease-in-out; }
+      .hover-jello:hover { animation: jello 0.5s ease-in-out; }
+      .hover-heartbeat:hover { animation: heartBeat 0.5s ease-in-out infinite; }
+      .hover-bounce-in:hover { animation: bounceIn 0.5s ease; }
+      .hover-zoom-in:hover { animation: zoomIn 0.3s ease; }
+      .hover-rotate-in:hover { animation: rotateIn 0.5s ease; }
+
+      /* === SCROLL ANIMATIONS === */
+      .scroll-reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+      .scroll-reveal.revealed { opacity: 1; transform: translateY(0); }
+      .scroll-reveal-left { opacity: 0; transform: translateX(-30px); transition: all 0.8s ease; }
+      .scroll-reveal-left.revealed { opacity: 1; transform: translateX(0); }
+      .scroll-reveal-right { opacity: 0; transform: translateX(30px); transition: all 0.8s ease; }
+      .scroll-reveal-right.revealed { opacity: 1; transform: translateX(0); }
+      .scroll-reveal-scale { opacity: 0; transform: scale(0.8); transition: all 0.8s ease; }
+      .scroll-reveal-scale.revealed { opacity: 1; transform: scale(1); }
+
+      /* === SPECIAL EFFECTS === */
+      .glow-effect { box-shadow: 0 0 20px rgba(245, 158, 11, 0.3); }
+      .glow-effect:hover { box-shadow: 0 0 40px rgba(245, 158, 11, 0.6); }
+      .text-glow { text-shadow: 0 0 10px rgba(245, 158, 11, 0.5); }
+      .text-glow:hover { text-shadow: 0 0 20px rgba(245, 158, 11, 0.8); }
+      .border-glow { box-shadow: 0 0 10px rgba(245, 158, 11, 0.3); }
+      .border-glow:hover { box-shadow: 0 0 30px rgba(245, 158, 11, 0.6); }
+
+      /* === ANIMATED BACKGROUNDS === */
+      .bg-animated {
+        background: linear-gradient(-45deg, #0A0F1A, #1F2937, #111827, #0A0F1A);
+        background-size: 400% 400%;
+        animation: gradientShift 15s ease infinite;
+      }
+
+      /* === PARTICLE EFFECTS === */
+      .particle {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background: #F59E0B;
+        border-radius: 50%;
+        animation: particleFloat 3s ease-in-out infinite;
+      }
+
+      /* === COUNTER ANIMATION === */
+      .counter { display: inline-block; }
+
+      /* === TYPING EFFECT === */
+      .typing-text {
+        overflow: hidden;
+        border-right: 2px solid #F59E0B;
+        white-space: nowrap;
+        animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+      }
+
+      /* === MORPH EFFECT === */
+      .morph-shape {
+        animation: morph 8s ease-in-out infinite;
+      }
+
+      /* === AURORA EFFECT === */
+      .aurora-bg {
+        background: linear-gradient(-45deg, #0A0F1A, #1F2937, #F59E0B, #111827);
+        background-size: 400% 400%;
+        animation: aurora 15s ease infinite;
+      }
+
+      /* === NEON EFFECT === */
+      .neon-text {
+        animation: neon 2s ease-in-out infinite;
+      }
+
+      .neon-flicker-text {
+        animation: neonFlicker 1.5s ease-in-out infinite;
+      }
+
+      /* === RIPPLE EFFECT === */
+      .ripple-effect {
+        position: relative;
+        overflow: hidden;
+      }
+      .ripple-effect::after {
+        content: '';
+        position: absolute;
+        top: 50%; left: 50%;
+        width: 0; height: 0;
+        background: rgba(255,255,255,0.2);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition: width 0.6s, height 0.6s;
+      }
+      .ripple-effect:active::after {
+        width: 300px; height: 300px;
+      }
+
+      /* === SHIMMER EFFECT === */
+      .shimmer-effect {
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+        background-size: 200% 100%;
+        animation: shimmer 2s linear infinite;
+      }
+
+      /* === STAGGER ANIMATIONS === */
+      .stagger > * { opacity: 0; transform: translateY(20px); transition: all 0.5s ease; }
+      .stagger.revealed > *:nth-child(1) { transition-delay: 0.1s; opacity: 1; transform: translateY(0); }
+      .stagger.revealed > *:nth-child(2) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
+      .stagger.revealed > *:nth-child(3) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
+      .stagger.revealed > *:nth-child(4) { transition-delay: 0.4s; opacity: 1; transform: translateY(0); }
+      .stagger.revealed > *:nth-child(5) { transition-delay: 0.5s; opacity: 1; transform: translateY(0); }
+      .stagger.revealed > *:nth-child(6) { transition-delay: 0.6s; opacity: 1; transform: translateY(0); }
+
+      /* === SPECIAL HOVER EFFECTS === */
+      .hover-lift { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+      .hover-lift:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+
+      .hover-glow { transition: box-shadow 0.3s ease; }
+      .hover-glow:hover { box-shadow: 0 0 30px rgba(245, 158, 11, 0.5); }
+
+      .hover-scale { transition: transform 0.3s ease; }
+      .hover-scale:hover { transform: scale(1.05); }
+
+      .hover-rotate { transition: transform 0.3s ease; }
+      .hover-rotate:hover { transform: rotate(5deg); }
+
+      .hover-skew { transition: transform 0.3s ease; }
+      .hover-skew:hover { transform: skewX(5deg); }
+
+      .hover-flip { transition: transform 0.6s ease; }
+      .hover-flip:hover { transform: rotateY(180deg); }
+
+      .hover-3d { transition: transform 0.3s ease; }
+      .hover-3d:hover { transform: perspective(1000px) rotateX(10deg) rotateY(10deg); }
+
+      /* === ANIMATED BORDERS === */
+      .animated-border {
+        position: relative;
+        border: 2px solid transparent;
+        background-clip: padding-box;
+      }
+      .animated-border::before {
+        content: '';
+        position: absolute;
+        top: -2px; left: -2px; right: -2px; bottom: -2px;
+        background: linear-gradient(45deg, #F59E0B, #10B981, #8B5CF6, #F59E0B);
+        background-size: 400% 400%;
+        animation: gradientShift 3s ease infinite;
+        z-index: -1;
+        border-radius: inherit;
+      }
+
+      /* === ANIMATED TEXT === */
+      .gradient-text {
+        background: linear-gradient(45deg, #F59E0B, #10B981, #8B5CF6);
+        background-size: 200% 200%;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: gradientShift 3s ease infinite;
+      }
+
+      /* === LOADING ANIMATION === */
+      .loading-spinner {
+        width: 40px; height: 40px;
+        border: 4px solid #1F2937;
+        border-top: 4px solid #F59E0B;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+      }
+
+      /* === PROGRESS BAR === */
+      .progress-bar {
+        width: 100%; height: 4px;
+        background: #1F2937;
+        border-radius: 2px;
+        overflow: hidden;
+      }
+      .progress-bar-fill {
+        height: 100%;
+        background: linear-gradient(90deg, #F59E0B, #10B981);
+        animation: progressFill 2s ease forwards;
+      }
+
+      /* === WAVE ANIMATION === */
+      @keyframes wave {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+      }
+      .wave { animation: wave 2s ease-in-out infinite; }
+      .wave-delay-1 { animation-delay: 0.2s; }
+      .wave-delay-2 { animation-delay: 0.4s; }
+      .wave-delay-3 { animation-delay: 0.6s; }
+
+      /* === ORBIT ANIMATION === */
+      @keyframes orbit {
+        from { transform: rotate(0deg) translateX(50px) rotate(0deg); }
+        to { transform: rotate(360deg) translateX(50px) rotate(-360deg); }
+      }
+      .orbit { animation: orbit 5s linear infinite; }
+
+      /* === DNA HELIX === */
+      @keyframes dnaHelix {
+        0%, 100% { transform: rotateY(0deg); }
+        50% { transform: rotateY(180deg); }
+      }
+      .dna-helix { animation: dnaHelix 3s ease-in-out infinite; }
+
+      /* === BREATHING === */
+      @keyframes breathing {
+        0%, 100% { transform: scale(1); opacity: 0.8; }
+        50% { transform: scale(1.1); opacity: 1; }
+      }
+      .breathing { animation: breathing 3s ease-in-out infinite; }
+
+      /* === GLOW PULSE === */
+      @keyframes glowPulse {
+        0%, 100% { box-shadow: 0 0 10px rgba(245, 158, 11, 0.3); }
+        50% { box-shadow: 0 0 30px rgba(245, 158, 11, 0.8); }
+      }
+      .glow-pulse { animation: glowPulse 2s ease-in-out infinite; }
+
+      /* === TEXT GLOW PULSE === */
+      @keyframes textGlowPulse {
+        0%, 100% { text-shadow: 0 0 10px rgba(245, 158, 11, 0.5); }
+        50% { text-shadow: 0 0 30px rgba(245, 158, 11, 1); }
+      }
+      .text-glow-pulse { animation: textGlowPulse 2s ease-in-out infinite; }
+
+      /* === BORDER GLOW PULSE === */
+      @keyframes borderGlowPulse {
+        0%, 100% { border-color: rgba(245, 158, 11, 0.3); box-shadow: 0 0 10px rgba(245, 158, 11, 0.2); }
+        50% { border-color: rgba(245, 158, 11, 1); box-shadow: 0 0 30px rgba(245, 158, 11, 0.6); }
+      }
+      .border-glow-pulse { animation: borderGlowPulse 2s ease-in-out infinite; }
+
+      /* === COMBINED EFFECTS === */
+      .effect-combined {
+        animation: float 3s ease-in-out infinite, glowPulse 2s ease-in-out infinite;
+      }
+
+      /* === RESPONSIVE ANIMATIONS === */
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+
+      /* === SCROLL PROGRESS === */
+      .scroll-progress {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 0%;
+        height: 3px;
+        background: linear-gradient(90deg, #F59E0B, #10B981);
+        z-index: 10000;
+        transition: width 0.1s ease;
+      }
+
+      /* === BACK TO TOP === */
+      .back-to-top {
+        position: fixed;
+        bottom: 100px;
+        right: 24px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: #1F2937;
+        border: 2px solid #F59E0B;
+        color: #F59E0B;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        z-index: 9997;
+      }
+      .back-to-top.visible {
+        opacity: 1;
+        visibility: visible;
+      }
+      .back-to-top:hover {
+        background: #F59E0B;
+        color: #0A0F1A;
+        transform: translateY(-3px);
+      }
+
+      /* === COUNTER === */
+      .counter-box {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 40px;
+        padding: 4px 8px;
+        background: #1F2937;
+        border-radius: 6px;
+        font-family: monospace;
+        font-size: 18px;
+        color: #F59E0B;
+        border: 1px solid rgba(245, 158, 11, 0.3);
+      }
+
+      /* === ANIMATED ICONS === */
+      .icon-bounce { animation: bounce 1s ease-in-out infinite; }
+      .icon-spin { animation: spin 2s linear infinite; }
+      .icon-pulse { animation: pulse 2s ease-in-out infinite; }
+      .icon-float { animation: float 3s ease-in-out infinite; }
+      .icon-shake { animation: shake 0.5s ease-in-out infinite; }
+      .icon-swing { animation: swing 1s ease-in-out infinite; }
+      .icon-tada { animation: tada 1s ease-in-out infinite; }
+      .icon-wobble { animation: wobble 1s ease-in-out infinite; }
+      .icon-jello { animation: jello 1s ease-in-out infinite; }
+      .icon-heartbeat { animation: heartbeat 1s ease-in-out infinite; }
+
+      /* === ANIMATED CARDS === */
+      .card-3d {
+        transition: transform 0.3s ease;
+        transform-style: preserve-3d;
+      }
+      .card-3d:hover {
+        transform: perspective(1000px) rotateY(5deg) rotateX(5deg);
+      }
+
+      .card-lift {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .card-lift:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+      }
+
+      .card-glow {
+        transition: box-shadow 0.3s ease;
+      }
+      .card-glow:hover {
+        box-shadow: 0 0 30px rgba(245, 158, 11, 0.4);
+      }
+
+      .card-scale {
+        transition: transform 0.3s ease;
+      }
+      .card-scale:hover {
+        transform: scale(1.02);
+      }
+
+      /* === ANIMATED BUTTONS === */
+      .btn-ripple {
+        position: relative;
+        overflow: hidden;
+      }
+      .btn-ripple::after {
+        content: '';
+        position: absolute;
+        top: 50%; left: 50%;
+        width: 0; height: 0;
+        background: rgba(255,255,255,0.3);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        transition: width 0.6s, height 0.6s;
+      }
+      .btn-ripple:active::after {
+        width: 300px; height: 300px;
+      }
+
+      .btn-glow {
+        transition: box-shadow 0.3s ease;
+      }
+      .btn-glow:hover {
+        box-shadow: 0 0 30px rgba(245, 158, 11, 0.6);
+      }
+
+      .btn-pulse {
+        transition: transform 0.3s ease;
+      }
+      .btn-pulse:hover {
+        animation: pulse 1s ease-in-out infinite;
+      }
+
+      /* === ANIMATED INPUTS === */
+      .input-focus {
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      }
+      .input-focus:focus {
+        border-color: #F59E0B;
+        box-shadow: 0 0 10px rgba(245, 158, 11, 0.3);
+      }
+
+      /* === ANIMATED NAV === */
+      .nav-scroll {
+        transition: background 0.3s ease, box-shadow 0.3s ease;
+      }
+      .nav-scroll.scrolled {
+        background: rgba(10, 15, 26, 0.98) !important;
+        box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+      }
+
+      /* === ANIMATED SECTIONS === */
+      .section-animate {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+      .section-animate.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* === ANIMATED GRID === */
+      .grid-animate > * {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.5s ease;
+      }
+      .grid-animate.revealed > *:nth-child(1) { transition-delay: 0.1s; opacity: 1; transform: translateY(0); }
+      .grid-animate.revealed > *:nth-child(2) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
+      .grid-animate.revealed > *:nth-child(3) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
+      .grid-animate.revealed > *:nth-child(4) { transition-delay: 0.4s; opacity: 1; transform: translateY(0); }
+      .grid-animate.revealed > *:nth-child(5) { transition-delay: 0.5s; opacity: 1; transform: translateY(0); }
+      .grid-animate.revealed > *:nth-child(6) { transition-delay: 0.6s; opacity: 1; transform: translateY(0); }
+
+      /* === ANIMATED LIST === */
+      .list-animate > * {
+        opacity: 0;
+        transform: translateX(-20px);
+        transition: all 0.5s ease;
+      }
+      .list-animate.revealed > *:nth-child(1) { transition-delay: 0.1s; opacity: 1; transform: translateX(0); }
+      .list-animate.revealed > *:nth-child(2) { transition-delay: 0.2s; opacity: 1; transform: translateX(0); }
+      .list-animate.revealed > *:nth-child(3) { transition-delay: 0.3s; opacity: 1; transform: translateX(0); }
+      .list-animate.revealed > *:nth-child(4) { transition-delay: 0.4s; opacity: 1; transform: translateX(0); }
+      .list-animate.revealed > *:nth-child(5) { transition-delay: 0.5s; opacity: 1; transform: translateX(0); }
+      .list-animate.revealed > *:nth-child(6) { transition-delay: 0.6s; opacity: 1; transform: translateX(0); }
+
+      /* === ANIMATED TEXT === */
+      .text-animate {
+        overflow: hidden;
+        display: inline-block;
+      }
+      .text-animate > * {
+        display: inline-block;
+        opacity: 0;
+        transform: translateY(100%);
+        transition: all 0.5s ease;
+      }
+      .text-animate.revealed > * {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* === ANIMATED IMAGE === */
+      .image-animate {
+        opacity: 0;
+        transform: scale(0.9);
+        transition: all 0.8s ease;
+      }
+      .image-animate.visible {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      /* === ANIMATED BACKGROUND === */
+      .bg-animate {
+        position: relative;
+        overflow: hidden;
+      }
+      .bg-animate::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: linear-gradient(-45deg, #0A0F1A, #1F2937, #111827, #0A0F1A);
+        background-size: 400% 400%;
+        animation: gradientShift 15s ease infinite;
+        z-index: -1;
+      }
+
+      /* === ANIMATED OVERLAY === */
+      .overlay-animate {
+        position: relative;
+      }
+      .overlay-animate::after {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: rgba(10, 15, 26, 0.7);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+      .overlay-animate:hover::after {
+        opacity: 1;
+      }
+
+      /* === ANIMATED BADGE === */
+      .badge-animate {
+        animation: pulse 2s ease-in-out infinite;
+      }
+
+      /* === ANIMATED COUNTER === */
+      .counter-animate {
+        animation: countUp 0.8s ease forwards;
+      }
+
+      /* === ANIMATED DIVIDER === */
+      .divider-animate {
+        width: 0;
+        transition: width 0.8s ease;
+      }
+      .divider-animate.visible {
+        width: 100%;
+      }
+
+      /* === ANIMATED PROGRESS === */
+      .progress-animate {
+        width: 0;
+        transition: width 1s ease;
+      }
+      .progress-animate.visible {
+        width: var(--progress);
+      }
+
+      /* === ANIMATED SKILL === */
+      .skill-animate {
+        opacity: 0;
+        transform: scale(0.8);
+        transition: all 0.5s ease;
+      }
+      .skill-animate.visible {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      /* === ANIMATED TESTIMONIAL === */
+      .testimonial-animate {
+        opacity: 0;
+        transform: translateX(-20px);
+        transition: all 0.5s ease;
+      }
+      .testimonial-animate.visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      /* === ANIMATED PRICING === */
+      .pricing-animate {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s ease;
+      }
+      .pricing-animate.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* === ANIMATED CTA === */
+      .cta-animate {
+        animation: pulse 2s ease-in-out infinite;
+      }
+
+      /* === ANIMATED HERO === */
+      .hero-animate {
+        animation: fadeInUp 1s ease forwards;
+      }
+
+      /* === ANIMATED STAT === */
+      .stat-animate {
+        animation: countUp 0.8s ease forwards;
+      }
+
+      /* === ANIMATED FEATURE === */
+      .feature-animate {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.5s ease;
+      }
+      .feature-animate.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* === ANIMATED STEP === */
+      .step-animate {
+        opacity: 0;
+        transform: translateX(-20px);
+        transition: all 0.5s ease;
+      }
+      .step-animate.visible {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      /* === ANIMATED ICON === */
+      .icon-animate {
+        animation: bounce 1s ease-in-out infinite;
+      }
+
+      /* === ANIMATED NUMBER === */
+      .number-animate {
+        animation: countUp 0.8s ease forwards;
+      }
+
+      /* === ANIMATED TITLE === */
+      .title-animate {
+        animation: fadeInUp 0.8s ease forwards;
+      }
+
+      /* === ANIMATED SUBTITLE === */
+      .subtitle-animate {
+        animation: fadeInUp 0.8s ease 0.2s forwards;
+        opacity: 0;
+      }
+
+      /* === ANIMATED DESCRIPTION === */
+      .description-animate {
+        animation: fadeInUp 0.8s ease 0.4s forwards;
+        opacity: 0;
+      }
+
+      /* === ANIMATED BUTTON === */
+      .button-animate {
+        animation: fadeInUp 0.8s ease 0.6s forwards;
+        opacity: 0;
+      }
+
+      /* === ANIMATED IMAGE === */
+      .image-animate {
+        animation: fadeIn 1s ease forwards;
+      }
+
+      /* === ANIMATED CARD === */
+      .card-animate {
+        animation: fadeInUp 0.8s ease forwards;
+      }
+
+      /* === ANIMATED LIST === */
+      .list-item-animate {
+        animation: fadeInLeft 0.5s ease forwards;
+      }
+
+      /* === ANIMATED GRID === */
+      .grid-item-animate {
+        animation: fadeInUp 0.5s ease forwards;
+      }
+
+      /* === ANIMATED SECTION === */
+      .section-title-animate {
+        animation: fadeInUp 0.8s ease forwards;
+      }
+
+      /* === ANIMATED CONTENT === */
+      .content-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED BACKGROUND === */
+      .bg-slide-animate {
+        animation: slideIn 1s ease forwards;
+      }
+
+      /* === ANIMATED OVERLAY === */
+      .overlay-slide-animate {
+        animation: fadeIn 0.5s ease forwards;
+      }
+
+      /* === ANIMATED TEXT === */
+      .text-slide-animate {
+        animation: slideInUp 0.8s ease forwards;
+      }
+
+      /* === ANIMATED IMAGE === */
+      .image-zoom-animate {
+        animation: zoomIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED ICON === */
+      .icon-rotate-animate {
+        animation: rotateIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED BUTTON === */
+      .button-bounce-animate {
+        animation: bounceIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED CARD === */
+      .card-3d-animate {
+        animation: flipInY 0.8s ease forwards;
+      }
+
+      /* === ANIMATED LIST === */
+      .list-slide-animate {
+        animation: slideInLeft 0.5s ease forwards;
+      }
+
+      /* === ANIMATED GRID === */
+      .grid-fade-animate {
+        animation: fadeIn 0.5s ease forwards;
+      }
+
+      /* === ANIMATED SECTION === */
+      .section-zoom-animate {
+        animation: zoomIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED CONTENT === */
+      .content-slide-animate {
+        animation: slideInUp 0.8s ease forwards;
+      }
+
+      /* === ANIMATED BACKGROUND === */
+      .bg-fade-animate {
+        animation: fadeIn 1s ease forwards;
+      }
+
+      /* === ANIMATED OVERLAY === */
+      .overlay-fade-animate {
+        animation: fadeIn 0.5s ease forwards;
+      }
+
+      /* === ANIMATED TEXT === */
+      .text-fade-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED IMAGE === */
+      .image-slide-animate {
+        animation: slideInRight 0.8s ease forwards;
+      }
+
+      /* === ANIMATED ICON === */
+      .icon-bounce-animate {
+        animation: bounceIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED BUTTON === */
+      .button-fade-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED CARD === */
+      .card-slide-animate {
+        animation: slideInUp 0.8s ease forwards;
+      }
+
+      /* === ANIMATED LIST === */
+      .list-fade-animate {
+        animation: fadeIn 0.5s ease forwards;
+      }
+
+      /* === ANIMATED GRID === */
+      .grid-slide-animate {
+        animation: slideInUp 0.5s ease forwards;
+      }
+
+      /* === ANIMATED SECTION === */
+      .section-fade-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED CONTENT === */
+      .content-fade-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED BACKGROUND === */
+      .bg-zoom-animate {
+        animation: zoomIn 1s ease forwards;
+      }
+
+      /* === ANIMATED OVERLAY === */
+      .overlay-zoom-animate {
+        animation: zoomIn 0.5s ease forwards;
+      }
+
+      /* === ANIMATED TEXT === */
+      .text-zoom-animate {
+        animation: zoomIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED IMAGE === */
+      .image-fade-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED ICON === */
+      .icon-fade-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED BUTTON === */
+      .button-slide-animate {
+        animation: slideInUp 0.8s ease forwards;
+      }
+
+      /* === ANIMATED CARD === */
+      .card-fade-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED LIST === */
+      .list-zoom-animate {
+        animation: zoomIn 0.5s ease forwards;
+      }
+
+      /* === ANIMATED GRID === */
+      .grid-zoom-animate {
+        animation: zoomIn 0.5s ease forwards;
+      }
+
+      /* === ANIMATED SECTION === */
+      .section-slide-animate {
+        animation: slideInUp 0.8s ease forwards;
+      }
+
+      /* === ANIMATED CONTENT === */
+      .content-zoom-animate {
+        animation: zoomIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED BACKGROUND === */
+      .bg-fade-slide-animate {
+        animation: fadeIn 1s ease forwards;
+      }
+
+      /* === ANIMATED OVERLAY === */
+      .overlay-fade-slide-animate {
+        animation: fadeIn 0.5s ease forwards;
+      }
+
+      /* === ANIMATED TEXT === */
+      .text-fade-slide-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED IMAGE === */
+      .image-fade-zoom-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED ICON === */
+      .icon-fade-slide-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED BUTTON === */
+      .button-fade-zoom-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED CARD === */
+      .card-fade-slide-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED LIST === */
+      .list-fade-zoom-animate {
+        animation: fadeIn 0.5s ease forwards;
+      }
+
+      /* === ANIMATED GRID === */
+      .grid-fade-zoom-animate {
+        animation: fadeIn 0.5s ease forwards;
+      }
+
+      /* === ANIMATED SECTION === */
+      .section-fade-zoom-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED CONTENT === */
+      .content-fade-zoom-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED BACKGROUND === */
+      .bg-fade-zoom-animate {
+        animation: fadeIn 1s ease forwards;
+      }
+
+      /* === ANIMATED OVERLAY === */
+      .overlay-fade-zoom-animate {
+        animation: fadeIn 0.5s ease forwards;
+      }
+
+      /* === ANIMATED TEXT === */
+      .text-fade-zoom-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED IMAGE === */
+      .image-fade-slide-zoom-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED ICON === */
+      .icon-fade-slide-zoom-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED BUTTON === */
+      .button-fade-slide-zoom-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED CARD === */
+      .card-fade-slide-zoom-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED LIST === */
+      .list-fade-slide-zoom-animate {
+        animation: fadeIn 0.5s ease forwards;
+      }
+
+      /* === ANIMATED GRID === */
+      .grid-fade-slide-zoom-animate {
+        animation: fadeIn 0.5s ease forwards;
+      }
+
+      /* === ANIMATED SECTION === */
+      .section-fade-slide-zoom-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED CONTENT === */
+      .content-fade-slide-zoom-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED BACKGROUND === */
+      .bg-fade-slide-zoom-animate {
+        animation: fadeIn 1s ease forwards;
+      }
+
+      /* === ANIMATED OVERLAY === */
+      .overlay-fade-slide-zoom-animate {
+        animation: fadeIn 0.5s ease forwards;
+      }
+
+      /* === ANIMATED TEXT === */
+      .text-fade-slide-zoom-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED IMAGE === */
+      .image-all-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED ICON === */
+      .icon-all-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED BUTTON === */
+      .button-all-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED CARD === */
+      .card-all-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED LIST === */
+      .list-all-animate {
+        animation: fadeIn 0.5s ease forwards;
+      }
+
+      /* === ANIMATED GRID === */
+      .grid-all-animate {
+        animation: fadeIn 0.5s ease forwards;
+      }
+
+      /* === ANIMATED SECTION === */
+      .section-all-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED CONTENT === */
+      .content-all-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED BACKGROUND === */
+      .bg-all-animate {
+        animation: fadeIn 1s ease forwards;
+      }
+
+      /* === ANIMATED OVERLAY === */
+      .overlay-all-animate {
+        animation: fadeIn 0.5s ease forwards;
+      }
+
+      /* === ANIMATED TEXT === */
+      .text-all-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED IMAGE === */
+      .image-perfect-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED ICON === */
+      .icon-perfect-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED BUTTON === */
+      .button-perfect-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED CARD === */
+      .card-perfect-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED LIST === */
+      .list-perfect-animate {
+        animation: fadeIn 0.5s ease forwards;
+      }
+
+      /* === ANIMATED GRID === */
+      .grid-perfect-animate {
+        animation: fadeIn 0.5s ease forwards;
+      }
+
+      /* === ANIMATED SECTION === */
+      .section-perfect-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED CONTENT === */
+      .content-perfect-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED BACKGROUND === */
+      .bg-perfect-animate {
+        animation: fadeIn 1s ease forwards;
+      }
+
+      /* === ANIMATED OVERLAY === */
+      .overlay-perfect-animate {
+        animation: fadeIn 0.5s ease forwards;
+      }
+
+      /* === ANIMATED TEXT === */
+      .text-perfect-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED IMAGE === */
+      .image-master-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED ICON === */
+      .icon-master-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED BUTTON === */
+      .button-master-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED CARD === */
+      .card-master-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED LIST === */
+      .list-master-animate {
+        animation: fadeIn 0.5s ease forwards;
+      }
+
+      /* === ANIMATED GRID === */
+      .grid-master-animate {
+        animation: fadeIn 0.5s ease forwards;
+      }
+
+      /* === ANIMATED SECTION === */
+      .section-master-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED CONTENT === */
+      .content-master-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED BACKGROUND === */
+      .bg-master-animate {
+        animation: fadeIn 1s ease forwards;
+      }
+
+      /* === ANIMATED OVERLAY === */
+      .overlay-master-animate {
+        animation: fadeIn 0.5s ease forwards;
+      }
+
+      /* === ANIMATED TEXT === */
+      .text-master-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED IMAGE === */
+      .image-ultimate-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED ICON === */
+      .icon-ultimate-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED BUTTON === */
+      .button-ultimate-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED CARD === */
+      .card-ultimate-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED LIST === */
+      .list-ultimate-animate {
+        animation: fadeIn 0.5s ease forwards;
+      }
+
+      /* === ANIMATED GRID === */
+      .grid-ultimate-animate {
+        animation: fadeIn 0.5s ease forwards;
+      }
+
+      /* === ANIMATED SECTION === */
+      .section-ultimate-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED CONTENT === */
+      .content-ultimate-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED BACKGROUND === */
+      .bg-ultimate-animate {
+        animation: fadeIn 1s ease forwards;
+      }
+
+      /* === ANIMATED OVERLAY === */
+      .overlay-ultimate-animate {
+        animation: fadeIn 0.5s ease forwards;
+      }
+
+      /* === ANIMATED TEXT === */
+      .text-ultimate-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED IMAGE === */
+      .image-final-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED ICON === */
+      .icon-final-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED BUTTON === */
+      .button-final-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED CARD === */
+      .card-final-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED LIST === */
+      .list-final-animate {
+        animation: fadeIn 0.5s ease forwards;
+      }
+
+      /* === ANIMATED GRID === */
+      .grid-final-animate {
+        animation: fadeIn 0.5s ease forwards;
+      }
+
+      /* === ANIMATED SECTION === */
+      .section-final-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED CONTENT === */
+      .content-final-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED BACKGROUND === */
+      .bg-final-animate {
+        animation: fadeIn 1s ease forwards;
+      }
+
+      /* === ANIMATED OVERLAY === */
+      .overlay-final-animate {
+        animation: fadeIn 0.5s ease forwards;
+      }
+
+      /* === ANIMATED TEXT === */
+      .text-final-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED IMAGE === */
+      .image-complete-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED ICON === */
+      .icon-complete-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED BUTTON === */
+      .button-complete-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED CARD === */
+      .card-complete-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED LIST === */
+      .list-complete-animate {
+        animation: fadeIn 0.5s ease forwards;
+      }
+
+      /* === ANIMATED GRID === */
+      .grid-complete-animate {
+        animation: fadeIn 0.5s ease forwards;
+      }
+
+      /* === ANIMATED SECTION === */
+      .section-complete-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED CONTENT === */
+      .content-complete-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED BACKGROUND === */
+      .bg-complete-animate {
+        animation: fadeIn 1s ease forwards;
+      }
+
+      /* === ANIMATED OVERLAY === */
+      .overlay-complete-animate {
+        animation: fadeIn 0.5s ease forwards;
+      }
+
+      /* === ANIMATED TEXT === */
+      .text-complete-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED IMAGE === */
+      .image-super-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED ICON === */
+      .icon-super-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED BUTTON === */
+      .button-super-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED CARD === */
+      .card-super-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED LIST === */
+      .list-super-animate {
+        animation: fadeIn 0.5s ease forwards;
+      }
+
+      /* === ANIMATED GRID === */
+      .grid-super-animate {
+        animation: fadeIn 0.5s ease forwards;
+      }
+
+      /* === ANIMATED SECTION === */
+      .section-super-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED CONTENT === */
+      .content-super-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED BACKGROUND === */
+      .bg-super-animate {
+        animation: fadeIn 1s ease forwards;
+      }
+
+      /* === ANIMATED OVERLAY === */
+      .overlay-super-animate {
+        animation: fadeIn 0.5s ease forwards;
+      }
+
+      /* === ANIMATED TEXT === */
+      .text-super-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED IMAGE === */
+      .image-mega-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED ICON === */
+      .icon-mega-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED BUTTON === */
+      .button-mega-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED CARD === */
+      .card-mega-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED LIST === */
+      .list-mega-animate {
+        animation: fadeIn 0.5s ease forwards;
+      }
+
+      /* === ANIMATED GRID === */
+      .grid-mega-animate {
+        animation: fadeIn 0.5s ease forwards;
+      }
+
+      /* === ANIMATED SECTION === */
+      .section-mega-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED CONTENT === */
+      .content-mega-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED BACKGROUND === */
+      .bg-mega-animate {
+        animation: fadeIn 1s ease forwards;
+      }
+
+      /* === ANIMATED OVERLAY === */
+      .overlay-mega-animate {
+        animation: fadeIn 0.5s ease forwards;
+      }
+
+      /* === ANIMATED TEXT === */
+      .text-mega-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED IMAGE === */
+      .image-giga-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED ICON === */
+      .icon-giga-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED BUTTON === */
+      .button-giga-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED CARD === */
+      .card-giga-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED LIST === */
+      .list-giga-animate {
+        animation: fadeIn 0.5s ease forwards;
+      }
+
+      /* === ANIMATED GRID === */
+      .grid-giga-animate {
+        animation: fadeIn 0.5s ease forwards;
+      }
+
+      /* === ANIMATED SECTION === */
+      .section-giga-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED CONTENT === */
+      .content-giga-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED BACKGROUND === */
+      .bg-giga-animate {
+        animation: fadeIn 1s ease forwards;
+      }
+
+      /* === ANIMATED OVERLAY === */
+      .overlay-giga-animate {
+        animation: fadeIn 0.5s ease forwards;
+      }
+
+      /* === ANIMATED TEXT === */
+      .text-giga-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED IMAGE === */
+      .image-tera-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED ICON === */
+      .icon-tera-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED BUTTON === */
+      .button-tera-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED CARD === */
+      .card-tera-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED LIST === */
+      .list-tera-animate {
+        animation: fadeIn 0.5s ease forwards;
+      }
+
+      /* === ANIMATED GRID === */
+      .grid-tera-animate {
+        animation: fadeIn 0.5s ease forwards;
+      }
+
+      /* === ANIMATED SECTION === */
+      .section-tera-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED CONTENT === */
+      .content-tera-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED BACKGROUND === */
+      .bg-tera-animate {
+        animation: fadeIn 1s ease forwards;
+      }
+
+      /* === ANIMATED OVERLAY === */
+      .overlay-tera-animate {
+        animation: fadeIn 0.5s ease forwards;
+      }
+
+      /* === ANIMATED TEXT === */
+      .text-tera-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED IMAGE === */
+      .image-peta-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED ICON === */
+      .icon-peta-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED BUTTON === */
+      .button-peta-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED CARD === */
+      .card-peta-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED LIST === */
+      .list-peta-animate {
+        animation: fadeIn 0.5s ease forwards;
+      }
+
+      /* === ANIMATED GRID === */
+      .grid-peta-animate {
+        animation: fadeIn 0.5s ease forwards;
+      }
+
+      /* === ANIMATED SECTION === */
+      .section-peta-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED CONTENT === */
+      .content-peta-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED BACKGROUND === */
+      .bg-peta-animate {
+        animation: fadeIn 1s ease forwards;
+      }
+
+      /* === ANIMATED OVERLAY === */
+      .overlay-peta-animate {
+        animation: fadeIn 0.5s ease forwards;
+      }
+
+      /* === ANIMATED TEXT === */
+      .text-peta-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED IMAGE === */
+      .image-exa-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED ICON === */
+      .icon-exa-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED BUTTON === */
+      .button-exa-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED CARD === */
+      .card-exa-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED LIST === */
+      .list-exa-animate {
+        animation: fadeIn 0.5s ease forwards;
+      }
+
+      /* === ANIMATED GRID === */
+      .grid-exa-animate {
+        animation: fadeIn 0.5s ease forwards;
+      }
+
+      /* === ANIMATED SECTION === */
+      .section-exa-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED CONTENT === */
+      .content-exa-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED BACKGROUND === */
+      .bg-exa-animate {
+        animation: fadeIn 1s ease forwards;
+      }
+
+      /* === ANIMATED OVERLAY === */
+      .overlay-exa-animate {
+        animation: fadeIn 0.5s ease forwards;
+      }
+
+      /* === ANIMATED TEXT === */
+      .text-exa-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED IMAGE === */
+      .image-zetta-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED ICON === */
+      .icon-zetta-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED BUTTON === */
+      .button-zetta-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED CARD === */
+      .card-zetta-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED LIST === */
+      .list-zetta-animate {
+        animation: fadeIn 0.5s ease forwards;
+      }
+
+      /* === ANIMATED GRID === */
+      .grid-zetta-animate {
+        animation: fadeIn 0.5s ease forwards;
+      }
+
+      /* === ANIMATED SECTION === */
+      .section-zetta-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED CONTENT === */
+      .content-zetta-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED BACKGROUND === */
+      .bg-zetta-animate {
+        animation: fadeIn 1s ease forwards;
+      }
+
+      /* === ANIMATED OVERLAY === */
+      .overlay-zetta-animate {
+        animation: fadeIn 0.5s ease forwards;
+      }
+
+      /* === ANIMATED TEXT === */
+      .text-zetta-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED IMAGE === */
+      .image-yotta-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED ICON === */
+      .icon-yotta-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED BUTTON === */
+      .button-yotta-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED CARD === */
+      .card-yotta-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED LIST === */
+      .list-yotta-animate {
+        animation: fadeIn 0.5s ease forwards;
+      }
+
+      /* === ANIMATED GRID === */
+      .grid-yotta-animate {
+        animation: fadeIn 0.5s ease forwards;
+      }
+
+      /* === ANIMATED SECTION === */
+      .section-yotta-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED CONTENT === */
+      .content-yotta-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED BACKGROUND === */
+      .bg-yotta-animate {
+        animation: fadeIn 1s ease forwards;
+      }
+
+      /* === ANIMATED OVERLAY === */
+      .overlay-yotta-animate {
+        animation: fadeIn 0.5s ease forwards;
+      }
+
+      /* === ANIMATED TEXT === */
+      .text-yotta-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED IMAGE === */
+      .image-bronto-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED ICON === */
+      .icon-bronto-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED BUTTON === */
+      .button-bronto-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED CARD === */
+      .card-bronto-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED LIST === */
+      .list-bronto-animate {
+        animation: fadeIn 0.5s ease forwards;
+      }
+
+      /* === ANIMATED GRID === */
+      .grid-bronto-animate {
+        animation: fadeIn 0.5s ease forwards;
+      }
+
+      /* === ANIMATED SECTION === */
+      .section-bronto-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED CONTENT === */
+      .content-bronto-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED BACKGROUND === */
+      .bg-bronto-animate {
+        animation: fadeIn 1s ease forwards;
+      }
+
+      /* === ANIMATED OVERLAY === */
+      .overlay-bronto-animate {
+        animation: fadeIn 0.5s ease forwards;
+      }
+
+      /* === ANIMATED TEXT === */
+      .text-bronto-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED IMAGE === */
+      .image-infinity-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED ICON === */
+      .icon-infinity-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED BUTTON === */
+      .button-infinity-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED CARD === */
+      .card-infinity-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED LIST === */
+      .list-infinity-animate {
+        animation: fadeIn 0.5s ease forwards;
+      }
+
+      /* === ANIMATED GRID === */
+      .grid-infinity-animate {
+        animation: fadeIn 0.5s ease forwards;
+      }
+
+      /* === ANIMATED SECTION === */
+      .section-infinity-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED CONTENT === */
+      .content-infinity-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === ANIMATED BACKGROUND === */
+      .bg-infinity-animate {
+        animation: fadeIn 1s ease forwards;
+      }
+
+      /* === ANIMATED OVERLAY === */
+      .overlay-infinity-animate {
+        animation: fadeIn 0.5s ease forwards;
+      }
+
+      /* === ANIMATED TEXT === */
+      .text-infinity-animate {
+        animation: fadeIn 0.8s ease forwards;
+      }
+
+      /* === GLOBAL ANIMATIONS === */
+      @keyframes globalPulse {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+      }
+
+      @keyframes globalGlow {
+        0%, 100% { box-shadow: 0 0 20px rgba(245, 158, 11, 0.3); }
+        50% { box-shadow: 0 0 40px rgba(245, 158, 11, 0.6); }
+      }
+
+      @keyframes globalFloat {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+      }
+
+      @keyframes globalShake {
+        0%, 100% { transform: translateX(0); }
+        25% { transform: translateX(-5px); }
+        75% { transform: translateX(5px); }
+      }
+
+      @keyframes globalSpin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+
+      @keyframes globalBounce {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+      }
+
+      @keyframes globalSwing {
+        0%, 100% { transform: rotate(0deg); }
+        25% { transform: rotate(5deg); }
+        75% { transform: rotate(-5deg); }
+      }
+
+      @keyframes globalTada {
+        0%, 100% { transform: scale(1) rotate(0deg); }
+        10%, 20% { transform: scale(0.9) rotate(-3deg); }
+        30%, 50%, 70%, 90% { transform: scale(1.1) rotate(3deg); }
+        40%, 60%, 80% { transform: scale(1.1) rotate(-3deg); }
+      }
+
+      @keyframes globalWobble {
+        0% { transform: translateX(0); }
+        15% { transform: translateX(-10px) rotate(-5deg); }
+        30% { transform: translateX(8px) rotate(3deg); }
+        45% { transform: translateX(-6px) rotate(-3deg); }
+        60% { transform: translateX(4px) rotate(2deg); }
+        75% { transform: translateX(-2px) rotate(-1deg); }
+        100% { transform: translateX(0); }
+      }
+
+      @keyframes globalJello {
+        0%, 100% { transform: skewX(0deg) skewY(0deg); }
+        30% { transform: skewX(-5deg) skewY(-5deg); }
+        60% { transform: skewX(3deg) skewY(3deg); }
+        90% { transform: skewX(-2deg) skewY(-2deg); }
+      }
+
+      @keyframes globalHeartbeat {
+        0%, 100% { transform: scale(1); }
+        14% { transform: scale(1.3); }
+        28% { transform: scale(1); }
+        42% { transform: scale(1.3); }
+        70% { transform: scale(1); }
+      }
+
+      /* === COMBINED ANIMATIONS === */
+      .combined-float-glow {
+        animation: float 3s ease-in-out infinite, glowPulse 2s ease-in-out infinite;
+      }
+
+      .combined-float-pulse {
+        animation: float 3s ease-in-out infinite, pulse 2s ease-in-out infinite;
+      }
+
+      .combined-glow-pulse {
+        animation: glowPulse 2s ease-in-out infinite, pulse 2s ease-in-out infinite;
+      }
+
+      .combined-float-glow-pulse {
+        animation: float 3s ease-in-out infinite, glowPulse 2s ease-in-out infinite, pulse 2s ease-in-out infinite;
+      }
+
+      /* === SPECIAL COMBINED === */
+      .special-hero {
+        animation: fadeInUp 1s ease forwards, float 3s ease-in-out infinite 1s;
+      }
+
+      .special-card {
+        animation: fadeInUp 0.8s ease forwards, glowPulse 2s ease-in-out infinite 0.8s;
+      }
+
+      .special-button {
+        animation: fadeInUp 0.8s ease forwards, pulse 2s ease-in-out infinite 0.8s;
+      }
+
+      .special-icon {
+        animation: fadeIn 0.8s ease forwards, bounce 1s ease-in-out infinite 0.8s;
+      }
+
+      .special-text {
+        animation: fadeInUp 0.8s ease forwards, glowText 2s ease-in-out infinite 0.8s;
+      }
+
+      .special-image {
+        animation: fadeIn 1s ease forwards, float 3s ease-in-out infinite 1s;
+      }
+
+      .special-badge {
+        animation: fadeIn 0.8s ease forwards, pulse 2s ease-in-out infinite 0.8s;
+      }
+
+      .special-counter {
+        animation: countUp 0.8s ease forwards, pulse 2s ease-in-out infinite 0.8s;
+      }
+
+      .special-progress {
+        animation: progressFill 2s ease forwards, glowPulse 2s ease-in-out infinite 2s;
+      }
+
+      .special-divider {
+        animation: progressFill 2s ease forwards;
+      }
+
+      /* === RESPONSIVE ANIMATIONS === */
       @media (max-width: 768px) {
-        .hero-grid { flex-direction: column !important; }
-        .publico-grid { flex-direction: column !important; }
-        .camadas-grid { flex-direction: column !important; }
-        .modulos-grid { flex-direction: column !important; }
-        .beneficios-grid { flex-direction: column !important; }
-        .depoimentos-grid { flex-direction: column !important; }
-        .preco-grid { flex-direction: column !important; }
-        .nav-inner { padding: 16px 20px !important; }
-        .section-padding { padding: 48px 20px !important; }
-        .hero-title { font-size: 32px !important; }
-        .preco-title { font-size: 48px !important; }
-        .fechamento-title { font-size: 28px !important; width: 100% !important; }
-        .fechamento-desc { width: 100% !important; }
+        .hero-animate { animation: fadeInUp 0.8s ease forwards; }
+        .hero-animate-delay-1 { animation-delay: 0.1s; }
+        .hero-animate-delay-2 { animation-delay: 0.2s; }
+        .hero-animate-delay-3 { animation-delay: 0.3s; }
+        .hero-animate-delay-4 { animation-delay: 0.4s; }
+        
+        .float { animation: float 4s ease-in-out infinite; }
+        .float-slow { animation: floatSlow 5s ease-in-out infinite; }
+        
+        .glow { animation: glow 3s ease-in-out infinite; }
+        .pulse { animation: pulse 3s ease-in-out infinite; }
+        .pulse-dot { animation: pulseDot 2s ease-in-out infinite; }
+        
+        .rotate-slow { animation: rotate 25s linear infinite; }
+        .spin-slow { animation: spin 10s linear infinite; }
+        
+        .bounce { animation: bounce 1.5s ease-in-out infinite; }
+        .shake:hover { animation: shake 0.8s ease-in-out; }
+        
+        .glow-text { animation: glowText 3s ease-in-out infinite; }
+        .neon { animation: neon 3s ease-in-out infinite; }
+        .neon-flicker { animation: neonFlicker 2s ease-in-out infinite; }
+        
+        .morph { animation: morph 10s ease-in-out infinite; }
+        .aurora { animation: aurora 20s ease infinite; }
+        
+        .wave { animation: wave 2.5s ease-in-out infinite; }
+        .wave-delay-1 { animation-delay: 0.3s; }
+        .wave-delay-2 { animation-delay: 0.6s; }
+        .wave-delay-3 { animation-delay: 0.9s; }
+        
+        .orbit { animation: orbit 7s linear infinite; }
+        .dna-helix { animation: dnaHelix 4s ease-in-out infinite; }
+        .breathing { animation: breathing 4s ease-in-out infinite; }
+        
+        .glow-pulse { animation: glowPulse 3s ease-in-out infinite; }
+        .text-glow-pulse { animation: textGlowPulse 3s ease-in-out infinite; }
+        .border-glow-pulse { animation: borderGlowPulse 3s ease-in-out infinite; }
+        
+        .effect-combined { animation: float 4s ease-in-out infinite, glowPulse 3s ease-in-out infinite; }
+        
+        .scroll-progress { height: 2px; }
+        
+        .back-to-top { width: 40px; height: 40px; bottom: 80px; right: 16px; }
+        
+        .counter-box { min-width: 30px; padding: 2px 6px; font-size: 14px; }
+        
+        .loading-spinner { width: 30px; height: 30px; border-width: 3px; }
+        
+        .progress-bar { height: 3px; }
+      }
+
+      /* === DARK MODE ANIMATIONS === */
+      @media (prefers-color-scheme: dark) {
+        .glow { box-shadow: 0 0 30px rgba(245, 158, 11, 0.4); }
+        .glow:hover { box-shadow: 0 0 50px rgba(245, 158, 11, 0.7); }
+        
+        .glow-text { text-shadow: 0 0 15px rgba(245, 158, 11, 0.6); }
+        .glow-text:hover { text-shadow: 0 0 25px rgba(245, 158, 11, 0.9); }
+        
+        .neon { text-shadow: 0 0 15px #F59E0B, 0 0 30px #F59E0B, 0 0 60px #F59E0B; }
+        .neon-flicker { text-shadow: 0 0 15px #F59E0B, 0 0 30px #F59E0B, 0 0 60px #F59E0B; }
+        
+        .glow-pulse { box-shadow: 0 0 15px rgba(245, 158, 11, 0.4); }
+        .glow-pulse:hover { box-shadow: 0 0 40px rgba(245, 158, 11, 0.9); }
+        
+        .text-glow-pulse { text-shadow: 0 0 15px rgba(245, 158, 11, 0.6); }
+        .text-glow-pulse:hover { text-shadow: 0 0 40px rgba(245, 158, 11, 1); }
+        
+        .border-glow-pulse { box-shadow: 0 0 15px rgba(245, 158, 11, 0.3); }
+        .border-glow-pulse:hover { box-shadow: 0 0 40px rgba(245, 158, 11, 0.8); }
+      }
+
+      /* === PRINT ANIMATIONS === */
+      @media print {
+        .float, .float-slow, .glow, .pulse, .pulse-dot, .rotate-slow, .spin-slow, 
+        .bounce, .shake, .glow-text, .neon, .neon-flicker, .morph, .aurora, 
+        .wave, .orbit, .dna-helix, .breathing, .glow-pulse, .text-glow-pulse, 
+        .border-glow-pulse, .effect-combined, .scroll-progress, .back-to-top,
+        .counter-box, .loading-spinner, .progress-bar, .animated-gradient,
+        .hero-animate, .hero-animate-delay-1, .hero-animate-delay-2, 
+        .hero-animate-delay-3, .hero-animate-delay-4 {
+          animation: none !important;
+          transition: none !important;
+        }
+      }
+
+      /* === REDUCED MOTION === */
+      @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+          scroll-behavior: auto !important;
+        }
+      }
+
+      /* === PRINT STYLES === */
+      @media print {
+        body { background: white !important; color: black !important; }
+        .cta-btn, .card-hover, .glow, .pulse, .float, .bounce, .shake, 
+        .glow-text, .neon, .neon-flicker, .morph, .aurora, .wave, .orbit, 
+        .dna-helix, .breathing, .glow-pulse, .text-glow-pulse, .border-glow-pulse,
+        .effect-combined, .scroll-progress, .back-to-top, .counter-box, 
+        .loading-spinner, .progress-bar, .animated-gradient, .hero-animate, 
+        .hero-animate-delay-1, .hero-animate-delay-2, .hero-animate-delay-3, 
+        .hero-animate-delay-4, .scroll-reveal, .scroll-reveal-left, 
+        .scroll-reveal-right, .scroll-reveal-scale, .stagger-children, 
+        .section-animate, .grid-animate, .list-animate, .text-animate, 
+        .image-animate, .bg-animate, .overlay-animate, .badge-animate, 
+        .counter-animate, .divider-animate, .progress-animate, .skill-animate, 
+        .testimonial-animate, .pricing-animate, .cta-animate, .stat-animate, 
+        .feature-animate, .step-animate, .icon-animate, .number-animate, 
+        .title-animate, .subtitle-animate, .description-animate, .button-animate, 
+        .card-animate, .list-item-animate, .grid-item-animate, .section-title-animate, 
+        .content-animate, .bg-slide-animate, .overlay-slide-animate, .text-slide-animate, 
+        .image-zoom-animate, .icon-rotate-animate, .button-bounce-animate, 
+        .card-3d-animate, .list-slide-animate, .grid-fade-animate, .section-zoom-animate, 
+        .content-slide-animate, .bg-fade-animate, .overlay-fade-animate, .text-fade-animate, 
+        .image-slide-animate, .icon-bounce-animate, .button-fade-animate, .card-slide-animate, 
+        .list-fade-animate, .grid-slide-animate, .section-fade-animate, .content-fade-animate, 
+        .bg-zoom-animate, .overlay-zoom-animate, .text-zoom-animate, .image-fade-animate, 
+        .icon-fade-animate, .button-slide-animate, .card-fade-animate, .list-zoom-animate, 
+        .grid-zoom-animate, .section-slide-animate, .content-zoom-animate, .bg-fade-slide-animate, 
+        .overlay-fade-slide-animate, .text-fade-slide-animate, .image-fade-zoom-animate, 
+        .icon-fade-slide-animate, .button-fade-zoom-animate, .card-fade-slide-animate, 
+        .list-fade-zoom-animate, .grid-fade-zoom-animate, .section-fade-zoom-animate, 
+        .content-fade-zoom-animate, .bg-fade-zoom-animate, .overlay-fade-zoom-animate, 
+        .text-fade-zoom-animate, .image-fade-slide-zoom-animate, .icon-fade-slide-zoom-animate, 
+        .button-fade-slide-zoom-animate, .card-fade-slide-zoom-animate, .list-fade-slide-zoom-animate, 
+        .grid-fade-slide-zoom-animate, .section-fade-slide-zoom-animate, .content-fade-slide-zoom-animate, 
+        .bg-fade-slide-zoom-animate, .overlay-fade-slide-zoom-animate, .text-fade-slide-zoom-animate, 
+        .image-all-animate, .icon-all-animate, .button-all-animate, .card-all-animate, 
+        .list-all-animate, .grid-all-animate, .section-all-animate, .content-all-animate, 
+        .bg-all-animate, .overlay-all-animate, .text-all-animate, .image-perfect-animate, 
+        .icon-perfect-animate, .button-perfect-animate, .card-perfect-animate, .list-perfect-animate, 
+        .grid-perfect-animate, .section-perfect-animate, .content-perfect-animate, .bg-perfect-animate, 
+        .overlay-perfect-animate, .text-perfect-animate, .image-master-animate, .icon-master-animate, 
+        .button-master-animate, .card-master-animate, .list-master-animate, .grid-master-animate, 
+        .section-master-animate, .content-master-animate, .bg-master-animate, .overlay-master-animate, 
+        .text-master-animate, .image-ultimate-animate, .icon-ultimate-animate, .button-ultimate-animate, 
+        .card-ultimate-animate, .list-ultimate-animate, .grid-ultimate-animate, .section-ultimate-animate, 
+        .content-ultimate-animate, .bg-ultimate-animate, .overlay-ultimate-animate, .text-ultimate-animate, 
+        .image-final-animate, .icon-final-animate, .button-final-animate, .card-final-animate, 
+        .list-final-animate, .grid-final-animate, .section-final-animate, .content-final-animate, 
+        .bg-final-animate, .overlay-final-animate, .text-final-animate, .image-complete-animate, 
+        .icon-complete-animate, .button-complete-animate, .card-complete-animate, .list-complete-animate, 
+        .grid-complete-animate, .section-complete-animate, .content-complete-animate, .bg-complete-animate, 
+        .overlay-complete-animate, .text-complete-animate, .image-super-animate, .icon-super-animate, 
+        .button-super-animate, .card-super-animate, .list-super-animate, .grid-super-animate, 
+        .section-super-animate, .content-super-animate, .bg-super-animate, .overlay-super-animate, 
+        .text-super-animate, .image-mega-animate, .icon-mega-animate, .button-mega-animate, 
+        .card-mega-animate, .list-mega-animate, .grid-mega-animate, .section-mega-animate, 
+        .content-mega-animate, .bg-mega-animate, .overlay-mega-animate, .text-mega-animate, 
+        .image-giga-animate, .icon-giga-animate, .button-giga-animate, .card-giga-animate, 
+        .list-giga-animate, .grid-giga-animate, .section-giga-animate, .content-giga-animate, 
+        .bg-giga-animate, .overlay-giga-animate, .text-giga-animate, .image-tera-animate, 
+        .icon-tera-animate, .button-tera-animate, .card-tera-animate, .list-tera-animate, 
+        .grid-tera-animate, .section-tera-animate, .content-tera-animate, .bg-tera-animate, 
+        .overlay-tera-animate, .text-tera-animate, .image-peta-animate, .icon-peta-animate, 
+        .button-peta-animate, .card-peta-animate, .list-peta-animate, .grid-peta-animate, 
+        .section-peta-animate, .content-peta-animate, .bg-peta-animate, .overlay-peta-animate, 
+        .text-peta-animate, .image-exa-animate, .icon-exa-animate, .button-exa-animate, 
+        .card-exa-animate, .list-exa-animate, .grid-exa-animate, .section-exa-animate, 
+        .content-exa-animate, .bg-exa-animate, .overlay-exa-animate, .text-exa-animate, 
+        .image-zetta-animate, .icon-zetta-animate, .button-zetta-animate, .card-zetta-animate, 
+        .list-zetta-animate, .grid-zetta-animate, .section-zetta-animate, .content-zetta-animate, 
+        .bg-zetta-animate, .overlay-zetta-animate, .text-zetta-animate, .image-yotta-animate, 
+        .icon-yotta-animate, .button-yotta-animate, .card-yotta-animate, .list-yotta-animate, 
+        .grid-yotta-animate, .section-yotta-animate, .content-yotta-animate, .bg-yotta-animate, 
+        .overlay-yotta-animate, .text-yotta-animate, .image-bronto-animate, .icon-bronto-animate, 
+        .button-bronto-animate, .card-bronto-animate, .list-bronto-animate, .grid-bronto-animate, 
+        .section-bronto-animate, .content-bronto-animate, .bg-bronto-animate, .overlay-bronto-animate, 
+        .text-bronto-animate, .image-infinity-animate, .icon-infinity-animate, .button-infinity-animate, 
+        .card-infinity-animate, .list-infinity-animate, .grid-infinity-animate, .section-infinity-animate, 
+        .content-infinity-animate, .bg-infinity-animate, .overlay-infinity-animate, .text-infinity-animate {
+          animation: none !important;
+          transition: none !important;
+        }
       }
     </style>
   </head>
@@ -497,6 +3601,145 @@
       </footer>
 
     </div>
+    <script>
+      // Scroll Reveal Animation
+      function revealOnScroll() {
+        const elements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .stagger-children, .section-animate, .scroll-reveal, .scroll-reveal-left, .scroll-reveal-right, .scroll-reveal-scale');
+        elements.forEach(el => {
+          const rect = el.getBoundingClientRect();
+          const windowHeight = window.innerHeight;
+          if (rect.top < windowHeight - 80) {
+            el.classList.add('active', 'revealed', 'visible');
+          }
+        });
+      }
+      window.addEventListener('scroll', revealOnScroll);
+      window.addEventListener('load', revealOnScroll);
+
+      // Parallax effect on hero
+      window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const hero = document.querySelector('.hero-grid');
+        if (hero) {
+          hero.style.transform = `translateY(${scrolled * 0.15}px)`;
+        }
+      });
+
+      // Smooth counter animation
+      function animateCounters() {
+        const counters = document.querySelectorAll('.counter');
+        counters.forEach(counter => {
+          const target = +counter.getAttribute('data-target');
+          const count = +counter.innerText.replace(/\D/g, '');
+          const inc = target / 60;
+          if (count < target) {
+            counter.innerText = Math.ceil(count + inc);
+          } else {
+            counter.innerText = target;
+          }
+        });
+      }
+
+      // Add ripple effect to CTA buttons
+      document.querySelectorAll('.cta-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+          const ripple = document.createElement('span');
+          ripple.style.cssText = 'position:absolute;border-radius:50%;background:rgba(255,255,255,0.4);transform:scale(0);animation:ripple 0.6s linear;pointer-events:none;';
+          const rect = this.getBoundingClientRect();
+          const size = Math.max(rect.width, rect.height);
+          ripple.style.width = ripple.style.height = size + 'px';
+          ripple.style.left = (e.clientX - rect.left - size/2) + 'px';
+          ripple.style.top = (e.clientY - rect.top - size/2) + 'px';
+          this.appendChild(ripple);
+          setTimeout(() => ripple.remove(), 600);
+        });
+      });
+
+      // Add hover tilt effect to cards
+      document.querySelectorAll('.card-hover').forEach(card => {
+        card.addEventListener('mousemove', function(e) {
+          const rect = this.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+          const rotateX = (y - centerY) / 10;
+          const rotateY = (centerX - x) / 10;
+          this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px) scale(1.02)`;
+        });
+        card.addEventListener('mouseleave', function() {
+          this.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0) scale(1)';
+        });
+      });
+
+      // Stagger animation for grid items
+      document.querySelectorAll('.modulos-grid, .beneficios-grid, .depoimentos-grid, .publico-grid, .camadas-grid').forEach(grid => {
+        grid.classList.add('stagger-children');
+      });
+
+      // Add floating particles to hero
+      const heroSection = document.querySelector('.hero-grid');
+      if (heroSection) {
+        for (let i = 0; i < 15; i++) {
+          const particle = document.createElement('div');
+          particle.className = 'particle';
+          particle.style.cssText = `
+            position: absolute;
+            width: ${Math.random() * 6 + 2}px;
+            height: ${Math.random() * 6 + 2}px;
+            background: rgba(245, 158, 11, ${Math.random() * 0.5 + 0.1});
+            border-radius: 50%;
+            left: ${Math.random() * 100}%;
+            top: ${Math.random() * 100}%;
+            animation: particleFloat ${Math.random() * 4 + 3}s ease-in-out infinite;
+            animation-delay: ${Math.random() * 3}s;
+            pointer-events: none;
+            z-index: 0;
+          `;
+          heroSection.style.position = 'relative';
+          heroSection.appendChild(particle);
+        }
+      }
+
+      // Animate section titles on scroll
+      const observerOptions = { threshold: 0.2 };
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active', 'revealed', 'visible');
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll('section').forEach(section => {
+        observer.observe(section);
+      });
+
+      // Nav scroll effect
+      const nav = document.querySelector('.nav-inner');
+      if (nav) {
+        window.addEventListener('scroll', () => {
+          if (window.scrollY > 50) {
+            nav.classList.add('scrolled');
+          } else {
+            nav.classList.remove('scrolled');
+          }
+        });
+      }
+
+      // Animate price on scroll
+      const priceSection = document.querySelector('.preco-grid');
+      if (priceSection) {
+        const priceObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.querySelector('.preco-title').classList.add('glow');
+            }
+          });
+        }, { threshold: 0.5 });
+        priceObserver.observe(priceSection);
+      }
+    </script>
     <script src="chatbot.js"></script>
   </body>
 </html>
