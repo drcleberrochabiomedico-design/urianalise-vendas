@@ -1,7 +1,7 @@
 // Chatbot Urianálise na Prática
 (function() {
   const BOT_NAME = 'Dr. Cleber';
-  const COURSE_URL = 'https://pay.hotmart.com/S102786906P?checkoutMode=2';
+  const COURSE_URL = 'https://pay.kiwify.com.br/R2BHjBI';
   const SITE_URL = 'https://drcleberrochabiomedico-design.github.io/urianalise-vendas/';
   
   const responses = {
@@ -32,9 +32,11 @@
     'médico': `Médicos também se beneficiam do curso! 🩺\n\nSe você lida com exames urinários e quer interpretar melhor os achados, esse curso vai te ajudar.\n\n👉 [Garanta sua vaga](${COURSE_URL})`,
     'medico': `Médicos também se beneficiam do curso! 🩺\n\nSe você lida com exames urinários e quer interpretar melhor os achados, esse curso vai te ajudar.\n\n👉 [Garanta sua vaga](${COURSE_URL})`,
     'enfermagem': `Enfermeiros também podem fazer o curso! 🏥\n\nSe você quer entender a uroanálise com mais profundidade, o conteúdo é para você.\n\n👉 [Garanta sua vaga](${COURSE_URL})`,
-    'garantia': `🛡️ **Garantia de 7 dias**\n\nSe você não sentir mais segurança para interpretar a urina, devolvemos seu dinheiro. Sem perguntas.\n\nÉ isso que a Hotmart garante.`,
-    'hotmart': `O pagamento é feito pela **Hotmart**, plataforma segura e reconhecida.\n\n✅ Checkout seguro\n✅ Cartão de crédito, boleto ou PIX\n✅ Acesso imediato após confirmação`,
-    'pagamento': `Formas de pagamento via Hotmart:\n\n💳 Cartão de crédito (6x de R$ 12,57)\n📱 PIX\n📄 Boleto\n\n✅ Pagamento seguro e acesso imediato!`,
+    'garantia': `🛡️ **Garantia de 7 dias**\n\nSe você não sentir mais segurança para interpretar a urina, devolvemos seu dinheiro. Sem perguntas.`,
+    'apostila': `📚 **Guia de Consulta Rápida - Apostila**\n\n36 páginas com imagens reais do curso!\n\n✅ Tabelas de valores de referência\n✅ Imagens de microscopia\n✅ Dicas de ouro\n✅ Pronto para imprimir e usar no plantão\n\n💰 Apenas **R$ 27,00**\n\n👉 [Comprar agora](${COURSE_URL})`,
+    'guia': `📚 **Guia de Consulta Rápida - Apostila**\n\n36 páginas com imagens reais do curso!\n\n✅ Tabelas de valores de referência\n✅ Imagens de microscopia\n✅ Dicas de ouro\n✅ Pronto para imprimir e usar no plantão\n\n💰 Apenas **R$ 27,00**\n\n👉 [Comprar agora](${COURSE_URL})`,
+    'kiwify': `O pagamento é feito pela **Kiwify**, plataforma segura e reconhecida.\n\n✅ Checkout seguro\n✅ Cartão de crédito, boleto ou PIX\n✅ Acesso imediato após confirmação`,
+    'pagamento': `Formas de pagamento via Kiwify:\n\n💳 Cartão de crédito\n📱 PIX\n📄 Boleto\n\n✅ Pagamento seguro e acesso imediato!`,
     'certificado': `Sim, o curso tem certificado! 📜\n\nApós concluir todas as aulas, você recebe o certificado digital.`,
     'aulas': `O curso é 100% online e você tem acesso imediato!\n\n📱 Assiste no celular, tablet ou computador\n⏱️ No seu ritmo, sem prazo\n🔄 Revisa quantas vezes quiser`,
     'online': `Sim, o curso é 100% online! 🌐\n\n📱 Assiste em qualquer dispositivo\n⏱️ No seu ritmo\n🔄 Acesso vitalício`,
@@ -47,7 +49,7 @@
     'preço': `💰 **Oferta especial:**\n\nDe ~~R$ 158,00~~ por apenas **R$ 67,00**\nOu 6x de R$ 12,57 no cartão\n\n👉 [Garantir minha vaga](${COURSE_URL})`,
   };
 
-  const defaultResponse = `Não entendi bem. 😅 Posso te ajudar com:\n\n📚 **Sobre o curso**\n💰 **Preço e pagamento**\n📋 **Módulos**\n🔬 **Microscopia**\n📝 **Laudo**\n🛡️ **Garantia**\n\nOu clique aqui: [Site do curso](${SITE_URL})`;
+  const defaultResponse = `Não entendi bem. 😅 Posso te ajudar com:\n\n📚 **Sobre o curso**\n📖 **Apostila**\n💰 **Preço e pagamento**\n📋 **Módulos**\n🔬 **Microscopia**\n📝 **Laudo**\n🛡️ **Garantia**\n\nOu clique aqui: [Site do curso](${SITE_URL})`;
 
   // Create styles
   const styles = document.createElement('style');
