@@ -1,7 +1,8 @@
 // Chatbot Urianálise na Prática
 (function() {
   const BOT_NAME = 'Dr. Cleber';
-  const COURSE_URL = 'https://pay.kiwify.com.br/R2BHjBI';
+  const COURSE_URL = 'https://pay.hotmart.com/S102786906P?checkoutMode=2';
+const APOSTILA_URL = 'https://pay.kiwify.com.br/R2BHjBI';
   const SITE_URL = 'https://drcleberrochabiomedico-design.github.io/urianalise-vendas/';
   
   const responses = {
@@ -33,8 +34,8 @@
     'medico': `Médicos também se beneficiam do curso! 🩺\n\nSe você lida com exames urinários e quer interpretar melhor os achados, esse curso vai te ajudar.\n\n👉 [Garanta sua vaga](${COURSE_URL})`,
     'enfermagem': `Enfermeiros também podem fazer o curso! 🏥\n\nSe você quer entender a uroanálise com mais profundidade, o conteúdo é para você.\n\n👉 [Garanta sua vaga](${COURSE_URL})`,
     'garantia': `🛡️ **Garantia de 7 dias**\n\nSe você não sentir mais segurança para interpretar a urina, devolvemos seu dinheiro. Sem perguntas.`,
-    'apostila': `📚 **Guia de Consulta Rápida - Apostila**\n\n36 páginas com imagens reais do curso!\n\n✅ Tabelas de valores de referência\n✅ Imagens de microscopia\n✅ Dicas de ouro\n✅ Pronto para imprimir e usar no plantão\n\n💰 Apenas **R$ 19,90**\n\n👉 [Comprar agora](${COURSE_URL})`,
-    'guia': `📚 **Guia de Consulta Rápida - Apostila**\n\n36 páginas com imagens reais do curso!\n\n✅ Tabelas de valores de referência\n✅ Imagens de microscopia\n✅ Dicas de ouro\n✅ Pronto para imprimir e usar no plantão\n\n💰 Apenas **R$ 19,90**\n\n👉 [Comprar agora](${COURSE_URL})`,
+    'apostila': `📚 **Guia de Consulta Rápida - Apostila**\n\n36 páginas com imagens reais do curso!\n\n✅ Tabelas de valores de referência\n✅ Imagens de microscopia\n✅ Dicas de ouro\n✅ Pronto para imprimir e usar no plantão\n\n💰 Apenas **R$ 19,90**\n\n👉 [Comprar agora](${APOSTILA_URL})`,
+    'guia': `📚 **Guia de Consulta Rápida - Apostila**\n\n36 páginas com imagens reais do curso!\n\n✅ Tabelas de valores de referência\n✅ Imagens de microscopia\n✅ Dicas de ouro\n✅ Pronto para imprimir e usar no plantão\n\n💰 Apenas **R$ 19,90**\n\n👉 [Comprar agora](${APOSTILA_URL})`,
     'kiwify': `O pagamento é feito pela **Kiwify**, plataforma segura e reconhecida.\n\n✅ Checkout seguro\n✅ Cartão de crédito, boleto ou PIX\n✅ Acesso imediato após confirmação`,
     'pagamento': `Formas de pagamento via Kiwify:\n\n💳 Cartão de crédito\n📱 PIX\n📄 Boleto\n\n✅ Pagamento seguro e acesso imediato!`,
     'certificado': `Sim, o curso tem certificado! 📜\n\nApós concluir todas as aulas, você recebe o certificado digital.`,
