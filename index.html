@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Urianálise na Prática — Curso para Profissionais da Saúde</title>
     <meta name="description" content="Curso de Urianálise para biomédicos, farmacêuticos, médicos e enfermeiros. Aprenda a interpretar a urina com segurança e liberar laudos com confiança." />
-    <meta property="og:title" content="Urianálise na Prática — Laude com Segurança" />
+    <meta property="og:title" content="Urianálise na Prática — Laudo com Segurança" />
     <meta property="og:description" content="Curso digital para profissionais da saúde que querem entender a urina com mais profundidade e liberar laudos com segurança." />
     <meta property="og:type" content="website" />
     <meta name="theme-color" content="#0A0F1A" />
@@ -22,7 +22,7 @@
     />
     <style>
       *, ::before, ::after { box-sizing: border-box; }
-      body { margin: 0; font-family: 'Inter', system-ui, sans-serif; }
+      body { margin: 0; font-family: 'Inter', system-ui, sans-serif; background: #0A0F1A; color: #F9FAFB; }
       html { scroll-behavior: smooth; }
       
       .cta-btn {
@@ -44,17 +44,16 @@
         transform: translateY(-3px) scale(1.02);
         box-shadow: 0 15px 40px -10px rgba(245, 158, 11, 0.6);
       }
-      .cta-btn:active { transform: translateY(-1px) scale(0.98); }
       
       .card-hover {
         transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       }
       .card-hover:hover {
-        transform: translateY(-8px) scale(1.02);
+        transform: translateY(-8px);
         box-shadow: 0 25px 50px -15px rgba(0,0,0,0.4);
       }
 
-      /* === SCROLL REVEAL ANIMATIONS === */
+      /* Scroll Reveal */
       .reveal {
         opacity: 0;
         transform: translateY(40px);
@@ -64,1217 +63,57 @@
         opacity: 1;
         transform: translateY(0);
       }
-      .reveal-left {
-        opacity: 0;
-        transform: translateX(-60px);
-        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-      .reveal-left.active {
-        opacity: 1;
-        transform: translateX(0);
-      }
-      .reveal-right {
-        opacity: 0;
-        transform: translateX(60px);
-        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-      .reveal-right.active {
-        opacity: 1;
-        transform: translateX(0);
-      }
-      .reveal-scale {
-        opacity: 0;
-        transform: scale(0.8);
-        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-      .reveal-scale.active {
-        opacity: 1;
-        transform: scale(1);
-      }
 
-      /* Stagger children */
-      .stagger-children > * {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-      .stagger-children.active > *:nth-child(1) { transition-delay: 0.1s; opacity: 1; transform: translateY(0); }
-      .stagger-children.active > *:nth-child(2) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
-      .stagger-children.active > *:nth-child(3) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
-      .stagger-children.active > *:nth-child(4) { transition-delay: 0.4s; opacity: 1; transform: translateY(0); }
-      .stagger-children.active > *:nth-child(5) { transition-delay: 0.5s; opacity: 1; transform: translateY(0); }
-      .stagger-children.active > *:nth-child(6) { transition-delay: 0.6s; opacity: 1; transform: translateY(0); }
-
-      /* === FLOATING ANIMATION === */
+      /* Floating */
       @keyframes float {
         0%, 100% { transform: translateY(0px); }
         50% { transform: translateY(-15px); }
       }
-      @keyframes floatSlow {
-        0%, 100% { transform: translateY(0px) rotate(0deg); }
-        50% { transform: translateY(-10px) rotate(2deg); }
-      }
       .float { animation: float 3s ease-in-out infinite; }
-      .float-slow { animation: floatSlow 4s ease-in-out infinite; }
-      .float-delay-1 { animation-delay: 0.5s; }
-      .float-delay-2 { animation-delay: 1s; }
 
-      /* === GLOW & PULSE === */
+      /* Glow */
       @keyframes glow {
         0%, 100% { box-shadow: 0 0 20px rgba(245, 158, 11, 0.3); }
         50% { box-shadow: 0 0 40px rgba(245, 158, 11, 0.6), 0 0 80px rgba(245, 158, 11, 0.2); }
       }
       .glow { animation: glow 2s ease-in-out infinite; }
-      
+
+      /* Pulse */
       @keyframes pulse {
         0%, 100% { transform: scale(1); opacity: 1; }
         50% { transform: scale(1.05); opacity: 0.9; }
       }
       .pulse { animation: pulse 2s ease-in-out infinite; }
 
-      @keyframes pulseDot {
-        0%, 100% { transform: scale(1); opacity: 1; }
-        50% { transform: scale(1.5); opacity: 0.5; }
-      }
-      .pulse-dot { animation: pulseDot 1.5s ease-in-out infinite; }
-
-      /* === GRADIENT ANIMATION === */
-      @keyframes gradientShift {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
-      }
-      .animated-gradient {
-        background: linear-gradient(135deg, #0A0F1A, #1F2937, #111827, #0A0F1A);
-        background-size: 400% 400%;
-        animation: gradientShift 8s ease infinite;
-      }
-
-      /* === HERO ANIMATIONS === */
-      @keyframes heroFadeIn {
-        from { opacity: 0; transform: translateY(30px); }
-        to { opacity: 1; transform: translateY(0); }
-      }
-      .hero-animate { animation: heroFadeIn 1s ease forwards; }
-      .hero-animate-delay-1 { animation-delay: 0.2s; opacity: 0; }
-      .hero-animate-delay-2 { animation-delay: 0.4s; opacity: 0; }
-      .hero-animate-delay-3 { animation-delay: 0.6s; opacity: 0; }
-      .hero-animate-delay-4 { animation-delay: 0.8s; opacity: 0; }
-
-      /* === TYPING EFFECT === */
-      @keyframes blink {
-        0%, 100% { border-right-color: #F59E0B; }
-        50% { border-right-color: transparent; }
-      }
-      .typing-effect {
-        border-right: 3px solid #F59E0B;
-        animation: blink 0.8s step-end infinite;
-        display: inline-block;
-        padding-right: 5px;
-      }
-
-      /* === ROTATE ANIMATION === */
-      @keyframes rotate {
-        from { transform: rotate(0deg); }
-        to { transform: rotate(360deg); }
-      }
-      .rotate-slow { animation: rotate 20s linear infinite; }
-
-      /* === BOUNCE === */
-      @keyframes bounce {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-8px); }
-      }
-      .bounce { animation: bounce 1s ease-in-out infinite; }
-
-      /* === SHAKE === */
-      @keyframes shake {
-        0%, 100% { transform: translateX(0); }
-        25% { transform: translateX(-5px); }
-        75% { transform: translateX(5px); }
-      }
-      .shake:hover { animation: shake 0.5s ease-in-out; }
-
-      /* === NUMBER COUNTER === */
-      @keyframes countUp {
-        from { opacity: 0; transform: scale(0.5); }
-        to { opacity: 1; transform: scale(1); }
-      }
-      .count-up { animation: countUp 0.8s ease forwards; }
-
-      /* === PARTICLE DOTS === */
-      @keyframes particleFloat {
-        0%, 100% { transform: translate(0, 0); opacity: 0.3; }
-        25% { transform: translate(10px, -20px); opacity: 0.8; }
-        50% { transform: translate(-5px, -40px); opacity: 0.5; }
-        75% { transform: translate(15px, -20px); opacity: 0.8; }
-      }
-
-      /* === MARQUEE === */
-      @keyframes marquee {
-        0% { transform: translateX(100%); }
-        100% { transform: translateX(-100%); }
-      }
-      .marquee { animation: marquee 15s linear infinite; }
-
-      /* === SCALE BOUNCE === */
-      @keyframes scaleBounce {
-        0% { transform: scale(0); }
-        50% { transform: scale(1.2); }
-        100% { transform: scale(1); }
-      }
-      .scale-bounce { animation: scaleBounce 0.6s ease forwards; }
-
-      /* === WIGGLE === */
-      @keyframes wiggle {
-        0%, 100% { transform: rotate(0deg); }
-        25% { transform: rotate(-5deg); }
-        75% { transform: rotate(5deg); }
-      }
-      .wiggle:hover { animation: wiggle 0.3s ease-in-out; }
-
-      /* === GLOW TEXT === */
-      @keyframes glowText {
-        0%, 100% { text-shadow: 0 0 10px rgba(245, 158, 11, 0.5); }
-        50% { text-shadow: 0 0 20px rgba(245, 158, 11, 0.8), 0 0 40px rgba(245, 158, 11, 0.3); }
-      }
-      .glow-text { animation: glowText 2s ease-in-out infinite; }
-
-      /* === BORDER GLOW === */
-      @keyframes borderGlow {
-        0%, 100% { border-color: rgba(245, 158, 11, 0.3); }
-        50% { border-color: rgba(245, 158, 11, 0.8); }
-      }
-      .border-glow { animation: borderGlow 2s ease-in-out infinite; }
-
-      /* === HERO IMAGE GLOW === */
+      /* Hero Glow */
       @keyframes heroGlow {
-        0%, 100% { box-shadow: 0 0 30px rgba(245, 158, 11, 0.2), inset 0 0 30px rgba(245, 158, 11, 0.1); }
-        50% { box-shadow: 0 0 60px rgba(245, 158, 11, 0.4), inset 0 0 60px rgba(245, 158, 11, 0.2); }
+        0%, 100% { box-shadow: 0 0 30px rgba(245, 158, 11, 0.2); }
+        50% { box-shadow: 0 0 60px rgba(245, 158, 11, 0.4); }
       }
       .hero-glow { animation: heroGlow 3s ease-in-out infinite; }
 
-      /* === PROGRESS BAR === */
-      @keyframes progressFill {
-        from { width: 0%; }
-        to { width: 100%; }
-      }
-      .progress-fill { animation: progressFill 2s ease forwards; }
-
-      /* === RIPPLE === */
-      @keyframes ripple {
-        0% { transform: scale(0); opacity: 1; }
-        100% { transform: scale(4); opacity: 0; }
-      }
-
-      /* === SLIDE IN === */
-      @keyframes slideInLeft {
-        from { transform: translateX(-100%); opacity: 0; }
-        to { transform: translateX(0); opacity: 1; }
-      }
-      @keyframes slideInRight {
-        from { transform: translateX(100%); opacity: 0; }
-        to { transform: translateX(0); opacity: 1; }
-      }
-      @keyframes slideInUp {
-        from { transform: translateY(100%); opacity: 0; }
-        to { transform: translateY(0); opacity: 1; }
-      }
-
-      /* === CONFETTI === */
-      @keyframes confettiFall {
-        0% { transform: translateY(-100%) rotate(0deg); opacity: 1; }
-        100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
-      }
-
-      /* === MICROSCOPE SPIN === */
-      @keyframes microscopeSpin {
-        0% { transform: rotate(0deg) scale(1); }
-        25% { transform: rotate(5deg) scale(1.02); }
-        50% { transform: rotate(0deg) scale(1); }
-        75% { transform: rotate(-5deg) scale(1.02); }
-        100% { transform: rotate(0deg) scale(1); }
-      }
-      .microscope-spin:hover { animation: microscopeSpin 1s ease-in-out; }
-
-      /* === PRICE BADGE === */
-      @keyframes pricePop {
-        0% { transform: scale(0.8) rotate(-5deg); }
-        50% { transform: scale(1.1) rotate(3deg); }
-        100% { transform: scale(1) rotate(0deg); }
-      }
-      .price-pop { animation: pricePop 0.6s ease forwards; }
-
-      /* === ARROW BOUNCE === */
-      @keyframes arrowBounce {
-        0%, 100% { transform: translateX(0); }
-        50% { transform: translateX(10px); }
-      }
-      .arrow-bounce { animation: arrowBounce 1s ease-in-out infinite; }
-
-      /* === FADE IN UP === */
-      @keyframes fadeInUp {
-        from { opacity: 0; transform: translateY(20px); }
-        to { opacity: 1; transform: translateY(0); }
-      }
-      .fade-in-up { animation: fadeInUp 0.8s ease forwards; }
-
-      /* === SCALE IN === */
-      @keyframes scaleIn {
-        from { opacity: 0; transform: scale(0.5); }
-        to { opacity: 1; transform: scale(1); }
-      }
-      .scale-in { animation: scaleIn 0.5s ease forwards; }
-
-      /* === ROTATE IN === */
-      @keyframes rotateIn {
-        from { opacity: 0; transform: rotate(-180deg) scale(0.5); }
-        to { opacity: 1; transform: rotate(0deg) scale(1); }
-      }
-      .rotate-in { animation: rotateIn 0.8s ease forwards; }
-
-      /* === BOUNCE IN === */
-      @keyframes bounceIn {
-        0% { opacity: 0; transform: scale(0.3); }
-        50% { opacity: 1; transform: scale(1.05); }
-        70% { transform: scale(0.9); }
-        100% { transform: scale(1); }
-      }
-      .bounce-in { animation: bounceIn 0.8s ease forwards; }
-
-      /* === ELASTIC === */
-      @keyframes elastic {
-        0% { transform: scale(0); }
-        50% { transform: scale(1.1); }
-        75% { transform: scale(0.95); }
-        100% { transform: scale(1); }
-      }
-      .elastic { animation: elastic 0.8s ease forwards; }
-
-      /* === JELLO === */
-      @keyframes jello {
-        0%, 100% { transform: skewX(0deg) skewY(0deg); }
-        30% { transform: skewX(-5deg) skewY(-5deg); }
-        60% { transform: skewX(3deg) skewY(3deg); }
-        90% { transform: skewX(-2deg) skewY(-2deg); }
-      }
-      .jello:hover { animation: jello 0.8s ease; }
-
-      /* === PULSE SCALE === */
-      @keyframes pulseScale {
-        0%, 100% { transform: scale(1); }
-        50% { transform: scale(1.1); }
-      }
-      .pulse-scale { animation: pulseScale 1.5s ease-in-out infinite; }
-
-      /* === RUBBER BAND === */
-      @keyframes rubberBand {
-        0% { transform: scaleX(1) scaleY(1); }
-        30% { transform: scaleX(1.25) scaleY(0.75); }
-        40% { transform: scaleX(0.75) scaleY(1.25); }
-        50% { transform: scaleX(1.15) scaleY(0.85); }
-        65% { transform: scaleX(0.95) scaleY(1.05); }
-        75% { transform: scaleX(1.05) scaleY(0.95); }
-        100% { transform: scaleX(1) scaleY(1); }
-      }
-      .rubber-band:hover { animation: rubberBand 0.8s ease; }
-
-      /* === SWING === */
-      @keyframes swing {
-        20% { transform: rotate(15deg); }
-        40% { transform: rotate(-10deg); }
-        60% { transform: rotate(5deg); }
-        80% { transform: rotate(-5deg); }
-        100% { transform: rotate(0deg); }
-      }
-      .swing:hover { animation: swing 0.8s ease; }
-
-      /* === TADA === */
-      @keyframes tada {
-        0%, 100% { transform: scale(1) rotate(0deg); }
-        10%, 20% { transform: scale(0.9) rotate(-3deg); }
-        30%, 50%, 70%, 90% { transform: scale(1.1) rotate(3deg); }
-        40%, 60%, 80% { transform: scale(1.1) rotate(-3deg); }
-      }
-      .tada:hover { animation: tada 0.8s ease; }
-
-      /* === WOBBLE === */
-      @keyframes wobble {
-        0% { transform: translateX(0); }
-        15% { transform: translateX(-10px) rotate(-5deg); }
-        30% { transform: translateX(8px) rotate(3deg); }
-        45% { transform: translateX(-6px) rotate(-3deg); }
-        60% { transform: translateX(4px) rotate(2deg); }
-        75% { transform: translateX(-2px) rotate(-1deg); }
-        100% { transform: translateX(0); }
-      }
-      .wobble:hover { animation: wobble 0.8s ease; }
-
-      /* === FLASH === */
-      @keyframes flash {
-        0%, 50%, 100% { opacity: 1; }
-        25%, 75% { opacity: 0; }
-      }
-      .flash:hover { animation: flash 0.6s ease; }
-
-      /* === HEAD SHAKE === */
-      @keyframes headShake {
-        0%, 100% { transform: translateX(0) rotate(0); }
-        6.5% { transform: translateX(-6px) rotate(-2deg); }
-        18.5% { transform: translateX(5px) rotate(1deg); }
-        31.5% { transform: translateX(-3px) rotate(-1deg); }
-        43.5% { transform: translateX(2px) rotate(0.5deg); }
-        50% { transform: translateX(0) rotate(0); }
-      }
-      .head-shake:hover { animation: headShake 0.6s ease; }
-
-      /* === HEARTBEAT === */
-      @keyframes heartbeat {
-        0%, 100% { transform: scale(1); }
-        14% { transform: scale(1.3); }
-        28% { transform: scale(1); }
-        42% { transform: scale(1.3); }
-        70% { transform: scale(1); }
-      }
-      .heartbeat:hover { animation: heartbeat 0.8s ease; }
-
-      /* === SPIN === */
-      @keyframes spin {
-        from { transform: rotate(0deg); }
-        to { transform: rotate(360deg); }
-      }
-      .spin { animation: spin 2s linear infinite; }
-      .spin-slow { animation: spin 8s linear infinite; }
-
-      /* === FLIP === */
-      @keyframes flip {
-        0% { transform: perspective(400px) rotateY(0); }
-        40% { transform: perspective(400px) rotateY(-180deg); }
-        100% { transform: perspective(400px) rotateY(-360deg); }
-      }
-      .flip:hover { animation: flip 0.8s ease; }
-
-      /* === LIGHT SPEED === */
-      @keyframes lightSpeedIn {
-        0% { transform: translateX(100%) skewX(-30deg); opacity: 0; }
-        60% { transform: skewX(20deg); opacity: 1; }
-        80% { transform: skewX(-5deg); }
-        100% { transform: translateX(0) skewX(0); }
-      }
-      .light-speed-in { animation: lightSpeedIn 0.8s ease forwards; }
-
-      /* === ROLL === */
-      @keyframes rollIn {
-        0% { transform: translateX(-100%) rotate(-120deg); opacity: 0; }
-        100% { transform: translateX(0) rotate(0); opacity: 1; }
-      }
-      .roll-in { animation: rollIn 0.8s ease forwards; }
-
-      /* === BOUNCE IN LEFT === */
-      @keyframes bounceInLeft {
-        0% { opacity: 0; transform: translateX(-100px); }
-        60% { transform: translateX(20px); }
-        80% { transform: translateX(-5px); }
-        100% { transform: translateX(0); }
-      }
-      .bounce-in-left { animation: bounceInLeft 0.8s ease forwards; }
-
-      /* === BOUNCE IN RIGHT === */
-      @keyframes bounceInRight {
-        0% { opacity: 0; transform: translateX(100px); }
-        60% { transform: translateX(-20px); }
-        80% { transform: translateX(5px); }
-        100% { transform: translateX(0); }
-      }
-      .bounce-in-right { animation: bounceInRight 0.8s ease forwards; }
-
-      /* === ZOOM IN === */
-      @keyframes zoomIn {
-        0% { opacity: 0; transform: scale(0); }
-        100% { opacity: 1; transform: scale(1); }
-      }
-      .zoom-in { animation: zoomIn 0.5s ease forwards; }
-
-      /* === ZOOM IN UP === */
-      @keyframes zoomInUp {
-        0% { opacity: 0; transform: scale(0.5) translateY(50px); }
-        100% { opacity: 1; transform: scale(1) translateY(0); }
-      }
-      .zoom-in-up { animation: zoomInUp 0.6s ease forwards; }
-
-      /* === ZOOM IN DOWN === */
-      @keyframes zoomInDown {
-        0% { opacity: 0; transform: scale(0.5) translateY(-50px); }
-        100% { opacity: 1; transform: scale(1) translateY(0); }
-      }
-      .zoom-in-down { animation: zoomInDown 0.6s ease forwards; }
-
-      /* === ZOOM IN LEFT === */
-      @keyframes zoomInLeft {
-        0% { opacity: 0; transform: scale(0.5) translateX(-50px); }
-        100% { opacity: 1; transform: scale(1) translateX(0); }
-      }
-      .zoom-in-left { animation: zoomInLeft 0.6s ease forwards; }
-
-      /* === ZOOM IN RIGHT === */
-      @keyframes zoomInRight {
-        0% { opacity: 0; transform: scale(0.5) translateX(50px); }
-        100% { opacity: 1; transform: scale(1) translateX(0); }
-      }
-      .zoom-in-right { animation: zoomInRight 0.6s ease forwards; }
-
-      /* === BACK IN UP === */
-      @keyframes backInUp {
-        0% { opacity: 0; transform: translate(0, 100px) scale(0.3); }
-        80% { opacity: 1; transform: translate(0, -20px) scale(1); }
-        100% { transform: translate(0, 0) scale(1); }
-      }
-      .back-in-up { animation: backInUp 0.8s ease forwards; }
-
-      /* === BACK IN DOWN === */
-      @keyframes backInDown {
-        0% { opacity: 0; transform: translate(0, -100px) scale(0.3); }
-        80% { opacity: 1; transform: translate(0, 20px) scale(1); }
-        100% { transform: translate(0, 0) scale(1); }
-      }
-      .back-in-down { animation: backInDown 0.8s ease forwards; }
-
-      /* === BACK IN LEFT === */
-      @keyframes backInLeft {
-        0% { opacity: 0; transform: translate(-100px, 0) scale(0.3); }
-        80% { opacity: 1; transform: translate(20px, 0) scale(1); }
-        100% { transform: translate(0, 0) scale(1); }
-      }
-      .back-in-left { animation: backInLeft 0.8s ease forwards; }
-
-      /* === BACK IN RIGHT === */
-      @keyframes backInRight {
-        0% { opacity: 0; transform: translate(100px, 0) scale(0.3); }
-        80% { opacity: 1; transform: translate(-20px, 0) scale(1); }
-        100% { transform: translate(0, 0) scale(1); }
-      }
-      .back-in-right { animation: backInRight 0.8s ease forwards; }
-
-      /* === BACK OUT UP === */
-      @keyframes backOutUp {
-        0% { transform: translate(0, 0) scale(1); opacity: 1; }
-        100% { transform: translate(0, -100px) scale(0.3); opacity: 0; }
-      }
-      .back-out-up { animation: backOutUp 0.8s ease forwards; }
-
-      /* === BACK OUT DOWN === */
-      @keyframes backOutDown {
-        0% { transform: translate(0, 0) scale(1); opacity: 1; }
-        100% { transform: translate(0, 100px) scale(0.3); opacity: 0; }
-      }
-      .back-out-down { animation: backOutDown 0.8s ease forwards; }
-
-      /* === BACK OUT LEFT === */
-      @keyframes backOutLeft {
-        0% { transform: translate(0, 0) scale(1); opacity: 1; }
-        100% { transform: translate(-100px, 0) scale(0.3); opacity: 0; }
-      }
-      .back-out-left { animation: backOutLeft 0.8s ease forwards; }
-
-      /* === BACK OUT RIGHT === */
-      @keyframes backOutRight {
-        0% { transform: translate(0, 0) scale(1); opacity: 1; }
-        100% { transform: translate(100px, 0) scale(0.3); opacity: 0; }
-      }
-      .back-out-right { animation: backOutRight 0.8s ease forwards; }
-
-      /* === LIGHT SPEED IN RIGHT === */
-      @keyframes lightSpeedInRight {
-        0% { transform: translateX(100%) skewX(-30deg); opacity: 0; }
-        60% { transform: skewX(20deg); opacity: 1; }
-        80% { transform: skewX(-5deg); }
-        100% { transform: translateX(0) skewX(0); }
-      }
-      .light-speed-in-right { animation: lightSpeedInRight 0.8s ease forwards; }
-
-      /* === LIGHT SPEED OUT RIGHT === */
-      @keyframes lightSpeedOutRight {
-        0% { transform: translateX(0) skewX(0); opacity: 1; }
-        100% { transform: translateX(100%) skewX(30deg); opacity: 0; }
-      }
-      .light-speed-out-right { animation: lightSpeedOutRight 0.8s ease forwards; }
-
-      /* === ROLL IN LEFT === */
-      @keyframes rollInLeft {
-        0% { transform: translateX(-100%) rotate(-120deg); opacity: 0; }
-        100% { transform: translateX(0) rotate(0); opacity: 1; }
-      }
-      .roll-in-left { animation: rollInLeft 0.8s ease forwards; }
-
-      /* === ROLL IN RIGHT === */
-      @keyframes rollInRight {
-        0% { transform: translateX(100%) rotate(120deg); opacity: 0; }
-        100% { transform: translateX(0) rotate(0); opacity: 1; }
-      }
-      .roll-in-right { animation: rollInRight 0.8s ease forwards; }
-
-      /* === ROLL OUT LEFT === */
-      @keyframes rollOutLeft {
-        0% { transform: translateX(0) rotate(0); opacity: 1; }
-        100% { transform: translateX(-100%) rotate(120deg); opacity: 0; }
-      }
-      .roll-out-left { animation: rollOutLeft 0.8s ease forwards; }
-
-      /* === ROLL OUT RIGHT === */
-      @keyframes rollOutRight {
-        0% { transform: translateX(0) rotate(0); opacity: 1; }
-        100% { transform: translateX(100%) rotate(-120deg); opacity: 0; }
-      }
-      .roll-out-right { animation: rollOutRight 0.8s ease forwards; }
-
-      /* === BOUNCE IN DOWN === */
-      @keyframes bounceInDown {
-        0% { opacity: 0; transform: translateY(-100px); }
-        60% { transform: translateY(20px); }
-        80% { transform: translateY(-5px); }
-        100% { transform: translateY(0); }
-      }
-      .bounce-in-down { animation: bounceInDown 0.8s ease forwards; }
-
-      /* === BOUNCE IN UP === */
-      @keyframes bounceInUp {
-        0% { opacity: 0; transform: translateY(100px); }
-        60% { transform: translateY(-20px); }
-        80% { transform: translateY(5px); }
-        100% { transform: translateY(0); }
-      }
-      .bounce-in-up { animation: bounceInUp 0.8s ease forwards; }
-
-      /* === BOUNCE OUT DOWN === */
-      @keyframes bounceOutDown {
-        0% { transform: translateY(0); opacity: 1; }
-        20% { transform: translateY(-20px); }
-        40% { transform: translateY(10px); }
-        60% { transform: translateY(-5px); }
-        80% { transform: translateY(2px); }
-        100% { transform: translateY(100px); opacity: 0; }
-      }
-      .bounce-out-down { animation: bounceOutDown 0.8s ease forwards; }
-
-      /* === BOUNCE OUT UP === */
-      @keyframes bounceOutUp {
-        0% { transform: translateY(0); opacity: 1; }
-        20% { transform: translateY(20px); }
-        40% { transform: translateY(-10px); }
-        60% { transform: translateY(5px); }
-        80% { transform: translateY(-2px); }
-        100% { transform: translateY(-100px); opacity: 0; }
-      }
-      .bounce-out-up { animation: bounceOutUp 0.8s ease forwards; }
-
-      /* === BOUNCE OUT LEFT === */
-      @keyframes bounceOutLeft {
-        0% { transform: translateX(0); opacity: 1; }
-        20% { transform: translateX(20px); }
-        40% { transform: translateX(-10px); }
-        60% { transform: translateX(5px); }
-        80% { transform: translateX(-2px); }
-        100% { transform: translateX(-100px); opacity: 0; }
-      }
-      .bounce-out-left { animation: bounceOutLeft 0.8s ease forwards; }
-
-      /* === BOUNCE OUT RIGHT === */
-      @keyframes bounceOutRight {
-        0% { transform: translateX(0); opacity: 1; }
-        20% { transform: translateX(-20px); }
-        40% { transform: translateX(10px); }
-        60% { transform: translateX(-5px); }
-        80% { transform: translateX(2px); }
-        100% { transform: translateX(100px); opacity: 0; }
-      }
-      .bounce-out-right { animation: bounceOutRight 0.8s ease forwards; }
-
-      /* === FLIP IN X === */
-      @keyframes flipInX {
-        0% { transform: perspective(400px) rotateX(90deg); opacity: 0; }
-        40% { transform: perspective(400px) rotateX(-10deg); }
-        70% { transform: perspective(400px) rotateX(5deg); }
-        100% { transform: perspective(400px) rotateX(0deg); opacity: 1; }
-      }
-      .flip-in-x { animation: flipInX 0.8s ease forwards; }
-
-      /* === FLIP IN Y === */
-      @keyframes flipInY {
-        0% { transform: perspective(400px) rotateY(90deg); opacity: 0; }
-        40% { transform: perspective(400px) rotateY(-10deg); }
-        70% { transform: perspective(400px) rotateY(5deg); }
-        100% { transform: perspective(400px) rotateY(0deg); opacity: 1; }
-      }
-      .flip-in-y { animation: flipInY 0.8s ease forwards; }
-
-      /* === FLIP OUT X === */
-      @keyframes flipOutX {
-        0% { transform: perspective(400px) rotateX(0deg); opacity: 1; }
-        100% { transform: perspective(400px) rotateX(90deg); opacity: 0; }
-      }
-      .flip-out-x { animation: flipOutX 0.8s ease forwards; }
-
-      /* === FLIP OUT Y === */
-      @keyframes flipOutY {
-        0% { transform: perspective(400px) rotateY(0deg); opacity: 1; }
-        100% { transform: perspective(400px) rotateY(90deg); opacity: 0; }
-      }
-      .flip-out-y { animation: flipOutY 0.8s ease forwards; }
-
-      /* === LIGHT SPEED IN LEFT === */
-      @keyframes lightSpeedInLeft {
-        0% { transform: translateX(-100%) skewX(30deg); opacity: 0; }
-        60% { transform: skewX(-20deg); opacity: 1; }
-        80% { transform: skewX(5deg); }
-        100% { transform: translateX(0) skewX(0); }
-      }
-      .light-speed-in-left { animation: lightSpeedInLeft 0.8s ease forwards; }
-
-      /* === LIGHT SPEED OUT LEFT === */
-      @keyframes lightSpeedOutLeft {
-        0% { transform: translateX(0) skewX(0); opacity: 1; }
-        100% { transform: translateX(-100%) skewX(-30deg); opacity: 0; }
-      }
-      .light-speed-out-left { animation: lightSpeedOutLeft 0.8s ease forwards; }
-
-      /* === SPECIAL EFFECTS === */
-      @keyframes shimmer {
-        0% { background-position: -200% 0; }
-        100% { background-position: 200% 0; }
-      }
-      .shimmer {
-        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-        background-size: 200% 100%;
-        animation: shimmer 2s linear infinite;
-      }
-
-      @keyframes borderDash {
-        to { stroke-dashoffset: 0; }
-      }
-
-      @keyframes morph {
-        0%, 100% { border-radius: 60% 40% 30% 70%/60% 30% 70% 40%; }
-        50% { border-radius: 30% 60% 70% 40%/50% 60% 30% 60%; }
-      }
-      .morph { animation: morph 8s ease-in-out infinite; }
-
-      @keyframes aurora {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
-      }
-      .aurora {
-        background: linear-gradient(-45deg, #0A0F1A, #1F2937, #F59E0B, #111827);
-        background-size: 400% 400%;
-        animation: aurora 15s ease infinite;
-      }
-
-      @keyframes neon {
-        0%, 100% { text-shadow: 0 0 10px #F59E0B, 0 0 20px #F59E0B, 0 0 40px #F59E0B; }
-        50% { text-shadow: 0 0 5px #F59E0B, 0 0 10px #F59E0B, 0 0 20px #F59E0B; }
-      }
-      .neon { animation: neon 2s ease-in-out infinite; }
-
-      @keyframes neonFlicker {
-        0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { text-shadow: 0 0 10px #F59E0B, 0 0 20px #F59E0B, 0 0 40px #F59E0B; }
-        20%, 24%, 55% { text-shadow: none; }
-      }
-      .neon-flicker { animation: neonFlicker 1.5s ease-in-out infinite; }
-
-      @keyframes typing {
-        from { width: 0; }
-        to { width: 100%; }
-      }
-
-      @keyframes blink-caret {
-        from, to { border-color: transparent; }
-        50% { border-color: #F59E0B; }
-      }
-
-      @keyframes ripple {
-        0% { transform: scale(0); opacity: 1; }
-        100% { transform: scale(4); opacity: 0; }
-      }
-
-      @keyframes float {
-        0%, 100% { transform: translateY(0px); }
-        50% { transform: translateY(-20px); }
-      }
-
-      @keyframes pulse {
-        0%, 100% { transform: scale(1); }
-        50% { transform: scale(1.05); }
-      }
-
-      @keyframes shake {
-        0%, 100% { transform: translateX(0); }
-        10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
-        20%, 40%, 60%, 80% { transform: translateX(5px); }
-      }
-
-      @keyframes swing {
-        20% { transform: rotate(15deg); }
-        40% { transform: rotate(-10deg); }
-        60% { transform: rotate(5deg); }
-        80% { transform: rotate(-5deg); }
-        100% { transform: rotate(0deg); }
-      }
-
-      @keyframes tada {
-        0%, 100% { transform: scale(1) rotate(0deg); }
-        10%, 20% { transform: scale(0.9) rotate(-3deg); }
-        30%, 50%, 70%, 90% { transform: scale(1.1) rotate(3deg); }
-        40%, 60%, 80% { transform: scale(1.1) rotate(-3deg); }
-      }
-
-      @keyframes wobble {
-        0% { transform: translateX(0); }
-        15% { transform: translateX(-10px) rotate(-5deg); }
-        30% { transform: translateX(8px) rotate(3deg); }
-        45% { transform: translateX(-6px) rotate(-3deg); }
-        60% { transform: translateX(4px) rotate(2deg); }
-        75% { transform: translateX(-2px) rotate(-1deg); }
-        100% { transform: translateX(0); }
-      }
-
-      @keyframes jello {
-        0%, 100% { transform: skewX(0deg) skewY(0deg); }
-        30% { transform: skewX(-5deg) skewY(-5deg); }
-        60% { transform: skewX(3deg) skewY(3deg); }
-        90% { transform: skewX(-2deg) skewY(-2deg); }
-      }
-
-      @keyframes heartBeat {
-        0%, 100% { transform: scale(1); }
-        14% { transform: scale(1.3); }
-        28% { transform: scale(1); }
-        42% { transform: scale(1.3); }
-        70% { transform: scale(1); }
-      }
-
-      @keyframes bounceIn {
-        0% { opacity: 0; transform: scale(0.3); }
-        50% { opacity: 1; transform: scale(1.05); }
-        70% { transform: scale(0.9); }
-        100% { transform: scale(1); }
-      }
-
-      @keyframes bounceOut {
-        0% { transform: scale(1); }
-        25% { transform: scale(0.95); }
-        50% { opacity: 1; transform: scale(1.1); }
-        100% { opacity: 0; transform: scale(0.3); }
-      }
-
-      @keyframes fadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
-      }
-
-      @keyframes fadeOut {
-        from { opacity: 1; }
-        to { opacity: 0; }
-      }
-
-      @keyframes fadeInUp {
-        from { opacity: 0; transform: translateY(20px); }
-        to { opacity: 1; transform: translateY(0); }
-      }
-
-      @keyframes fadeInDown {
-        from { opacity: 0; transform: translateY(-20px); }
-        to { opacity: 1; transform: translateY(0); }
-      }
-
-      @keyframes fadeInLeft {
-        from { opacity: 0; transform: translateX(-20px); }
-        to { opacity: 1; transform: translateX(0); }
-      }
-
-      @keyframes fadeInRight {
-        from { opacity: 0; transform: translateX(20px); }
-        to { opacity: 1; transform: translateX(0); }
-      }
-
-      @keyframes fadeOutUp {
-        from { opacity: 1; transform: translateY(0); }
-        to { opacity: 0; transform: translateY(-20px); }
-      }
-
-      @keyframes fadeOutDown {
-        from { opacity: 1; transform: translateY(0); }
-        to { opacity: 0; transform: translateY(20px); }
-      }
-
-      @keyframes fadeOutLeft {
-        from { opacity: 1; transform: translateX(0); }
-        to { opacity: 0; transform: translateX(-20px); }
-      }
-
-      @keyframes fadeOutRight {
-        from { opacity: 1; transform: translateX(0); }
-        to { opacity: 0; transform: translateX(20px); }
-      }
-
-      @keyframes slideInDown {
-        from { transform: translateY(-100%); opacity: 0; }
-        to { transform: translateY(0); opacity: 1; }
-      }
-
-      @keyframes slideInUp {
-        from { transform: translateY(100%); opacity: 0; }
-        to { transform: translateY(0); opacity: 1; }
-      }
-
-      @keyframes slideInLeft {
-        from { transform: translateX(-100%); opacity: 0; }
-        to { transform: translateX(0); opacity: 1; }
-      }
-
-      @keyframes slideInRight {
-        from { transform: translateX(100%); opacity: 0; }
-        to { transform: translateX(0); opacity: 1; }
-      }
-
-      @keyframes slideOutDown {
-        from { transform: translateY(0); opacity: 1; }
-        to { transform: translateY(100%); opacity: 0; }
-      }
-
-      @keyframes slideOutUp {
-        from { transform: translateY(0); opacity: 1; }
-        to { transform: translateY(-100%); opacity: 0; }
-      }
-
-      @keyframes slideOutLeft {
-        from { transform: translateX(0); opacity: 1; }
-        to { transform: translateX(-100%); opacity: 0; }
-      }
-
-      @keyframes slideOutRight {
-        from { transform: translateX(0); opacity: 1; }
-        to { transform: translateX(100%); opacity: 0; }
-      }
-
-      @keyframes zoomIn {
-        from { opacity: 0; transform: scale(0.5); }
-        to { opacity: 1; transform: scale(1); }
-      }
-
-      @keyframes zoomOut {
-        from { opacity: 1; transform: scale(1); }
-        to { opacity: 0; transform: scale(0.5); }
-      }
-
-      @keyframes rotateIn {
-        from { opacity: 0; transform: rotate(-200deg); }
-        to { opacity: 1; transform: rotate(0); }
-      }
-
-      @keyframes rotateOut {
-        from { opacity: 1; transform: rotate(0); }
-        to { opacity: 0; transform: rotate(200deg); }
-      }
-
-      @keyframes hinge {
-        0% { transform: rotate(0); transform-origin: top left; }
-        20%, 60% { transform: rotate(80deg); transform-origin: top left; }
-        40%, 80% { transform: rotate(60deg); transform-origin: top left; opacity: 1; }
-        100% { transform: translateY(100px); opacity: 0; }
-      }
-
-      @keyframes rollIn {
-        from { opacity: 0; transform: translateX(-100%) rotate(-120deg); }
-        to { opacity: 1; transform: translateX(0) rotate(0); }
-      }
-
-      @keyframes rollOut {
-        from { opacity: 1; transform: translateX(0) rotate(0); }
-        to { opacity: 0; transform: translateX(100%) rotate(120deg); }
-      }
-
-      /* === UTILITY CLASSES === */
-      .animate-float { animation: float 3s ease-in-out infinite; }
-      .animate-pulse { animation: pulse 2s ease-in-out infinite; }
-      .animate-shake { animation: shake 0.5s ease-in-out; }
-      .animate-swing { animation: swing 1s ease-in-out; }
-      .animate-tada { animation: tada 1s ease-in-out; }
-      .animate-wobble { animation: wobble 1s ease-in-out; }
-      .animate-jello { animation: jello 1s ease-in-out; }
-      .animate-heartbeat { animation: heartBeat 1s ease-in-out infinite; }
-      .animate-bounce-in { animation: bounceIn 0.6s ease; }
-      .animate-bounce-out { animation: bounceOut 0.6s ease; }
-      .animate-fade-in { animation: fadeIn 0.5s ease; }
-      .animate-fade-out { animation: fadeOut 0.5s ease; }
-      .animate-fade-in-up { animation: fadeInUp 0.5s ease; }
-      .animate-fade-in-down { animation: fadeInDown 0.5s ease; }
-      .animate-fade-in-left { animation: fadeInLeft 0.5s ease; }
-      .animate-fade-in-right { animation: fadeInRight 0.5s ease; }
-      .animate-slide-in-down { animation: slideInDown 0.5s ease; }
-      .animate-slide-in-up { animation: slideInUp 0.5s ease; }
-      .animate-slide-in-left { animation: slideInLeft 0.5s ease; }
-      .animate-slide-in-right { animation: slideInRight 0.5s ease; }
-      .animate-zoom-in { animation: zoomIn 0.5s ease; }
-      .animate-zoom-out { animation: zoomOut 0.5s ease; }
-      .animate-rotate-in { animation: rotateIn 0.5s ease; }
-      .animate-rotate-out { animation: rotateOut 0.5s ease; }
-      .animate-hinge { animation: hinge 1s ease; }
-      .animate-roll-in { animation: rollIn 1s ease; }
-      .animate-roll-out { animation: rollOut 1s ease; }
-
-      /* === HOVER ANIMATIONS === */
-      .hover-float:hover { animation: float 1s ease-in-out infinite; }
-      .hover-pulse:hover { animation: pulse 0.5s ease-in-out infinite; }
-      .hover-shake:hover { animation: shake 0.5s ease-in-out; }
-      .hover-swing:hover { animation: swing 0.5s ease-in-out; }
-      .hover-tada:hover { animation: tada 0.5s ease-in-out; }
-      .hover-wobble:hover { animation: wobble 0.5s ease-in-out; }
-      .hover-jello:hover { animation: jello 0.5s ease-in-out; }
-      .hover-heartbeat:hover { animation: heartBeat 0.5s ease-in-out infinite; }
-      .hover-bounce-in:hover { animation: bounceIn 0.5s ease; }
-      .hover-zoom-in:hover { animation: zoomIn 0.3s ease; }
-      .hover-rotate-in:hover { animation: rotateIn 0.5s ease; }
-
-      /* === SCROLL ANIMATIONS === */
-      .scroll-reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
-      .scroll-reveal.revealed { opacity: 1; transform: translateY(0); }
-      .scroll-reveal-left { opacity: 0; transform: translateX(-30px); transition: all 0.8s ease; }
-      .scroll-reveal-left.revealed { opacity: 1; transform: translateX(0); }
-      .scroll-reveal-right { opacity: 0; transform: translateX(30px); transition: all 0.8s ease; }
-      .scroll-reveal-right.revealed { opacity: 1; transform: translateX(0); }
-      .scroll-reveal-scale { opacity: 0; transform: scale(0.8); transition: all 0.8s ease; }
-      .scroll-reveal-scale.revealed { opacity: 1; transform: scale(1); }
-
-      /* === SPECIAL EFFECTS === */
-      .glow-effect { box-shadow: 0 0 20px rgba(245, 158, 11, 0.3); }
-      .glow-effect:hover { box-shadow: 0 0 40px rgba(245, 158, 11, 0.6); }
-      .text-glow { text-shadow: 0 0 10px rgba(245, 158, 11, 0.5); }
-      .text-glow:hover { text-shadow: 0 0 20px rgba(245, 158, 11, 0.8); }
-      .border-glow { box-shadow: 0 0 10px rgba(245, 158, 11, 0.3); }
-      .border-glow:hover { box-shadow: 0 0 30px rgba(245, 158, 11, 0.6); }
-
-      /* === ANIMATED BACKGROUNDS === */
-      .bg-animated {
-        background: linear-gradient(-45deg, #0A0F1A, #1F2937, #111827, #0A0F1A);
-        background-size: 400% 400%;
-        animation: gradientShift 15s ease infinite;
-      }
-
-      /* === PARTICLE EFFECTS === */
-      .particle {
-        position: absolute;
-        width: 4px;
-        height: 4px;
-        background: #F59E0B;
-        border-radius: 50%;
-        animation: particleFloat 3s ease-in-out infinite;
-      }
-
-      /* === COUNTER ANIMATION === */
-      .counter { display: inline-block; }
-
-      /* === TYPING EFFECT === */
-      .typing-text {
-        overflow: hidden;
-        border-right: 2px solid #F59E0B;
-        white-space: nowrap;
-        animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
-      }
-
-      /* === MORPH EFFECT === */
-      .morph-shape {
-        animation: morph 8s ease-in-out infinite;
-      }
-
-      /* === AURORA EFFECT === */
-      .aurora-bg {
-        background: linear-gradient(-45deg, #0A0F1A, #1F2937, #F59E0B, #111827);
-        background-size: 400% 400%;
-        animation: aurora 15s ease infinite;
-      }
-
-      /* === NEON EFFECT === */
-      .neon-text {
-        animation: neon 2s ease-in-out infinite;
-      }
-
-      .neon-flicker-text {
-        animation: neonFlicker 1.5s ease-in-out infinite;
-      }
-
-      /* === RIPPLE EFFECT === */
-      .ripple-effect {
-        position: relative;
-        overflow: hidden;
-      }
-      .ripple-effect::after {
-        content: '';
-        position: absolute;
-        top: 50%; left: 50%;
-        width: 0; height: 0;
-        background: rgba(255,255,255,0.2);
-        border-radius: 50%;
-        transform: translate(-50%, -50%);
-        transition: width 0.6s, height 0.6s;
-      }
-      .ripple-effect:active::after {
-        width: 300px; height: 300px;
-      }
-
-      /* === SHIMMER EFFECT === */
-      .shimmer-effect {
-        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-        background-size: 200% 100%;
-        animation: shimmer 2s linear infinite;
-      }
-
-      /* === STAGGER ANIMATIONS === */
-      .stagger > * { opacity: 0; transform: translateY(20px); transition: all 0.5s ease; }
-      .stagger.revealed > *:nth-child(1) { transition-delay: 0.1s; opacity: 1; transform: translateY(0); }
-      .stagger.revealed > *:nth-child(2) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
-      .stagger.revealed > *:nth-child(3) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
-      .stagger.revealed > *:nth-child(4) { transition-delay: 0.4s; opacity: 1; transform: translateY(0); }
-      .stagger.revealed > *:nth-child(5) { transition-delay: 0.5s; opacity: 1; transform: translateY(0); }
-      .stagger.revealed > *:nth-child(6) { transition-delay: 0.6s; opacity: 1; transform: translateY(0); }
-
-      /* === SPECIAL HOVER EFFECTS === */
-      .hover-lift { transition: transform 0.3s ease, box-shadow 0.3s ease; }
-      .hover-lift:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
-
-      .hover-glow { transition: box-shadow 0.3s ease; }
-      .hover-glow:hover { box-shadow: 0 0 30px rgba(245, 158, 11, 0.5); }
-
-      .hover-scale { transition: transform 0.3s ease; }
-      .hover-scale:hover { transform: scale(1.05); }
-
-      .hover-rotate { transition: transform 0.3s ease; }
-      .hover-rotate:hover { transform: rotate(5deg); }
-
-      .hover-skew { transition: transform 0.3s ease; }
-      .hover-skew:hover { transform: skewX(5deg); }
-
-      .hover-flip { transition: transform 0.6s ease; }
-      .hover-flip:hover { transform: rotateY(180deg); }
-
-      .hover-3d { transition: transform 0.3s ease; }
-      .hover-3d:hover { transform: perspective(1000px) rotateX(10deg) rotateY(10deg); }
-
-      /* === ANIMATED BORDERS === */
-      .animated-border {
-        position: relative;
-        border: 2px solid transparent;
-        background-clip: padding-box;
-      }
-      .animated-border::before {
-        content: '';
-        position: absolute;
-        top: -2px; left: -2px; right: -2px; bottom: -2px;
-        background: linear-gradient(45deg, #F59E0B, #10B981, #8B5CF6, #F59E0B);
-        background-size: 400% 400%;
-        animation: gradientShift 3s ease infinite;
-        z-index: -1;
-        border-radius: inherit;
-      }
-
-      /* === ANIMATED TEXT === */
+      /* Gradient Text */
       .gradient-text {
-        background: linear-gradient(45deg, #F59E0B, #10B981, #8B5CF6);
-        background-size: 200% 200%;
+        background: linear-gradient(45deg, #F59E0B, #10B981);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
-        animation: gradientShift 3s ease infinite;
       }
 
-      /* === LOADING ANIMATION === */
-      .loading-spinner {
-        width: 40px; height: 40px;
-        border: 4px solid #1F2937;
-        border-top: 4px solid #F59E0B;
-        border-radius: 50%;
-        animation: spin 1s linear infinite;
+      /* Stagger Animation */
+      .stagger > * {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.5s ease;
       }
+      .stagger.active > *:nth-child(1) { transition-delay: 0.1s; opacity: 1; transform: translateY(0); }
+      .stagger.active > *:nth-child(2) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
+      .stagger.active > *:nth-child(3) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
+      .stagger.active > *:nth-child(4) { transition-delay: 0.4s; opacity: 1; transform: translateY(0); }
+      .stagger.active > *:nth-child(5) { transition-delay: 0.5s; opacity: 1; transform: translateY(0); }
+      .stagger.active > *:nth-child(6) { transition-delay: 0.6s; opacity: 1; transform: translateY(0); }
 
-      /* === PROGRESS BAR === */
-      .progress-bar {
-        width: 100%; height: 4px;
-        background: #1F2937;
-        border-radius: 2px;
-        overflow: hidden;
-      }
-      .progress-bar-fill {
-        height: 100%;
-        background: linear-gradient(90deg, #F59E0B, #10B981);
-        animation: progressFill 2s ease forwards;
-      }
-
-      /* === WAVE ANIMATION === */
-      @keyframes wave {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-10px); }
-      }
-      .wave { animation: wave 2s ease-in-out infinite; }
-      .wave-delay-1 { animation-delay: 0.2s; }
-      .wave-delay-2 { animation-delay: 0.4s; }
-      .wave-delay-3 { animation-delay: 0.6s; }
-
-      /* === ORBIT ANIMATION === */
-      @keyframes orbit {
-        from { transform: rotate(0deg) translateX(50px) rotate(0deg); }
-        to { transform: rotate(360deg) translateX(50px) rotate(-360deg); }
-      }
-      .orbit { animation: orbit 5s linear infinite; }
-
-      /* === DNA HELIX === */
-      @keyframes dnaHelix {
-        0%, 100% { transform: rotateY(0deg); }
-        50% { transform: rotateY(180deg); }
-      }
-      .dna-helix { animation: dnaHelix 3s ease-in-out infinite; }
-
-      /* === BREATHING === */
-      @keyframes breathing {
-        0%, 100% { transform: scale(1); opacity: 0.8; }
-        50% { transform: scale(1.1); opacity: 1; }
-      }
-      .breathing { animation: breathing 3s ease-in-out infinite; }
-
-      /* === GLOW PULSE === */
-      @keyframes glowPulse {
-        0%, 100% { box-shadow: 0 0 10px rgba(245, 158, 11, 0.3); }
-        50% { box-shadow: 0 0 30px rgba(245, 158, 11, 0.8); }
-      }
-      .glow-pulse { animation: glowPulse 2s ease-in-out infinite; }
-
-      /* === TEXT GLOW PULSE === */
-      @keyframes textGlowPulse {
-        0%, 100% { text-shadow: 0 0 10px rgba(245, 158, 11, 0.5); }
-        50% { text-shadow: 0 0 30px rgba(245, 158, 11, 1); }
-      }
-      .text-glow-pulse { animation: textGlowPulse 2s ease-in-out infinite; }
-
-      /* === BORDER GLOW PULSE === */
-      @keyframes borderGlowPulse {
-        0%, 100% { border-color: rgba(245, 158, 11, 0.3); box-shadow: 0 0 10px rgba(245, 158, 11, 0.2); }
-        50% { border-color: rgba(245, 158, 11, 1); box-shadow: 0 0 30px rgba(245, 158, 11, 0.6); }
-      }
-      .border-glow-pulse { animation: borderGlowPulse 2s ease-in-out infinite; }
-
-      /* === COMBINED EFFECTS === */
-      .effect-combined {
-        animation: float 3s ease-in-out infinite, glowPulse 2s ease-in-out infinite;
-      }
-
-      /* === RESPONSIVE ANIMATIONS === */
-      @media (prefers-reduced-motion: reduce) {
-        *, *::before, *::after {
-          animation-duration: 0.01ms !important;
-          animation-iteration-count: 1 !important;
-          transition-duration: 0.01ms !important;
-        }
-      }
-
-      /* === SCROLL PROGRESS === */
+      /* Scroll Progress */
       .scroll-progress {
         position: fixed;
         top: 0;
@@ -1286,7 +125,7 @@
         transition: width 0.1s ease;
       }
 
-      /* === BACK TO TOP === */
+      /* Back to Top */
       .back-to-top {
         position: fixed;
         bottom: 100px;
@@ -1316,1861 +155,32 @@
         transform: translateY(-3px);
       }
 
-      /* === COUNTER === */
-      .counter-box {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        min-width: 40px;
-        padding: 4px 8px;
-        background: #1F2937;
-        border-radius: 6px;
-        font-family: monospace;
-        font-size: 18px;
-        color: #F59E0B;
-        border: 1px solid rgba(245, 158, 11, 0.3);
-      }
-
-      /* === ANIMATED ICONS === */
-      .icon-bounce { animation: bounce 1s ease-in-out infinite; }
-      .icon-spin { animation: spin 2s linear infinite; }
-      .icon-pulse { animation: pulse 2s ease-in-out infinite; }
-      .icon-float { animation: float 3s ease-in-out infinite; }
-      .icon-shake { animation: shake 0.5s ease-in-out infinite; }
-      .icon-swing { animation: swing 1s ease-in-out infinite; }
-      .icon-tada { animation: tada 1s ease-in-out infinite; }
-      .icon-wobble { animation: wobble 1s ease-in-out infinite; }
-      .icon-jello { animation: jello 1s ease-in-out infinite; }
-      .icon-heartbeat { animation: heartbeat 1s ease-in-out infinite; }
-
-      /* === ANIMATED CARDS === */
-      .card-3d {
-        transition: transform 0.3s ease;
-        transform-style: preserve-3d;
-      }
-      .card-3d:hover {
-        transform: perspective(1000px) rotateY(5deg) rotateX(5deg);
-      }
-
-      .card-lift {
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-      }
-      .card-lift:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-      }
-
-      .card-glow {
-        transition: box-shadow 0.3s ease;
-      }
-      .card-glow:hover {
-        box-shadow: 0 0 30px rgba(245, 158, 11, 0.4);
-      }
-
-      .card-scale {
-        transition: transform 0.3s ease;
-      }
-      .card-scale:hover {
-        transform: scale(1.02);
-      }
-
-      /* === ANIMATED BUTTONS === */
-      .btn-ripple {
-        position: relative;
-        overflow: hidden;
-      }
-      .btn-ripple::after {
-        content: '';
-        position: absolute;
-        top: 50%; left: 50%;
-        width: 0; height: 0;
-        background: rgba(255,255,255,0.3);
-        border-radius: 50%;
-        transform: translate(-50%, -50%);
-        transition: width 0.6s, height 0.6s;
-      }
-      .btn-ripple:active::after {
-        width: 300px; height: 300px;
-      }
-
-      .btn-glow {
-        transition: box-shadow 0.3s ease;
-      }
-      .btn-glow:hover {
-        box-shadow: 0 0 30px rgba(245, 158, 11, 0.6);
-      }
-
-      .btn-pulse {
-        transition: transform 0.3s ease;
-      }
-      .btn-pulse:hover {
-        animation: pulse 1s ease-in-out infinite;
-      }
-
-      /* === ANIMATED INPUTS === */
-      .input-focus {
-        transition: border-color 0.3s ease, box-shadow 0.3s ease;
-      }
-      .input-focus:focus {
-        border-color: #F59E0B;
-        box-shadow: 0 0 10px rgba(245, 158, 11, 0.3);
-      }
-
-      /* === ANIMATED NAV === */
-      .nav-scroll {
-        transition: background 0.3s ease, box-shadow 0.3s ease;
-      }
-      .nav-scroll.scrolled {
-        background: rgba(10, 15, 26, 0.98) !important;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-      }
-
-      /* === ANIMATED SECTIONS === */
-      .section-animate {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-      }
-      .section-animate.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      /* === ANIMATED GRID === */
-      .grid-animate > * {
-        opacity: 0;
-        transform: translateY(20px);
-        transition: all 0.5s ease;
-      }
-      .grid-animate.revealed > *:nth-child(1) { transition-delay: 0.1s; opacity: 1; transform: translateY(0); }
-      .grid-animate.revealed > *:nth-child(2) { transition-delay: 0.2s; opacity: 1; transform: translateY(0); }
-      .grid-animate.revealed > *:nth-child(3) { transition-delay: 0.3s; opacity: 1; transform: translateY(0); }
-      .grid-animate.revealed > *:nth-child(4) { transition-delay: 0.4s; opacity: 1; transform: translateY(0); }
-      .grid-animate.revealed > *:nth-child(5) { transition-delay: 0.5s; opacity: 1; transform: translateY(0); }
-      .grid-animate.revealed > *:nth-child(6) { transition-delay: 0.6s; opacity: 1; transform: translateY(0); }
-
-      /* === ANIMATED LIST === */
-      .list-animate > * {
-        opacity: 0;
-        transform: translateX(-20px);
-        transition: all 0.5s ease;
-      }
-      .list-animate.revealed > *:nth-child(1) { transition-delay: 0.1s; opacity: 1; transform: translateX(0); }
-      .list-animate.revealed > *:nth-child(2) { transition-delay: 0.2s; opacity: 1; transform: translateX(0); }
-      .list-animate.revealed > *:nth-child(3) { transition-delay: 0.3s; opacity: 1; transform: translateX(0); }
-      .list-animate.revealed > *:nth-child(4) { transition-delay: 0.4s; opacity: 1; transform: translateX(0); }
-      .list-animate.revealed > *:nth-child(5) { transition-delay: 0.5s; opacity: 1; transform: translateX(0); }
-      .list-animate.revealed > *:nth-child(6) { transition-delay: 0.6s; opacity: 1; transform: translateX(0); }
-
-      /* === ANIMATED TEXT === */
-      .text-animate {
-        overflow: hidden;
-        display: inline-block;
-      }
-      .text-animate > * {
-        display: inline-block;
-        opacity: 0;
-        transform: translateY(100%);
-        transition: all 0.5s ease;
-      }
-      .text-animate.revealed > * {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      /* === ANIMATED IMAGE === */
-      .image-animate {
-        opacity: 0;
-        transform: scale(0.9);
-        transition: all 0.8s ease;
-      }
-      .image-animate.visible {
-        opacity: 1;
-        transform: scale(1);
-      }
-
-      /* === ANIMATED BACKGROUND === */
-      .bg-animate {
-        position: relative;
-        overflow: hidden;
-      }
-      .bg-animate::before {
-        content: '';
-        position: absolute;
-        top: 0; left: 0; right: 0; bottom: 0;
-        background: linear-gradient(-45deg, #0A0F1A, #1F2937, #111827, #0A0F1A);
-        background-size: 400% 400%;
-        animation: gradientShift 15s ease infinite;
-        z-index: -1;
-      }
-
-      /* === ANIMATED OVERLAY === */
-      .overlay-animate {
-        position: relative;
-      }
-      .overlay-animate::after {
-        content: '';
-        position: absolute;
-        top: 0; left: 0; right: 0; bottom: 0;
-        background: rgba(10, 15, 26, 0.7);
-        opacity: 0;
-        transition: opacity 0.3s ease;
-      }
-      .overlay-animate:hover::after {
-        opacity: 1;
-      }
-
-      /* === ANIMATED BADGE === */
-      .badge-animate {
-        animation: pulse 2s ease-in-out infinite;
-      }
-
-      /* === ANIMATED COUNTER === */
-      .counter-animate {
-        animation: countUp 0.8s ease forwards;
-      }
-
-      /* === ANIMATED DIVIDER === */
-      .divider-animate {
-        width: 0;
-        transition: width 0.8s ease;
-      }
-      .divider-animate.visible {
-        width: 100%;
-      }
-
-      /* === ANIMATED PROGRESS === */
-      .progress-animate {
-        width: 0;
-        transition: width 1s ease;
-      }
-      .progress-animate.visible {
-        width: var(--progress);
-      }
-
-      /* === ANIMATED SKILL === */
-      .skill-animate {
-        opacity: 0;
-        transform: scale(0.8);
-        transition: all 0.5s ease;
-      }
-      .skill-animate.visible {
-        opacity: 1;
-        transform: scale(1);
-      }
-
-      /* === ANIMATED TESTIMONIAL === */
-      .testimonial-animate {
-        opacity: 0;
-        transform: translateX(-20px);
-        transition: all 0.5s ease;
-      }
-      .testimonial-animate.visible {
-        opacity: 1;
-        transform: translateX(0);
-      }
-
-      /* === ANIMATED PRICING === */
-      .pricing-animate {
-        opacity: 0;
-        transform: translateY(30px);
-        transition: all 0.8s ease;
-      }
-      .pricing-animate.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      /* === ANIMATED CTA === */
-      .cta-animate {
-        animation: pulse 2s ease-in-out infinite;
-      }
-
-      /* === ANIMATED HERO === */
-      .hero-animate {
-        animation: fadeInUp 1s ease forwards;
-      }
-
-      /* === ANIMATED STAT === */
-      .stat-animate {
-        animation: countUp 0.8s ease forwards;
-      }
-
-      /* === ANIMATED FEATURE === */
-      .feature-animate {
-        opacity: 0;
-        transform: translateY(20px);
-        transition: all 0.5s ease;
-      }
-      .feature-animate.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      /* === ANIMATED STEP === */
-      .step-animate {
-        opacity: 0;
-        transform: translateX(-20px);
-        transition: all 0.5s ease;
-      }
-      .step-animate.visible {
-        opacity: 1;
-        transform: translateX(0);
-      }
-
-      /* === ANIMATED ICON === */
-      .icon-animate {
-        animation: bounce 1s ease-in-out infinite;
-      }
-
-      /* === ANIMATED NUMBER === */
-      .number-animate {
-        animation: countUp 0.8s ease forwards;
-      }
-
-      /* === ANIMATED TITLE === */
-      .title-animate {
-        animation: fadeInUp 0.8s ease forwards;
-      }
-
-      /* === ANIMATED SUBTITLE === */
-      .subtitle-animate {
-        animation: fadeInUp 0.8s ease 0.2s forwards;
-        opacity: 0;
-      }
-
-      /* === ANIMATED DESCRIPTION === */
-      .description-animate {
-        animation: fadeInUp 0.8s ease 0.4s forwards;
-        opacity: 0;
-      }
-
-      /* === ANIMATED BUTTON === */
-      .button-animate {
-        animation: fadeInUp 0.8s ease 0.6s forwards;
-        opacity: 0;
-      }
-
-      /* === ANIMATED IMAGE === */
-      .image-animate {
-        animation: fadeIn 1s ease forwards;
-      }
-
-      /* === ANIMATED CARD === */
-      .card-animate {
-        animation: fadeInUp 0.8s ease forwards;
-      }
-
-      /* === ANIMATED LIST === */
-      .list-item-animate {
-        animation: fadeInLeft 0.5s ease forwards;
-      }
-
-      /* === ANIMATED GRID === */
-      .grid-item-animate {
-        animation: fadeInUp 0.5s ease forwards;
-      }
-
-      /* === ANIMATED SECTION === */
-      .section-title-animate {
-        animation: fadeInUp 0.8s ease forwards;
-      }
-
-      /* === ANIMATED CONTENT === */
-      .content-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED BACKGROUND === */
-      .bg-slide-animate {
-        animation: slideIn 1s ease forwards;
-      }
-
-      /* === ANIMATED OVERLAY === */
-      .overlay-slide-animate {
-        animation: fadeIn 0.5s ease forwards;
-      }
-
-      /* === ANIMATED TEXT === */
-      .text-slide-animate {
-        animation: slideInUp 0.8s ease forwards;
-      }
-
-      /* === ANIMATED IMAGE === */
-      .image-zoom-animate {
-        animation: zoomIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED ICON === */
-      .icon-rotate-animate {
-        animation: rotateIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED BUTTON === */
-      .button-bounce-animate {
-        animation: bounceIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED CARD === */
-      .card-3d-animate {
-        animation: flipInY 0.8s ease forwards;
-      }
-
-      /* === ANIMATED LIST === */
-      .list-slide-animate {
-        animation: slideInLeft 0.5s ease forwards;
-      }
-
-      /* === ANIMATED GRID === */
-      .grid-fade-animate {
-        animation: fadeIn 0.5s ease forwards;
-      }
-
-      /* === ANIMATED SECTION === */
-      .section-zoom-animate {
-        animation: zoomIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED CONTENT === */
-      .content-slide-animate {
-        animation: slideInUp 0.8s ease forwards;
-      }
-
-      /* === ANIMATED BACKGROUND === */
-      .bg-fade-animate {
-        animation: fadeIn 1s ease forwards;
-      }
-
-      /* === ANIMATED OVERLAY === */
-      .overlay-fade-animate {
-        animation: fadeIn 0.5s ease forwards;
-      }
-
-      /* === ANIMATED TEXT === */
-      .text-fade-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED IMAGE === */
-      .image-slide-animate {
-        animation: slideInRight 0.8s ease forwards;
-      }
-
-      /* === ANIMATED ICON === */
-      .icon-bounce-animate {
-        animation: bounceIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED BUTTON === */
-      .button-fade-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED CARD === */
-      .card-slide-animate {
-        animation: slideInUp 0.8s ease forwards;
-      }
-
-      /* === ANIMATED LIST === */
-      .list-fade-animate {
-        animation: fadeIn 0.5s ease forwards;
-      }
-
-      /* === ANIMATED GRID === */
-      .grid-slide-animate {
-        animation: slideInUp 0.5s ease forwards;
-      }
-
-      /* === ANIMATED SECTION === */
-      .section-fade-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED CONTENT === */
-      .content-fade-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED BACKGROUND === */
-      .bg-zoom-animate {
-        animation: zoomIn 1s ease forwards;
-      }
-
-      /* === ANIMATED OVERLAY === */
-      .overlay-zoom-animate {
-        animation: zoomIn 0.5s ease forwards;
-      }
-
-      /* === ANIMATED TEXT === */
-      .text-zoom-animate {
-        animation: zoomIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED IMAGE === */
-      .image-fade-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED ICON === */
-      .icon-fade-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED BUTTON === */
-      .button-slide-animate {
-        animation: slideInUp 0.8s ease forwards;
-      }
-
-      /* === ANIMATED CARD === */
-      .card-fade-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED LIST === */
-      .list-zoom-animate {
-        animation: zoomIn 0.5s ease forwards;
-      }
-
-      /* === ANIMATED GRID === */
-      .grid-zoom-animate {
-        animation: zoomIn 0.5s ease forwards;
-      }
-
-      /* === ANIMATED SECTION === */
-      .section-slide-animate {
-        animation: slideInUp 0.8s ease forwards;
-      }
-
-      /* === ANIMATED CONTENT === */
-      .content-zoom-animate {
-        animation: zoomIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED BACKGROUND === */
-      .bg-fade-slide-animate {
-        animation: fadeIn 1s ease forwards;
-      }
-
-      /* === ANIMATED OVERLAY === */
-      .overlay-fade-slide-animate {
-        animation: fadeIn 0.5s ease forwards;
-      }
-
-      /* === ANIMATED TEXT === */
-      .text-fade-slide-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED IMAGE === */
-      .image-fade-zoom-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED ICON === */
-      .icon-fade-slide-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED BUTTON === */
-      .button-fade-zoom-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED CARD === */
-      .card-fade-slide-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED LIST === */
-      .list-fade-zoom-animate {
-        animation: fadeIn 0.5s ease forwards;
-      }
-
-      /* === ANIMATED GRID === */
-      .grid-fade-zoom-animate {
-        animation: fadeIn 0.5s ease forwards;
-      }
-
-      /* === ANIMATED SECTION === */
-      .section-fade-zoom-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED CONTENT === */
-      .content-fade-zoom-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED BACKGROUND === */
-      .bg-fade-zoom-animate {
-        animation: fadeIn 1s ease forwards;
-      }
-
-      /* === ANIMATED OVERLAY === */
-      .overlay-fade-zoom-animate {
-        animation: fadeIn 0.5s ease forwards;
-      }
-
-      /* === ANIMATED TEXT === */
-      .text-fade-zoom-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED IMAGE === */
-      .image-fade-slide-zoom-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED ICON === */
-      .icon-fade-slide-zoom-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED BUTTON === */
-      .button-fade-slide-zoom-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED CARD === */
-      .card-fade-slide-zoom-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED LIST === */
-      .list-fade-slide-zoom-animate {
-        animation: fadeIn 0.5s ease forwards;
-      }
-
-      /* === ANIMATED GRID === */
-      .grid-fade-slide-zoom-animate {
-        animation: fadeIn 0.5s ease forwards;
-      }
-
-      /* === ANIMATED SECTION === */
-      .section-fade-slide-zoom-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED CONTENT === */
-      .content-fade-slide-zoom-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED BACKGROUND === */
-      .bg-fade-slide-zoom-animate {
-        animation: fadeIn 1s ease forwards;
-      }
-
-      /* === ANIMATED OVERLAY === */
-      .overlay-fade-slide-zoom-animate {
-        animation: fadeIn 0.5s ease forwards;
-      }
-
-      /* === ANIMATED TEXT === */
-      .text-fade-slide-zoom-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED IMAGE === */
-      .image-all-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED ICON === */
-      .icon-all-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED BUTTON === */
-      .button-all-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED CARD === */
-      .card-all-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED LIST === */
-      .list-all-animate {
-        animation: fadeIn 0.5s ease forwards;
-      }
-
-      /* === ANIMATED GRID === */
-      .grid-all-animate {
-        animation: fadeIn 0.5s ease forwards;
-      }
-
-      /* === ANIMATED SECTION === */
-      .section-all-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED CONTENT === */
-      .content-all-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED BACKGROUND === */
-      .bg-all-animate {
-        animation: fadeIn 1s ease forwards;
-      }
-
-      /* === ANIMATED OVERLAY === */
-      .overlay-all-animate {
-        animation: fadeIn 0.5s ease forwards;
-      }
-
-      /* === ANIMATED TEXT === */
-      .text-all-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED IMAGE === */
-      .image-perfect-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED ICON === */
-      .icon-perfect-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED BUTTON === */
-      .button-perfect-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED CARD === */
-      .card-perfect-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED LIST === */
-      .list-perfect-animate {
-        animation: fadeIn 0.5s ease forwards;
-      }
-
-      /* === ANIMATED GRID === */
-      .grid-perfect-animate {
-        animation: fadeIn 0.5s ease forwards;
-      }
-
-      /* === ANIMATED SECTION === */
-      .section-perfect-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED CONTENT === */
-      .content-perfect-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED BACKGROUND === */
-      .bg-perfect-animate {
-        animation: fadeIn 1s ease forwards;
-      }
-
-      /* === ANIMATED OVERLAY === */
-      .overlay-perfect-animate {
-        animation: fadeIn 0.5s ease forwards;
-      }
-
-      /* === ANIMATED TEXT === */
-      .text-perfect-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED IMAGE === */
-      .image-master-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED ICON === */
-      .icon-master-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED BUTTON === */
-      .button-master-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED CARD === */
-      .card-master-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED LIST === */
-      .list-master-animate {
-        animation: fadeIn 0.5s ease forwards;
-      }
-
-      /* === ANIMATED GRID === */
-      .grid-master-animate {
-        animation: fadeIn 0.5s ease forwards;
-      }
-
-      /* === ANIMATED SECTION === */
-      .section-master-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED CONTENT === */
-      .content-master-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED BACKGROUND === */
-      .bg-master-animate {
-        animation: fadeIn 1s ease forwards;
-      }
-
-      /* === ANIMATED OVERLAY === */
-      .overlay-master-animate {
-        animation: fadeIn 0.5s ease forwards;
-      }
-
-      /* === ANIMATED TEXT === */
-      .text-master-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED IMAGE === */
-      .image-ultimate-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED ICON === */
-      .icon-ultimate-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED BUTTON === */
-      .button-ultimate-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED CARD === */
-      .card-ultimate-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED LIST === */
-      .list-ultimate-animate {
-        animation: fadeIn 0.5s ease forwards;
-      }
-
-      /* === ANIMATED GRID === */
-      .grid-ultimate-animate {
-        animation: fadeIn 0.5s ease forwards;
-      }
-
-      /* === ANIMATED SECTION === */
-      .section-ultimate-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED CONTENT === */
-      .content-ultimate-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED BACKGROUND === */
-      .bg-ultimate-animate {
-        animation: fadeIn 1s ease forwards;
-      }
-
-      /* === ANIMATED OVERLAY === */
-      .overlay-ultimate-animate {
-        animation: fadeIn 0.5s ease forwards;
-      }
-
-      /* === ANIMATED TEXT === */
-      .text-ultimate-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED IMAGE === */
-      .image-final-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED ICON === */
-      .icon-final-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED BUTTON === */
-      .button-final-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED CARD === */
-      .card-final-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED LIST === */
-      .list-final-animate {
-        animation: fadeIn 0.5s ease forwards;
-      }
-
-      /* === ANIMATED GRID === */
-      .grid-final-animate {
-        animation: fadeIn 0.5s ease forwards;
-      }
-
-      /* === ANIMATED SECTION === */
-      .section-final-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED CONTENT === */
-      .content-final-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED BACKGROUND === */
-      .bg-final-animate {
-        animation: fadeIn 1s ease forwards;
-      }
-
-      /* === ANIMATED OVERLAY === */
-      .overlay-final-animate {
-        animation: fadeIn 0.5s ease forwards;
-      }
-
-      /* === ANIMATED TEXT === */
-      .text-final-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED IMAGE === */
-      .image-complete-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED ICON === */
-      .icon-complete-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED BUTTON === */
-      .button-complete-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED CARD === */
-      .card-complete-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED LIST === */
-      .list-complete-animate {
-        animation: fadeIn 0.5s ease forwards;
-      }
-
-      /* === ANIMATED GRID === */
-      .grid-complete-animate {
-        animation: fadeIn 0.5s ease forwards;
-      }
-
-      /* === ANIMATED SECTION === */
-      .section-complete-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED CONTENT === */
-      .content-complete-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED BACKGROUND === */
-      .bg-complete-animate {
-        animation: fadeIn 1s ease forwards;
-      }
-
-      /* === ANIMATED OVERLAY === */
-      .overlay-complete-animate {
-        animation: fadeIn 0.5s ease forwards;
-      }
-
-      /* === ANIMATED TEXT === */
-      .text-complete-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED IMAGE === */
-      .image-super-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED ICON === */
-      .icon-super-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED BUTTON === */
-      .button-super-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED CARD === */
-      .card-super-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED LIST === */
-      .list-super-animate {
-        animation: fadeIn 0.5s ease forwards;
-      }
-
-      /* === ANIMATED GRID === */
-      .grid-super-animate {
-        animation: fadeIn 0.5s ease forwards;
-      }
-
-      /* === ANIMATED SECTION === */
-      .section-super-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED CONTENT === */
-      .content-super-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED BACKGROUND === */
-      .bg-super-animate {
-        animation: fadeIn 1s ease forwards;
-      }
-
-      /* === ANIMATED OVERLAY === */
-      .overlay-super-animate {
-        animation: fadeIn 0.5s ease forwards;
-      }
-
-      /* === ANIMATED TEXT === */
-      .text-super-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED IMAGE === */
-      .image-mega-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED ICON === */
-      .icon-mega-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED BUTTON === */
-      .button-mega-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED CARD === */
-      .card-mega-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED LIST === */
-      .list-mega-animate {
-        animation: fadeIn 0.5s ease forwards;
-      }
-
-      /* === ANIMATED GRID === */
-      .grid-mega-animate {
-        animation: fadeIn 0.5s ease forwards;
-      }
-
-      /* === ANIMATED SECTION === */
-      .section-mega-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED CONTENT === */
-      .content-mega-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED BACKGROUND === */
-      .bg-mega-animate {
-        animation: fadeIn 1s ease forwards;
-      }
-
-      /* === ANIMATED OVERLAY === */
-      .overlay-mega-animate {
-        animation: fadeIn 0.5s ease forwards;
-      }
-
-      /* === ANIMATED TEXT === */
-      .text-mega-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED IMAGE === */
-      .image-giga-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED ICON === */
-      .icon-giga-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED BUTTON === */
-      .button-giga-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED CARD === */
-      .card-giga-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED LIST === */
-      .list-giga-animate {
-        animation: fadeIn 0.5s ease forwards;
-      }
-
-      /* === ANIMATED GRID === */
-      .grid-giga-animate {
-        animation: fadeIn 0.5s ease forwards;
-      }
-
-      /* === ANIMATED SECTION === */
-      .section-giga-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED CONTENT === */
-      .content-giga-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED BACKGROUND === */
-      .bg-giga-animate {
-        animation: fadeIn 1s ease forwards;
-      }
-
-      /* === ANIMATED OVERLAY === */
-      .overlay-giga-animate {
-        animation: fadeIn 0.5s ease forwards;
-      }
-
-      /* === ANIMATED TEXT === */
-      .text-giga-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED IMAGE === */
-      .image-tera-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED ICON === */
-      .icon-tera-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED BUTTON === */
-      .button-tera-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED CARD === */
-      .card-tera-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED LIST === */
-      .list-tera-animate {
-        animation: fadeIn 0.5s ease forwards;
-      }
-
-      /* === ANIMATED GRID === */
-      .grid-tera-animate {
-        animation: fadeIn 0.5s ease forwards;
-      }
-
-      /* === ANIMATED SECTION === */
-      .section-tera-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED CONTENT === */
-      .content-tera-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED BACKGROUND === */
-      .bg-tera-animate {
-        animation: fadeIn 1s ease forwards;
-      }
-
-      /* === ANIMATED OVERLAY === */
-      .overlay-tera-animate {
-        animation: fadeIn 0.5s ease forwards;
-      }
-
-      /* === ANIMATED TEXT === */
-      .text-tera-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED IMAGE === */
-      .image-peta-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED ICON === */
-      .icon-peta-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED BUTTON === */
-      .button-peta-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED CARD === */
-      .card-peta-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED LIST === */
-      .list-peta-animate {
-        animation: fadeIn 0.5s ease forwards;
-      }
-
-      /* === ANIMATED GRID === */
-      .grid-peta-animate {
-        animation: fadeIn 0.5s ease forwards;
-      }
-
-      /* === ANIMATED SECTION === */
-      .section-peta-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED CONTENT === */
-      .content-peta-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED BACKGROUND === */
-      .bg-peta-animate {
-        animation: fadeIn 1s ease forwards;
-      }
-
-      /* === ANIMATED OVERLAY === */
-      .overlay-peta-animate {
-        animation: fadeIn 0.5s ease forwards;
-      }
-
-      /* === ANIMATED TEXT === */
-      .text-peta-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED IMAGE === */
-      .image-exa-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED ICON === */
-      .icon-exa-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED BUTTON === */
-      .button-exa-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED CARD === */
-      .card-exa-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED LIST === */
-      .list-exa-animate {
-        animation: fadeIn 0.5s ease forwards;
-      }
-
-      /* === ANIMATED GRID === */
-      .grid-exa-animate {
-        animation: fadeIn 0.5s ease forwards;
-      }
-
-      /* === ANIMATED SECTION === */
-      .section-exa-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED CONTENT === */
-      .content-exa-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED BACKGROUND === */
-      .bg-exa-animate {
-        animation: fadeIn 1s ease forwards;
-      }
-
-      /* === ANIMATED OVERLAY === */
-      .overlay-exa-animate {
-        animation: fadeIn 0.5s ease forwards;
-      }
-
-      /* === ANIMATED TEXT === */
-      .text-exa-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED IMAGE === */
-      .image-zetta-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED ICON === */
-      .icon-zetta-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED BUTTON === */
-      .button-zetta-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED CARD === */
-      .card-zetta-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED LIST === */
-      .list-zetta-animate {
-        animation: fadeIn 0.5s ease forwards;
-      }
-
-      /* === ANIMATED GRID === */
-      .grid-zetta-animate {
-        animation: fadeIn 0.5s ease forwards;
-      }
-
-      /* === ANIMATED SECTION === */
-      .section-zetta-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED CONTENT === */
-      .content-zetta-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED BACKGROUND === */
-      .bg-zetta-animate {
-        animation: fadeIn 1s ease forwards;
-      }
-
-      /* === ANIMATED OVERLAY === */
-      .overlay-zetta-animate {
-        animation: fadeIn 0.5s ease forwards;
-      }
-
-      /* === ANIMATED TEXT === */
-      .text-zetta-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED IMAGE === */
-      .image-yotta-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED ICON === */
-      .icon-yotta-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED BUTTON === */
-      .button-yotta-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED CARD === */
-      .card-yotta-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED LIST === */
-      .list-yotta-animate {
-        animation: fadeIn 0.5s ease forwards;
-      }
-
-      /* === ANIMATED GRID === */
-      .grid-yotta-animate {
-        animation: fadeIn 0.5s ease forwards;
-      }
-
-      /* === ANIMATED SECTION === */
-      .section-yotta-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED CONTENT === */
-      .content-yotta-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED BACKGROUND === */
-      .bg-yotta-animate {
-        animation: fadeIn 1s ease forwards;
-      }
-
-      /* === ANIMATED OVERLAY === */
-      .overlay-yotta-animate {
-        animation: fadeIn 0.5s ease forwards;
-      }
-
-      /* === ANIMATED TEXT === */
-      .text-yotta-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED IMAGE === */
-      .image-bronto-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED ICON === */
-      .icon-bronto-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED BUTTON === */
-      .button-bronto-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED CARD === */
-      .card-bronto-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED LIST === */
-      .list-bronto-animate {
-        animation: fadeIn 0.5s ease forwards;
-      }
-
-      /* === ANIMATED GRID === */
-      .grid-bronto-animate {
-        animation: fadeIn 0.5s ease forwards;
-      }
-
-      /* === ANIMATED SECTION === */
-      .section-bronto-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED CONTENT === */
-      .content-bronto-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED BACKGROUND === */
-      .bg-bronto-animate {
-        animation: fadeIn 1s ease forwards;
-      }
-
-      /* === ANIMATED OVERLAY === */
-      .overlay-bronto-animate {
-        animation: fadeIn 0.5s ease forwards;
-      }
-
-      /* === ANIMATED TEXT === */
-      .text-bronto-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED IMAGE === */
-      .image-infinity-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED ICON === */
-      .icon-infinity-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED BUTTON === */
-      .button-infinity-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED CARD === */
-      .card-infinity-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED LIST === */
-      .list-infinity-animate {
-        animation: fadeIn 0.5s ease forwards;
-      }
-
-      /* === ANIMATED GRID === */
-      .grid-infinity-animate {
-        animation: fadeIn 0.5s ease forwards;
-      }
-
-      /* === ANIMATED SECTION === */
-      .section-infinity-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED CONTENT === */
-      .content-infinity-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === ANIMATED BACKGROUND === */
-      .bg-infinity-animate {
-        animation: fadeIn 1s ease forwards;
-      }
-
-      /* === ANIMATED OVERLAY === */
-      .overlay-infinity-animate {
-        animation: fadeIn 0.5s ease forwards;
-      }
-
-      /* === ANIMATED TEXT === */
-      .text-infinity-animate {
-        animation: fadeIn 0.8s ease forwards;
-      }
-
-      /* === GLOBAL ANIMATIONS === */
-      @keyframes globalPulse {
-        0%, 100% { transform: scale(1); }
-        50% { transform: scale(1.05); }
-      }
-
-      @keyframes globalGlow {
-        0%, 100% { box-shadow: 0 0 20px rgba(245, 158, 11, 0.3); }
-        50% { box-shadow: 0 0 40px rgba(245, 158, 11, 0.6); }
-      }
-
-      @keyframes globalFloat {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-10px); }
-      }
-
-      @keyframes globalShake {
-        0%, 100% { transform: translateX(0); }
-        25% { transform: translateX(-5px); }
-        75% { transform: translateX(5px); }
-      }
-
-      @keyframes globalSpin {
-        from { transform: rotate(0deg); }
-        to { transform: rotate(360deg); }
-      }
-
-      @keyframes globalBounce {
-        0%, 100% { transform: translateY(0); }
-        50% { transform: translateY(-10px); }
-      }
-
-      @keyframes globalSwing {
-        0%, 100% { transform: rotate(0deg); }
-        25% { transform: rotate(5deg); }
-        75% { transform: rotate(-5deg); }
-      }
-
-      @keyframes globalTada {
-        0%, 100% { transform: scale(1) rotate(0deg); }
-        10%, 20% { transform: scale(0.9) rotate(-3deg); }
-        30%, 50%, 70%, 90% { transform: scale(1.1) rotate(3deg); }
-        40%, 60%, 80% { transform: scale(1.1) rotate(-3deg); }
-      }
-
-      @keyframes globalWobble {
-        0% { transform: translateX(0); }
-        15% { transform: translateX(-10px) rotate(-5deg); }
-        30% { transform: translateX(8px) rotate(3deg); }
-        45% { transform: translateX(-6px) rotate(-3deg); }
-        60% { transform: translateX(4px) rotate(2deg); }
-        75% { transform: translateX(-2px) rotate(-1deg); }
-        100% { transform: translateX(0); }
-      }
-
-      @keyframes globalJello {
-        0%, 100% { transform: skewX(0deg) skewY(0deg); }
-        30% { transform: skewX(-5deg) skewY(-5deg); }
-        60% { transform: skewX(3deg) skewY(3deg); }
-        90% { transform: skewX(-2deg) skewY(-2deg); }
-      }
-
-      @keyframes globalHeartbeat {
-        0%, 100% { transform: scale(1); }
-        14% { transform: scale(1.3); }
-        28% { transform: scale(1); }
-        42% { transform: scale(1.3); }
-        70% { transform: scale(1); }
-      }
-
-      /* === COMBINED ANIMATIONS === */
-      .combined-float-glow {
-        animation: float 3s ease-in-out infinite, glowPulse 2s ease-in-out infinite;
-      }
-
-      .combined-float-pulse {
-        animation: float 3s ease-in-out infinite, pulse 2s ease-in-out infinite;
-      }
-
-      .combined-glow-pulse {
-        animation: glowPulse 2s ease-in-out infinite, pulse 2s ease-in-out infinite;
-      }
-
-      .combined-float-glow-pulse {
-        animation: float 3s ease-in-out infinite, glowPulse 2s ease-in-out infinite, pulse 2s ease-in-out infinite;
-      }
-
-      /* === SPECIAL COMBINED === */
-      .special-hero {
-        animation: fadeInUp 1s ease forwards, float 3s ease-in-out infinite 1s;
-      }
-
-      .special-card {
-        animation: fadeInUp 0.8s ease forwards, glowPulse 2s ease-in-out infinite 0.8s;
-      }
-
-      .special-button {
-        animation: fadeInUp 0.8s ease forwards, pulse 2s ease-in-out infinite 0.8s;
-      }
-
-      .special-icon {
-        animation: fadeIn 0.8s ease forwards, bounce 1s ease-in-out infinite 0.8s;
-      }
-
-      .special-text {
-        animation: fadeInUp 0.8s ease forwards, glowText 2s ease-in-out infinite 0.8s;
-      }
-
-      .special-image {
-        animation: fadeIn 1s ease forwards, float 3s ease-in-out infinite 1s;
-      }
-
-      .special-badge {
-        animation: fadeIn 0.8s ease forwards, pulse 2s ease-in-out infinite 0.8s;
-      }
-
-      .special-counter {
-        animation: countUp 0.8s ease forwards, pulse 2s ease-in-out infinite 0.8s;
-      }
-
-      .special-progress {
-        animation: progressFill 2s ease forwards, glowPulse 2s ease-in-out infinite 2s;
-      }
-
-      .special-divider {
-        animation: progressFill 2s ease forwards;
-      }
-
-      /* === RESPONSIVE ANIMATIONS === */
+      /* Responsive */
       @media (max-width: 768px) {
-        .hero-animate { animation: fadeInUp 0.8s ease forwards; }
-        .hero-animate-delay-1 { animation-delay: 0.1s; }
-        .hero-animate-delay-2 { animation-delay: 0.2s; }
-        .hero-animate-delay-3 { animation-delay: 0.3s; }
-        .hero-animate-delay-4 { animation-delay: 0.4s; }
-        
-        .float { animation: float 4s ease-in-out infinite; }
-        .float-slow { animation: floatSlow 5s ease-in-out infinite; }
-        
-        .glow { animation: glow 3s ease-in-out infinite; }
-        .pulse { animation: pulse 3s ease-in-out infinite; }
-        .pulse-dot { animation: pulseDot 2s ease-in-out infinite; }
-        
-        .rotate-slow { animation: rotate 25s linear infinite; }
-        .spin-slow { animation: spin 10s linear infinite; }
-        
-        .bounce { animation: bounce 1.5s ease-in-out infinite; }
-        .shake:hover { animation: shake 0.8s ease-in-out; }
-        
-        .glow-text { animation: glowText 3s ease-in-out infinite; }
-        .neon { animation: neon 3s ease-in-out infinite; }
-        .neon-flicker { animation: neonFlicker 2s ease-in-out infinite; }
-        
-        .morph { animation: morph 10s ease-in-out infinite; }
-        .aurora { animation: aurora 20s ease infinite; }
-        
-        .wave { animation: wave 2.5s ease-in-out infinite; }
-        .wave-delay-1 { animation-delay: 0.3s; }
-        .wave-delay-2 { animation-delay: 0.6s; }
-        .wave-delay-3 { animation-delay: 0.9s; }
-        
-        .orbit { animation: orbit 7s linear infinite; }
-        .dna-helix { animation: dnaHelix 4s ease-in-out infinite; }
-        .breathing { animation: breathing 4s ease-in-out infinite; }
-        
-        .glow-pulse { animation: glowPulse 3s ease-in-out infinite; }
-        .text-glow-pulse { animation: textGlowPulse 3s ease-in-out infinite; }
-        .border-glow-pulse { animation: borderGlowPulse 3s ease-in-out infinite; }
-        
-        .effect-combined { animation: float 4s ease-in-out infinite, glowPulse 3s ease-in-out infinite; }
-        
-        .scroll-progress { height: 2px; }
-        
-        .back-to-top { width: 40px; height: 40px; bottom: 80px; right: 16px; }
-        
-        .counter-box { min-width: 30px; padding: 2px 6px; font-size: 14px; }
-        
-        .loading-spinner { width: 30px; height: 30px; border-width: 3px; }
-        
-        .progress-bar { height: 3px; }
-      }
-
-      /* === DARK MODE ANIMATIONS === */
-      @media (prefers-color-scheme: dark) {
-        .glow { box-shadow: 0 0 30px rgba(245, 158, 11, 0.4); }
-        .glow:hover { box-shadow: 0 0 50px rgba(245, 158, 11, 0.7); }
-        
-        .glow-text { text-shadow: 0 0 15px rgba(245, 158, 11, 0.6); }
-        .glow-text:hover { text-shadow: 0 0 25px rgba(245, 158, 11, 0.9); }
-        
-        .neon { text-shadow: 0 0 15px #F59E0B, 0 0 30px #F59E0B, 0 0 60px #F59E0B; }
-        .neon-flicker { text-shadow: 0 0 15px #F59E0B, 0 0 30px #F59E0B, 0 0 60px #F59E0B; }
-        
-        .glow-pulse { box-shadow: 0 0 15px rgba(245, 158, 11, 0.4); }
-        .glow-pulse:hover { box-shadow: 0 0 40px rgba(245, 158, 11, 0.9); }
-        
-        .text-glow-pulse { text-shadow: 0 0 15px rgba(245, 158, 11, 0.6); }
-        .text-glow-pulse:hover { text-shadow: 0 0 40px rgba(245, 158, 11, 1); }
-        
-        .border-glow-pulse { box-shadow: 0 0 15px rgba(245, 158, 11, 0.3); }
-        .border-glow-pulse:hover { box-shadow: 0 0 40px rgba(245, 158, 11, 0.8); }
-      }
-
-      /* === PRINT ANIMATIONS === */
-      @media print {
-        .float, .float-slow, .glow, .pulse, .pulse-dot, .rotate-slow, .spin-slow, 
-        .bounce, .shake, .glow-text, .neon, .neon-flicker, .morph, .aurora, 
-        .wave, .orbit, .dna-helix, .breathing, .glow-pulse, .text-glow-pulse, 
-        .border-glow-pulse, .effect-combined, .scroll-progress, .back-to-top,
-        .counter-box, .loading-spinner, .progress-bar, .animated-gradient,
-        .hero-animate, .hero-animate-delay-1, .hero-animate-delay-2, 
-        .hero-animate-delay-3, .hero-animate-delay-4 {
-          animation: none !important;
-          transition: none !important;
-        }
-      }
-
-      /* === REDUCED MOTION === */
-      @media (prefers-reduced-motion: reduce) {
-        *, *::before, *::after {
-          animation-duration: 0.01ms !important;
-          animation-iteration-count: 1 !important;
-          transition-duration: 0.01ms !important;
-          scroll-behavior: auto !important;
-        }
-      }
-
-      /* === PRINT STYLES === */
-      @media print {
-        body { background: white !important; color: black !important; }
-        .cta-btn, .card-hover, .glow, .pulse, .float, .bounce, .shake, 
-        .glow-text, .neon, .neon-flicker, .morph, .aurora, .wave, .orbit, 
-        .dna-helix, .breathing, .glow-pulse, .text-glow-pulse, .border-glow-pulse,
-        .effect-combined, .scroll-progress, .back-to-top, .counter-box, 
-        .loading-spinner, .progress-bar, .animated-gradient, .hero-animate, 
-        .hero-animate-delay-1, .hero-animate-delay-2, .hero-animate-delay-3, 
-        .hero-animate-delay-4, .scroll-reveal, .scroll-reveal-left, 
-        .scroll-reveal-right, .scroll-reveal-scale, .stagger-children, 
-        .section-animate, .grid-animate, .list-animate, .text-animate, 
-        .image-animate, .bg-animate, .overlay-animate, .badge-animate, 
-        .counter-animate, .divider-animate, .progress-animate, .skill-animate, 
-        .testimonial-animate, .pricing-animate, .cta-animate, .stat-animate, 
-        .feature-animate, .step-animate, .icon-animate, .number-animate, 
-        .title-animate, .subtitle-animate, .description-animate, .button-animate, 
-        .card-animate, .list-item-animate, .grid-item-animate, .section-title-animate, 
-        .content-animate, .bg-slide-animate, .overlay-slide-animate, .text-slide-animate, 
-        .image-zoom-animate, .icon-rotate-animate, .button-bounce-animate, 
-        .card-3d-animate, .list-slide-animate, .grid-fade-animate, .section-zoom-animate, 
-        .content-slide-animate, .bg-fade-animate, .overlay-fade-animate, .text-fade-animate, 
-        .image-slide-animate, .icon-bounce-animate, .button-fade-animate, .card-slide-animate, 
-        .list-fade-animate, .grid-slide-animate, .section-fade-animate, .content-fade-animate, 
-        .bg-zoom-animate, .overlay-zoom-animate, .text-zoom-animate, .image-fade-animate, 
-        .icon-fade-animate, .button-slide-animate, .card-fade-animate, .list-zoom-animate, 
-        .grid-zoom-animate, .section-slide-animate, .content-zoom-animate, .bg-fade-slide-animate, 
-        .overlay-fade-slide-animate, .text-fade-slide-animate, .image-fade-zoom-animate, 
-        .icon-fade-slide-animate, .button-fade-zoom-animate, .card-fade-slide-animate, 
-        .list-fade-zoom-animate, .grid-fade-zoom-animate, .section-fade-zoom-animate, 
-        .content-fade-zoom-animate, .bg-fade-zoom-animate, .overlay-fade-zoom-animate, 
-        .text-fade-zoom-animate, .image-fade-slide-zoom-animate, .icon-fade-slide-zoom-animate, 
-        .button-fade-slide-zoom-animate, .card-fade-slide-zoom-animate, .list-fade-slide-zoom-animate, 
-        .grid-fade-slide-zoom-animate, .section-fade-slide-zoom-animate, .content-fade-slide-zoom-animate, 
-        .bg-fade-slide-zoom-animate, .overlay-fade-slide-zoom-animate, .text-fade-slide-zoom-animate, 
-        .image-all-animate, .icon-all-animate, .button-all-animate, .card-all-animate, 
-        .list-all-animate, .grid-all-animate, .section-all-animate, .content-all-animate, 
-        .bg-all-animate, .overlay-all-animate, .text-all-animate, .image-perfect-animate, 
-        .icon-perfect-animate, .button-perfect-animate, .card-perfect-animate, .list-perfect-animate, 
-        .grid-perfect-animate, .section-perfect-animate, .content-perfect-animate, .bg-perfect-animate, 
-        .overlay-perfect-animate, .text-perfect-animate, .image-master-animate, .icon-master-animate, 
-        .button-master-animate, .card-master-animate, .list-master-animate, .grid-master-animate, 
-        .section-master-animate, .content-master-animate, .bg-master-animate, .overlay-master-animate, 
-        .text-master-animate, .image-ultimate-animate, .icon-ultimate-animate, .button-ultimate-animate, 
-        .card-ultimate-animate, .list-ultimate-animate, .grid-ultimate-animate, .section-ultimate-animate, 
-        .content-ultimate-animate, .bg-ultimate-animate, .overlay-ultimate-animate, .text-ultimate-animate, 
-        .image-final-animate, .icon-final-animate, .button-final-animate, .card-final-animate, 
-        .list-final-animate, .grid-final-animate, .section-final-animate, .content-final-animate, 
-        .bg-final-animate, .overlay-final-animate, .text-final-animate, .image-complete-animate, 
-        .icon-complete-animate, .button-complete-animate, .card-complete-animate, .list-complete-animate, 
-        .grid-complete-animate, .section-complete-animate, .content-complete-animate, .bg-complete-animate, 
-        .overlay-complete-animate, .text-complete-animate, .image-super-animate, .icon-super-animate, 
-        .button-super-animate, .card-super-animate, .list-super-animate, .grid-super-animate, 
-        .section-super-animate, .content-super-animate, .bg-super-animate, .overlay-super-animate, 
-        .text-super-animate, .image-mega-animate, .icon-mega-animate, .button-mega-animate, 
-        .card-mega-animate, .list-mega-animate, .grid-mega-animate, .section-mega-animate, 
-        .content-mega-animate, .bg-mega-animate, .overlay-mega-animate, .text-mega-animate, 
-        .image-giga-animate, .icon-giga-animate, .button-giga-animate, .card-giga-animate, 
-        .list-giga-animate, .grid-giga-animate, .section-giga-animate, .content-giga-animate, 
-        .bg-giga-animate, .overlay-giga-animate, .text-giga-animate, .image-tera-animate, 
-        .icon-tera-animate, .button-tera-animate, .card-tera-animate, .list-tera-animate, 
-        .grid-tera-animate, .section-tera-animate, .content-tera-animate, .bg-tera-animate, 
-        .overlay-tera-animate, .text-tera-animate, .image-peta-animate, .icon-peta-animate, 
-        .button-peta-animate, .card-peta-animate, .list-peta-animate, .grid-peta-animate, 
-        .section-peta-animate, .content-peta-animate, .bg-peta-animate, .overlay-peta-animate, 
-        .text-peta-animate, .image-exa-animate, .icon-exa-animate, .button-exa-animate, 
-        .card-exa-animate, .list-exa-animate, .grid-exa-animate, .section-exa-animate, 
-        .content-exa-animate, .bg-exa-animate, .overlay-exa-animate, .text-exa-animate, 
-        .image-zetta-animate, .icon-zetta-animate, .button-zetta-animate, .card-zetta-animate, 
-        .list-zetta-animate, .grid-zetta-animate, .section-zetta-animate, .content-zetta-animate, 
-        .bg-zetta-animate, .overlay-zetta-animate, .text-zetta-animate, .image-yotta-animate, 
-        .icon-yotta-animate, .button-yotta-animate, .card-yotta-animate, .list-yotta-animate, 
-        .grid-yotta-animate, .section-yotta-animate, .content-yotta-animate, .bg-yotta-animate, 
-        .overlay-yotta-animate, .text-yotta-animate, .image-bronto-animate, .icon-bronto-animate, 
-        .button-bronto-animate, .card-bronto-animate, .list-bronto-animate, .grid-bronto-animate, 
-        .section-bronto-animate, .content-bronto-animate, .bg-bronto-animate, .overlay-bronto-animate, 
-        .text-bronto-animate, .image-infinity-animate, .icon-infinity-animate, .button-infinity-animate, 
-        .card-infinity-animate, .list-infinity-animate, .grid-infinity-animate, .section-infinity-animate, 
-        .content-infinity-animate, .bg-infinity-animate, .overlay-infinity-animate, .text-infinity-animate {
-          animation: none !important;
-          transition: none !important;
-        }
+        .hero-grid { flex-direction: column !important; }
+        .course-grid { grid-template-columns: 1fr !important; }
+        .teachers-grid { grid-template-columns: 1fr !important; }
       }
     </style>
   </head>
   <body>
-    <div class="box-border w-full max-w-[1440px] mx-auto flex flex-col bg-[#0A0F1A] overflow-hidden">
+    <!-- Scroll Progress -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+    
+    <div class="box-border w-full max-w-[1440px] mx-auto flex flex-col overflow-hidden">
       
       <!-- NAV -->
-      <nav class="nav-inner box-border w-full flex flex-row p-[16px_20px] md:p-[20px_60px] justify-between items-center sticky top-0 z-50 bg-[#0A0F1A]/95 backdrop-blur-sm border-b border-white/10">
+      <nav class="box-border w-full flex flex-row p-[16px_20px] md:p-[20px_60px] justify-between items-center sticky top-0 z-50 bg-[#0A0F1A]/95 backdrop-blur-sm border-b border-white/10">
         <div class="flex items-center gap-2">
           <span class="text-[20px] md:text-[22px] font-bold text-[#F9FAFB]">Urianálise</span>
           <span class="text-[20px] md:text-[22px] font-medium italic text-[#F59E0B]">na Prática</span>
+        </div>
+        <div class="hidden md:flex items-center gap-8">
+          <a href="#cursos" class="text-[14px] text-[#9CA3AF] hover:text-[#F59E0B] transition-colors">CURSOS</a>
+          <a href="#sobre" class="text-[14px] text-[#9CA3AF] hover:text-[#F59E0B] transition-colors">SOBRE</a>
+          <a href="#depoimentos" class="text-[14px] text-[#9CA3AF] hover:text-[#F59E0B] transition-colors">DEPOIMENTOS</a>
+          <a href="#professores" class="text-[14px] text-[#9CA3AF] hover:text-[#F59E0B] transition-colors">PROFESSORES</a>
+          <a href="#faq" class="text-[14px] text-[#9CA3AF] hover:text-[#F59E0B] transition-colors">FAQ</a>
         </div>
         <a href="https://pay.hotmart.com/S102786906P?checkoutMode=2" target="_blank" rel="noopener" class="cta-btn bg-[#F59E0B] text-[#0A0F1A] font-semibold text-[13px] md:text-[14px] px-[16px] md:px-[24px] py-[10px] md:py-[12px] rounded-lg no-underline">
           GARANTIR MINHA VAGA
@@ -3178,469 +188,559 @@
       </nav>
 
       <!-- HERO -->
-      <section class="section-padding box-border w-full flex flex-col md:flex-row gap-[40px] md:gap-[80px] p-[48px_20px] md:p-[80px_60px] items-center hero-grid">
+      <section class="box-border w-full flex flex-col md:flex-row gap-[40px] md:gap-[60px] p-[48px_20px] md:p-[80px_60px] items-center">
         <div class="flex-1 flex flex-col gap-[20px] md:gap-[24px]">
           <div class="flex items-center gap-2 bg-[#111827] px-4 py-2 rounded-full w-fit">
-            <span class="w-2 h-2 bg-[#10B981] rounded-full"></span>
+            <span class="w-2 h-2 bg-[#10B981] rounded-full pulse"></span>
             <span class="text-[11px] md:text-[12px] font-medium text-[#9CA3AF]">CURSO DIGITAL · PROFISSIONAIS DA SAÚDE</span>
           </div>
-          <h1 class="hero-title text-[32px] md:text-[52px] font-bold text-[#F9FAFB] leading-tight">
+          <h1 class="text-[32px] md:text-[48px] font-bold text-[#F9FAFB] leading-tight">
             70% dos erros laboratoriais acontecem antes de você colocar a amostra no microscópio.
           </h1>
           <p class="text-[16px] md:text-[18px] text-[#9CA3AF] leading-relaxed">
             Mas é na microscopia que o erro mais custa. Porque quando você erra na fase pré-analítica, o laboratório refaz a coleta. Quando você erra na microscopia, o médico libera o tratamento errado. E o paciente paga o preço.
           </p>
-          <a href="https://pay.hotmart.com/S102786906P?checkoutMode=2" target="_blank" rel="noopener" class="cta-btn inline-flex items-center justify-center gap-3 bg-[#F59E0B] text-[#0A0F1A] font-bold text-[14px] md:text-[16px] px-[24px] md:px-[32px] py-[14px] md:py-[18px] rounded-lg no-underline w-fit">
+          <a href="https://pay.hotmart.com/S102786906P?checkoutMode=2" target="_blank" rel="noopener" class="cta-btn inline-flex items-center justify-center gap-3 bg-[#F59E0B] text-[#0A0F1A] font-bold text-[14px] md:text-[16px] px-[24px] md:px-[32px] py-[14px] md:py-[18px] rounded-lg no-underline w-fit glow">
             GARANTIR MINHA VAGA AGORA
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
           </a>
           <p class="text-[12px] text-[#9CA3AF]">Acesso imediato · garantia de 7 dias · hospedado na Hotmart</p>
         </div>
         <div class="flex-1 w-full">
-          <div class="w-full h-[300px] md:h-[400px] bg-gradient-to-br from-[#111827] to-[#1F2937] rounded-2xl flex items-center justify-center overflow-hidden">
-            <div class="text-center p-8">
-              <div class="text-6xl mb-4">🔬</div>
-              <p class="text-[#9CA3AF] text-sm">Urianálise na Prática</p>
+          <div class="w-full h-[300px] md:h-[400px] rounded-2xl overflow-hidden hero-glow">
+            <img src="img/hero-microscope.jpg" alt="Microscopia urinária" class="w-full h-full object-cover" onerror="this.src='img/slide-01.jpg'; this.onerror=null;">
+          </div>
+        </div>
+      </section>
+
+      <!-- CURSO -->
+      <section id="cursos" class="box-border w-full p-[48px_20px] md:p-[80px_60px] bg-[#111827]">
+        <div class="flex flex-col gap-4 mb-12">
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-2 bg-[#F59E0B] rounded-full"></span>
+            <span class="text-[12px] md:text-[13px] font-semibold text-[#F59E0B] uppercase tracking-wider">Vitrine de Cursos</span>
+          </div>
+          <h2 class="text-[28px] md:text-[40px] font-bold text-[#F9FAFB]">Conheça nosso curso</h2>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <!-- Curso 1 -->
+          <div class="card-hover bg-[#0A0F1A] rounded-2xl overflow-hidden border border-white/10">
+            <div class="relative h-[200px] overflow-hidden">
+              <img src="img/galeria-microscopia.jpg" alt="Curso Urianálise" class="w-full h-full object-cover">
+              <div class="absolute top-4 left-4 bg-[#F59E0B] text-[#0A0F1A] px-3 py-1 rounded-full text-[12px] font-bold">58% OFF</div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-[20px] font-bold text-[#F9FAFB] mb-2">Curso Completo de Urianálise</h3>
+              <p class="text-[13px] text-[#10B981] mb-4">30 horas de certificado</p>
+              <div class="mb-4">
+                <p class="text-[12px] text-[#9CA3AF] line-through">R$ 158,00</p>
+                <p class="text-[32px] font-bold text-[#F59E0B]">R$ 67,00</p>
+                <p class="text-[13px] text-[#9CA3AF]">Ou apenas 6x de R$ 12,57</p>
+              </div>
+              <a href="https://pay.hotmart.com/S102786906P?checkoutMode=2" target="_blank" rel="noopener" class="cta-btn block text-center bg-[#F59E0B] text-[#0A0F1A] font-bold text-[14px] px-6 py-4 rounded-lg no-underline mb-4">
+                COMECE AGORA MESMO
+              </a>
+              <div class="border-t border-white/10 pt-4">
+                <p class="text-[13px] text-[#9CA3AF] font-semibold mb-2">Sobre o curso:</p>
+                <p class="text-[13px] text-[#9CA3AF] leading-relaxed">Domine a interpretação da urina com nosso curso completo. Desenvolvido por especialistas, oferece uma abordagem prática para identificar achados, correlacionar com o quadro clínico e liberar laudos com confiança.</p>
+                <p class="text-[13px] text-[#F59E0B] mt-2">Curso dividido em 5 módulos.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Curso 2 -->
+          <div class="card-hover bg-[#0A0F1A] rounded-2xl overflow-hidden border border-white/10">
+            <div class="relative h-[200px] overflow-hidden">
+              <img src="img/celula-epitelial-escamosa.jpg" alt="Sedimentoscopia" class="w-full h-full object-cover">
+              <div class="absolute top-4 left-4 bg-[#10B981] text-white px-3 py-1 rounded-full text-[12px] font-bold">INCLUSO</div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-[20px] font-bold text-[#F9FAFB] mb-2">Módulo: Sedimentoscopia</h3>
+              <p class="text-[13px] text-[#10B981] mb-4">10 horas de certificado</p>
+              <div class="mb-4">
+                <p class="text-[12px] text-[#9CA3AF] line-through">R$ 97,00</p>
+                <p class="text-[32px] font-bold text-[#F59E0B]">R$ 0,00</p>
+                <p class="text-[13px] text-[#9CA3AF]">Incluso no curso completo</p>
+              </div>
+              <a href="https://pay.hotmart.com/S102786906P?checkoutMode=2" target="_blank" rel="noopener" class="cta-btn block text-center bg-[#1F2937] text-[#F9FAFB] font-bold text-[14px] px-6 py-4 rounded-lg no-underline mb-4 border border-[#F59E0B]/30">
+                VER DETALHES
+              </a>
+              <div class="border-t border-white/10 pt-4">
+                <p class="text-[13px] text-[#9CA3AF] font-semibold mb-2">Sobre o módulo:</p>
+                <p class="text-[13px] text-[#9CA3AF] leading-relaxed">Aprofunde-se na microscopia urinária. Identifique cilindros, cristais, células e bactérias com imagens reais de lâmina e cases do dia a dia laboratorial.</p>
+                <p class="text-[13px] text-[#F59E0B] mt-2">Módulo dividido em 3 partes.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Curso 3 -->
+          <div class="card-hover bg-[#0A0F1A] rounded-2xl overflow-hidden border border-white/10">
+            <div class="relative h-[200px] overflow-hidden">
+              <img src="img/leucocitos.jpg" alt="Correlação Clínica" class="w-full h-full object-cover">
+              <div class="absolute top-4 left-4 bg-[#10B981] text-white px-3 py-1 rounded-full text-[12px] font-bold">INCLUSO</div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-[20px] font-bold text-[#F9FAFB] mb-2">Módulo: Correlação Clínica</h3>
+              <p class="text-[13px] text-[#10B981] mb-4">8 horas de certificado</p>
+              <div class="mb-4">
+                <p class="text-[12px] text-[#9CA3AF] line-through">R$ 97,00</p>
+                <p class="text-[32px] font-bold text-[#F59E0B]">R$ 0,00</p>
+                <p class="text-[13px] text-[#9CA3AF]">Incluso no curso completo</p>
+              </div>
+              <a href="https://pay.hotmart.com/S102786906P?checkoutMode=2" target="_blank" rel="noopener" class="cta-btn block text-center bg-[#1F2937] text-[#F9FAFB] font-bold text-[14px] px-6 py-4 rounded-lg no-underline mb-4 border border-[#F59E0B]/30">
+                VER DETALHES
+              </a>
+              <div class="border-t border-white/10 pt-4">
+                <p class="text-[13px] text-[#9CA3AF] font-semibold mb-2">Sobre o módulo:</p>
+                <p class="text-[13px] text-[#9CA3AF] leading-relaxed">Relacione o achado laboratorial com o quadro clínico. Diferencie contaminação de ITU verdadeira. Identifique sinais de doença renal.</p>
+                <p class="text-[13px] text-[#F59E0B] mt-2">Módulo dividido em 3 partes.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Curso 4 -->
+          <div class="card-hover bg-[#0A0F1A] rounded-2xl overflow-hidden border border-white/10">
+            <div class="relative h-[200px] overflow-hidden">
+              <img src="img/bacterias.jpg" alt="Laudo e Validação" class="w-full h-full object-cover">
+              <div class="absolute top-4 left-4 bg-[#10B981] text-white px-3 py-1 rounded-full text-[12px] font-bold">INCLUSO</div>
+            </div>
+            <div class="p-6">
+              <h3 class="text-[20px] font-bold text-[#F9FAFB] mb-2">Módulo: Laudo e Validação</h3>
+              <p class="text-[13px] text-[#10B981] mb-4">6 horas de certificado</p>
+              <div class="mb-4">
+                <p class="text-[12px] text-[#9CA3AF] line-through">R$ 97,00</p>
+                <p class="text-[32px] font-bold text-[#F59E0B]">R$ 0,00</p>
+                <p class="text-[13px] text-[#9CA3AF]">Incluso no curso completo</p>
+              </div>
+              <a href="https://pay.hotmart.com/S102786906P?checkoutMode=2" target="_blank" rel="noopener" class="cta-btn block text-center bg-[#1F2937] text-[#F9FAFB] font-bold text-[14px] px-6 py-4 rounded-lg no-underline mb-4 border border-[#F59E0B]/30">
+                VER DETALHES
+              </a>
+              <div class="border-t border-white/10 pt-4">
+                <p class="text-[13px] text-[#9CA3AF] font-semibold mb-2">Sobre o módulo:</p>
+                <p class="text-[13px] text-[#9CA3AF] leading-relaxed">Emita laudos completos, claros e defensáveis. O que escrever, o que não escrever e como validar com segurança.</p>
+                <p class="text-[13px] text-[#F59E0B] mt-2">Módulo dividido em 2 partes.</p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- PROBLEMA -->
-      <section class="section-padding box-border w-full flex flex-col gap-[32px] md:gap-[48px] p-[48px_20px] md:p-[80px_60px] bg-[#111827]">
-        <div class="flex flex-col gap-4">
-          <div class="flex items-center gap-2">
-            <span class="w-2 h-2 bg-[#F59E0B] rounded-full"></span>
-            <span class="text-[12px] md:text-[13px] font-semibold text-[#F59E0B] uppercase tracking-wider">O Problema</span>
-          </div>
-          <h2 class="text-[28px] md:text-[40px] font-bold text-[#F9FAFB]">Você sabe disso.</h2>
-        </div>
-        <div class="flex flex-col gap-6">
-          <p class="text-[15px] md:text-[17px] text-[#9CA3AF] leading-relaxed max-w-3xl">
-            Já olhou para um sedimento urinário e sentiu aquele nó no estômago.
-          </p>
-          <div class="flex flex-col gap-3 bg-[#0A0F1A] p-6 rounded-xl">
-            <p class="text-[14px] md:text-[15px] text-[#F9FAFB] italic">"Cilindro ou contaminante?"</p>
-            <p class="text-[14px] md:text-[15px] text-[#F9FAFB] italic">"Esses leucócitos são ITU ou contaminação da coleta?"</p>
-            <p class="text-[14px] md:text-[15px] text-[#F9FAFB] italic">"O equipamento deu um resultado, mas eu vejo outro..."</p>
-          </div>
-          <p class="text-[15px] md:text-[17px] text-[#9CA3AF] leading-relaxed max-w-3xl">
-            A faculdade te deu uma aula rápida sobre urinálise. Depois te jogou na bancada e esperou que você soubesse interpretar.
-          </p>
-          <p class="text-[15px] md:text-[17px] text-[#9CA3AF] leading-relaxed max-w-3xl">
-            Mas sedimentoscopia não se aprende em aula teórica. Se aprende olhando para lâmina. Errando. Corrigindo. E tendo alguém que te guia.
-          </p>
-          <p class="text-[16px] md:text-[18px] text-[#F9FAFB] font-semibold max-w-3xl">
-            O problema não é que você não sabe. O problema é que ninguém te ensinou de verdade.
-          </p>
-        </div>
-      </section>
-
-      <!-- MECANISMO -->
-      <section class="section-padding box-border w-full flex flex-col gap-[32px] md:gap-[48px] p-[48px_20px] md:p-[80px_60px]">
-        <div class="flex flex-col gap-4">
-          <div class="flex items-center gap-2">
-            <span class="w-2 h-2 bg-[#F59E0B] rounded-full"></span>
-            <span class="text-[12px] md:text-[13px] font-semibold text-[#F59E0B] uppercase tracking-wider">O Método</span>
-          </div>
-          <h2 class="text-[28px] md:text-[40px] font-bold text-[#F9FAFB]">Urianálise em 3 Camadas</h2>
-          <p class="text-[15px] md:text-[17px] text-[#9CA3AF] leading-relaxed max-w-3xl">
-            O problema não é só falta de conteúdo. É conteúdo solto, sem conexão com a rotina. Aqui você aprende a enxergar a urina por etapas, para interpretar com lógica e não no chute.
-          </p>
-        </div>
-        <div class="camadas-grid grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div class="card-hover bg-[#111827] p-6 md:p-8 rounded-2xl">
-            <span class="w-12 h-12 bg-[#F59E0B] rounded-xl flex items-center justify-center text-[#0A0F1A] font-bold text-lg mb-4">01</span>
-            <h3 class="text-[18px] md:text-[22px] font-semibold text-[#F9FAFB] mb-3">Pré-analítico</h3>
-            <p class="text-[14px] md:text-[15px] text-[#9CA3AF] leading-relaxed">Coleta, conservação e transporte — onde a maioria dos erros de laudo realmente começa.</p>
-          </div>
-          <div class="card-hover bg-[#111827] p-6 md:p-8 rounded-2xl">
-            <span class="w-12 h-12 bg-[#10B981] rounded-xl flex items-center justify-center text-[#0A0F1A] font-bold text-lg mb-4">02</span>
-            <h3 class="text-[18px] md:text-[22px] font-semibold text-[#F9FAFB] mb-3">Físico-química</h3>
-            <p class="text-[14px] md:text-[15px] text-[#9CA3AF] leading-relaxed">Volume, cor, densidade, pH e a correlação de cada marcador da fita reagente.</p>
-          </div>
-          <div class="card-hover bg-[#111827] p-6 md:p-8 rounded-2xl">
-            <span class="w-12 h-12 bg-[#8B5CF6] rounded-xl flex items-center justify-center text-[#0A0F1A] font-bold text-lg mb-4">03</span>
-            <h3 class="text-[18px] md:text-[22px] font-semibold text-[#F9FAFB] mb-3">Microscopia</h3>
-            <p class="text-[14px] md:text-[15px] text-[#9CA3AF] leading-relaxed">Cristais, cilindros, células e elementos figurados, identificados com critério.</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- PÚBLICO IDEAL -->
-      <section class="section-padding box-border w-full flex flex-col gap-[32px] md:gap-[48px] p-[48px_20px] md:p-[80px_60px] bg-[#111827]">
-        <div class="flex flex-col gap-4">
-          <div class="flex items-center gap-2">
-            <span class="w-2 h-2 bg-[#F59E0B] rounded-full"></span>
-            <span class="text-[12px] md:text-[13px] font-semibold text-[#F59E0B] uppercase tracking-wider">Para quem é</span>
-          </div>
-          <h2 class="text-[28px] md:text-[40px] font-bold text-[#F9FAFB]">Feito para quem lida com a urina na prática</h2>
-        </div>
-        <div class="publico-grid grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div class="bg-[#0A0F1A] p-6 md:p-8 rounded-2xl">
-            <h3 class="text-[18px] md:text-[20px] font-semibold text-[#10B981] mb-5">✓ Para quem é</h3>
-            <ul class="space-y-4">
-              <li class="flex items-start gap-3 text-[14px] md:text-[15px] text-[#F9FAFB]">
-                <span class="text-[#10B981] mt-0.5">✓</span>
-                Biomédicos que precisam ganhar mais segurança na leitura da urina
-              </li>
-              <li class="flex items-start gap-3 text-[14px] md:text-[15px] text-[#F9FAFB]">
-                <span class="text-[#10B981] mt-0.5">✓</span>
-                Farmacêuticos que atuam em análises clínicas e querem evitar erros
-              </li>
-              <li class="flex items-start gap-3 text-[14px] md:text-[15px] text-[#F9FAFB]">
-                <span class="text-[#10B981] mt-0.5">✓</span>
-                Médicos que lidam com exames urinários e querem interpretar melhor os achados
-              </li>
-              <li class="flex items-start gap-3 text-[14px] md:text-[15px] text-[#F9FAFB]">
-                <span class="text-[#10B981] mt-0.5">✓</span>
-                Profissionais de enfermagem que desejam entender a urianálise com mais profundidade
-              </li>
-              <li class="flex items-start gap-3 text-[14px] md:text-[15px] text-[#F9FAFB]">
-                <span class="text-[#10B981] mt-0.5">✓</span>
-                Quem trabalha no laboratório e sente que ainda lauda no automático
-              </li>
-              <li class="flex items-start gap-3 text-[14px] md:text-[15px] text-[#F9FAFB]">
-                <span class="text-[#10B981] mt-0.5">✓</span>
-                Quem já viu microscopia urinária, mas ainda trava na hora de identificar estruturas
-              </li>
-            </ul>
-          </div>
-          <div class="bg-[#1F2937] p-6 md:p-8 rounded-2xl">
-            <h3 class="text-[18px] md:text-[20px] font-semibold text-[#EF4444] mb-5">✗ Para quem não é</h3>
-            <ul class="space-y-4">
-              <li class="flex items-start gap-3 text-[14px] md:text-[15px] text-[#9CA3AF]">
-                <span class="text-[#EF4444] mt-0.5">✗</span>
-                Quem quer um conteúdo superficial e sem compromisso com técnica
-              </li>
-              <li class="flex items-start gap-3 text-[14px] md:text-[15px] text-[#9CA3AF]">
-                <span class="text-[#EF4444] mt-0.5">✗</span>
-                Quem não atua e não pretende atuar com exames laboratoriais
-              </li>
-              <li class="flex items-start gap-3 text-[14px] md:text-[15px] text-[#9CA3AF]">
-                <span class="text-[#EF4444] mt-0.5">✗</span>
-                Quem busca promessa mágica sem estudar a base
-              </li>
-              <li class="flex items-start gap-3 text-[14px] md:text-[15px] text-[#9CA3AF]">
-                <span class="text-[#EF4444] mt-0.5">✗</span>
-                Quem não quer aplicar o conteúdo na rotina real
-              </li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <!-- MÓDULOS -->
-      <section class="section-padding box-border w-full flex flex-col gap-[32px] md:gap-[48px] p-[48px_20px] md:p-[80px_60px]">
-        <div class="flex flex-col gap-4">
-          <div class="flex items-center gap-2">
-            <span class="w-2 h-2 bg-[#F59E0B] rounded-full"></span>
-            <span class="text-[12px] md:text-[13px] font-semibold text-[#F59E0B] uppercase tracking-wider">O que você vai aprender</span>
-          </div>
-          <h2 class="text-[28px] md:text-[40px] font-bold text-[#F9FAFB]">5 Módulos Focados em Urianálise</h2>
-        </div>
-        <div class="modulos-grid grid grid-cols-1 md:grid-cols-3 gap-5">
-          <div class="card-hover bg-[#111827] p-6 rounded-2xl">
-            <span class="w-10 h-10 bg-[#F59E0B] rounded-lg flex items-center justify-center text-[#0A0F1A] font-bold text-sm mb-4">01</span>
-            <h3 class="text-[16px] md:text-[18px] font-semibold text-[#F9FAFB] mb-2">Fundamentos da Amostra</h3>
-            <p class="text-[13px] md:text-[14px] text-[#9CA3AF] leading-relaxed">Como coletar, transportar e armazenar corretamente. Por que 70% dos erros começam antes do microscópio. E como evitar cada um deles.</p>
-          </div>
-          <div class="card-hover bg-[#111827] p-6 rounded-2xl">
-            <span class="w-10 h-10 bg-[#10B981] rounded-lg flex items-center justify-center text-[#0A0F1A] font-bold text-sm mb-4">02</span>
-            <h3 class="text-[16px] md:text-[18px] font-semibold text-[#F9FAFB] mb-2">Análise Físico-Química</h3>
-            <p class="text-[13px] md:text-[14px] text-[#9CA3AF] leading-relaxed">Cor, densidade, pH, fita reagente. Cada parâmetro tem um significado clínico. Você vai saber ler cada um como uma pista diagnóstica.</p>
-          </div>
-          <div class="card-hover bg-[#111827] p-6 rounded-2xl">
-            <span class="w-10 h-10 bg-[#8B5CF6] rounded-lg flex items-center justify-center text-[#0A0F1A] font-bold text-sm mb-4">03</span>
-            <h3 class="text-[16px] md:text-[18px] font-semibold text-[#F9FAFB] mb-2">Sedimentoscopia na Prática</h3>
-            <p class="text-[13px] md:text-[14px] text-[#9CA3AF] leading-relaxed">O coração do curso. Cilindros, cristais, células, bactérias. Imagens reais de lâmina. Cases do dia a dia laboratorial. Aqui é onde você para de ter dúvida.</p>
-          </div>
-          <div class="card-hover bg-[#111827] p-6 rounded-2xl">
-            <span class="w-10 h-10 bg-[#EF4444] rounded-lg flex items-center justify-center text-[#0A0F1A] font-bold text-sm mb-4">04</span>
-            <h3 class="text-[16px] md:text-[18px] font-semibold text-[#F9FAFB] mb-2">Correlação Clínica</h3>
-            <p class="text-[13px] md:text-[14px] text-[#9CA3AF] leading-relaxed">Como relacionar o achado laboratorial com o quadro do paciente. Diferenciar contaminação de ITU verdadeira. Identificar sinais de doença renal.</p>
-          </div>
-          <div class="card-hover bg-[#111827] p-6 rounded-2xl">
-            <span class="w-10 h-10 bg-[#3B82F6] rounded-lg flex items-center justify-center text-[#0A0F1A] font-bold text-sm mb-4">05</span>
-            <h3 class="text-[16px] md:text-[18px] font-semibold text-[#F9FAFB] mb-2">Laudo e Validação</h3>
-            <p class="text-[13px] md:text-[14px] text-[#9CA3AF] leading-relaxed">Como emitir um laudo completo, claro e defensável. O que escrever. O que não escrever. Como validar com segurança.</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- BENEFÍCIOS -->
-      <section class="section-padding box-border w-full flex flex-col gap-[32px] md:gap-[48px] p-[48px_20px] md:p-[80px_60px] bg-[#111827]">
-        <div class="flex flex-col gap-4">
-          <div class="flex items-center gap-2">
-            <span class="w-2 h-2 bg-[#F59E0B] rounded-full"></span>
-            <span class="text-[12px] md:text-[13px] font-semibold text-[#F59E0B] uppercase tracking-wider">O que muda na prática</span>
-          </div>
-          <h2 class="text-[28px] md:text-[40px] font-bold text-[#F9FAFB]">Benefícios</h2>
-        </div>
-        <div class="beneficios-grid grid grid-cols-1 md:grid-cols-2 gap-5">
-          <div class="flex items-start gap-5 bg-[#0A0F1A] p-5 md:p-6 rounded-xl">
-            <span class="text-2xl">🛡️</span>
-            <div>
-              <h3 class="text-[15px] md:text-[16px] font-semibold text-[#F9FAFB] mb-1">Mais segurança na leitura</h3>
-              <p class="text-[13px] md:text-[14px] text-[#9CA3AF]">Você entende o que está vendo e reduz a chance de interpretar errado.</p>
+      <!-- SOBRE -->
+      <section id="sobre" class="box-border w-full p-[48px_20px] md:p-[80px_60px]">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div>
+            <div class="flex items-center gap-2 mb-4">
+              <span class="w-2 h-2 bg-[#F59E0B] rounded-full"></span>
+              <span class="text-[12px] md:text-[13px] font-semibold text-[#F59E0B] uppercase tracking-wider">Sobre o Curso</span>
+            </div>
+            <h2 class="text-[28px] md:text-[40px] font-bold text-[#F9FAFB] mb-6">Urianálise em 3 Camadas</h2>
+            <p class="text-[15px] md:text-[17px] text-[#9CA3AF] leading-relaxed mb-6">
+              O problema não é só falta de conteúdo. É conteúdo solto, sem conexão com a rotina. Aqui você aprende a enxergar a urina por etapas, para interpretar com lógica e não no chute.
+            </p>
+            <div class="flex flex-col gap-4">
+              <div class="flex items-center gap-4 bg-[#111827] p-4 rounded-xl">
+                <span class="w-10 h-10 bg-[#F59E0B] rounded-lg flex items-center justify-center text-[#0A0F1A] font-bold">01</span>
+                <div>
+                  <h4 class="text-[14px] font-semibold text-[#F9FAFB]">Pré-analítico</h4>
+                  <p class="text-[13px] text-[#9CA3AF]">Coleta, conservação e transporte</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-4 bg-[#111827] p-4 rounded-xl">
+                <span class="w-10 h-10 bg-[#10B981] rounded-lg flex items-center justify-center text-[#0A0F1A] font-bold">02</span>
+                <div>
+                  <h4 class="text-[14px] font-semibold text-[#F9FAFB]">Físico-química</h4>
+                  <p class="text-[13px] text-[#9CA3AF]">Volume, cor, densidade, pH e fita reagente</p>
+                </div>
+              </div>
+              <div class="flex items-center gap-4 bg-[#111827] p-4 rounded-xl">
+                <span class="w-10 h-10 bg-[#8B5CF6] rounded-lg flex items-center justify-center text-[#0A0F1A] font-bold">03</span>
+                <div>
+                  <h4 class="text-[14px] font-semibold text-[#F9FAFB]">Microscopia</h4>
+                  <p class="text-[13px] text-[#9CA3AF]">Cristais, cilindros, células e elementos figurados</p>
+                </div>
+              </div>
             </div>
           </div>
-          <div class="flex items-start gap-5 bg-[#0A0F1A] p-5 md:p-6 rounded-xl">
-            <span class="text-2xl">📋</span>
-            <div>
-              <h3 class="text-[15px] md:text-[16px] font-semibold text-[#F9FAFB] mb-1">Melhor liberação de laudos</h3>
-              <p class="text-[13px] md:text-[14px] text-[#9CA3AF]">Você ganha clareza para concluir resultados com mais precisão.</p>
+          <div class="relative">
+            <div class="w-full h-[400px] rounded-2xl overflow-hidden hero-glow">
+              <img src="img/galeria-microscopia.jpg" alt="Galeria de microscopia urinária" class="w-full h-full object-cover">
             </div>
-          </div>
-          <div class="flex items-start gap-5 bg-[#0A0F1A] p-5 md:p-6 rounded-xl">
-            <span class="text-2xl">💪</span>
-            <div>
-              <h3 class="text-[15px] md:text-[16px] font-semibold text-[#F9FAFB] mb-1">Menos medo de errar</h3>
-              <p class="text-[13px] md:text-[14px] text-[#9CA3AF]">Você para de travar na frente da lâmina e passa a decidir com confiança.</p>
-            </div>
-          </div>
-          <div class="flex items-start gap-5 bg-[#0A0F1A] p-5 md:p-6 rounded-xl">
-            <span class="text-2xl">✅</span>
-            <div>
-              <h3 class="text-[15px] md:text-[16px] font-semibold text-[#F9FAFB] mb-1">Domínio da fase pré-analítica</h3>
-              <p class="text-[13px] md:text-[14px] text-[#9CA3AF]">Você aprende onde os erros começam e como evitá-los antes que contaminem o resultado.</p>
-            </div>
-          </div>
-          <div class="flex items-start gap-5 bg-[#0A0F1A] p-5 md:p-6 rounded-xl">
-            <span class="text-2xl">🔬</span>
-            <div>
-              <h3 class="text-[15px] md:text-[16px] font-semibold text-[#F9FAFB] mb-1">Leitura física, química e microscópica</h3>
-              <p class="text-[13px] md:text-[14px] text-[#9CA3AF]">Você organiza a análise da urina por etapas e não fica perdido no meio do exame.</p>
-            </div>
-          </div>
-          <div class="flex items-start gap-5 bg-[#0A0F1A] p-5 md:p-6 rounded-xl">
-            <span class="text-2xl">🏆</span>
-            <div>
-              <h3 class="text-[15px] md:text-[16px] font-semibold text-[#F9FAFB] mb-1">Mais credibilidade profissional</h3>
-              <p class="text-[13px] md:text-[14px] text-[#9CA3AF]">Você transmite mais firmeza para equipe, supervisão e rotina laboratorial.</p>
-            </div>
-          </div>
-          <div class="flex items-start gap-5 bg-[#0A0F1A] p-5 md:p-6 rounded-xl md:col-span-2">
-            <span class="text-2xl">🚀</span>
-            <div>
-              <h3 class="text-[15px] md:text-[16px] font-semibold text-[#F9FAFB] mb-1">Você sai do modo inseguro</h3>
-              <p class="text-[13px] md:text-[14px] text-[#9CA3AF]">Você deixa de ser quem só repete protocolo e se torna um profissional que interpreta com critério.</p>
+            <div class="absolute -bottom-6 -left-6 bg-[#111827] p-4 rounded-xl border border-[#F59E0B]/30">
+              <div class="flex items-center gap-3">
+                <span class="text-3xl">🔬</span>
+                <div>
+                  <p class="text-[14px] font-bold text-[#F59E0B]">5 Módulos</p>
+                  <p class="text-[12px] text-[#9CA3AF]">Focados em urianálise</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- PROVA SOCIAL -->
-      <section class="section-padding box-border w-full flex flex-col gap-[32px] md:gap-[48px] p-[48px_20px] md:p-[80px_60px]">
-        <div class="flex flex-col gap-4">
+      <!-- GALERIA DE MICROSCOPIA -->
+      <section class="box-border w-full p-[48px_20px] md:p-[80px_60px] bg-[#111827]">
+        <div class="flex flex-col gap-4 mb-12">
           <div class="flex items-center gap-2">
             <span class="w-2 h-2 bg-[#F59E0B] rounded-full"></span>
-            <span class="text-[12px] md:text-[13px] font-semibold text-[#F59E0B] uppercase tracking-wider">Quem já fez</span>
+            <span class="text-[12px] md:text-[13px] font-semibold text-[#F59E0B] uppercase tracking-wider">Achados Reais</span>
           </div>
-          <h2 class="text-[28px] md:text-[40px] font-bold text-[#F9FAFB]">Prova Social</h2>
+          <h2 class="text-[28px] md:text-[40px] font-bold text-[#F9FAFB]">O que você vai aprender a identificar</h2>
+          <p class="text-[15px] text-[#9CA3AF] max-w-2xl">Imagens reais de sedimento urinário que você vai dominar durante o curso. Cada elemento com sua correlação clínica.</p>
         </div>
-        <div class="depoimentos-grid grid grid-cols-1 md:grid-cols-2 gap-5">
-          <div class="card-hover bg-[#111827] p-6 md:p-8 rounded-2xl">
-            <p class="text-[15px] md:text-[16px] italic text-[#F9FAFB] leading-relaxed mb-5">"Eu travava na microscopia urinária. Depois do curso, parei de olhar a lâmina no medo e comecei a interpretar com lógica."</p>
-            <div class="flex items-center gap-4">
-              <span class="w-12 h-12 bg-[#F59E0B] rounded-full flex items-center justify-center text-xl">👩‍🔬</span>
+        
+        <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
+          <div class="card-hover group relative rounded-xl overflow-hidden aspect-square">
+            <img src="img/cilindro-hialino.jpg" alt="Cilindro Hialino" class="w-full h-full object-cover transition-transform group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+            <p class="absolute bottom-2 left-2 right-2 text-[11px] font-semibold text-white text-center">Cilindro Hialino</p>
+          </div>
+          <div class="card-hover group relative rounded-xl overflow-hidden aspect-square">
+            <img src="img/cilindro-granuloso.jpg" alt="Cilindro Granuloso" class="w-full h-full object-cover transition-transform group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+            <p class="absolute bottom-2 left-2 right-2 text-[11px] font-semibold text-white text-center">Cilindro Granuloso</p>
+          </div>
+          <div class="card-hover group relative rounded-xl overflow-hidden aspect-square">
+            <img src="img/cilindro-cereo.jpg" alt="Cilindro Ceroso" class="w-full h-full object-cover transition-transform group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+            <p class="absolute bottom-2 left-2 right-2 text-[11px] font-semibold text-white text-center">Cilindro Ceroso</p>
+          </div>
+          <div class="card-hover group relative rounded-xl overflow-hidden aspect-square">
+            <img src="img/cilindro-eritrocitario.jpg" alt="Cilindro Eritrocitário" class="w-full h-full object-cover transition-transform group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+            <p class="absolute bottom-2 left-2 right-2 text-[11px] font-semibold text-white text-center">Cilindro Eritrocit.</p>
+          </div>
+          <div class="card-hover group relative rounded-xl overflow-hidden aspect-square">
+            <img src="img/cilindro-epitelial.jpg" alt="Cilindro Epitelial" class="w-full h-full object-cover transition-transform group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+            <p class="absolute bottom-2 left-2 right-2 text-[11px] font-semibold text-white text-center">Cilindro Epitelial</p>
+          </div>
+          <div class="card-hover group relative rounded-xl overflow-hidden aspect-square">
+            <img src="img/cilindro-graxo.jpg" alt="Cilindro Graxo" class="w-full h-full object-cover transition-transform group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+            <p class="absolute bottom-2 left-2 right-2 text-[11px] font-semibold text-white text-center">Cilindro Graxo</p>
+          </div>
+          <div class="card-hover group relative rounded-xl overflow-hidden aspect-square">
+            <img src="img/eritrocitos-normais.jpg" alt="Eritrocitos Normais" class="w-full h-full object-cover transition-transform group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+            <p class="absolute bottom-2 left-2 right-2 text-[11px] font-semibold text-white text-center">Eritrocitos Normais</p>
+          </div>
+          <div class="card-hover group relative rounded-xl overflow-hidden aspect-square">
+            <img src="img/eritrocito-dismorfico.jpg" alt="Eritrocito Dismórfico" class="w-full h-full object-cover transition-transform group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+            <p class="absolute bottom-2 left-2 right-2 text-[11px] font-semibold text-white text-center">Eritrocito Dismorfico</p>
+          </div>
+          <div class="card-hover group relative rounded-xl overflow-hidden aspect-square">
+            <img src="img/leucocitos.jpg" alt="Leucócitos" class="w-full h-full object-cover transition-transform group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+            <p class="absolute bottom-2 left-2 right-2 text-[11px] font-semibold text-white text-center">Leucócitos</p>
+          </div>
+          <div class="card-hover group relative rounded-xl overflow-hidden aspect-square">
+            <img src="img/celula-epitelial-escamosa.jpg" alt="Célula Epitelial Escamosa" class="w-full h-full object-cover transition-transform group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+            <p class="absolute bottom-2 left-2 right-2 text-[11px] font-semibold text-white text-center">Cel. Epitelial Escamosa</p>
+          </div>
+          <div class="card-hover group relative rounded-xl overflow-hidden aspect-square">
+            <img src="img/celula-epitelial-renal.jpg" alt="Célula Epitelial Renal" class="w-full h-full object-cover transition-transform group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+            <p class="absolute bottom-2 left-2 right-2 text-[11px] font-semibold text-white text-center">Cel. Epitelial Renal</p>
+          </div>
+          <div class="card-hover group relative rounded-xl overflow-hidden aspect-square">
+            <img src="img/celula-decoy.jpg" alt="Célula Decoy" class="w-full h-full object-cover transition-transform group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+            <p class="absolute bottom-2 left-2 right-2 text-[11px] font-semibold text-white text-center">Célula Decoy</p>
+          </div>
+          <div class="card-hover group relative rounded-xl overflow-hidden aspect-square">
+            <img src="img/cristal-acido-urico.jpg" alt="Cristal de Ácido Úrico" class="w-full h-full object-cover transition-transform group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+            <p class="absolute bottom-2 left-2 right-2 text-[11px] font-semibold text-white text-center">Cristal Acido Úrico</p>
+          </div>
+          <div class="card-hover group relative rounded-xl overflow-hidden aspect-square">
+            <img src="img/cristal-oxalato-calcio.jpg" alt="Cristal de Oxalato de Cálcio" class="w-full h-full object-cover transition-transform group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+            <p class="absolute bottom-2 left-2 right-2 text-[11px] font-semibold text-white text-center">Cristal Oxalato Calcio</p>
+          </div>
+          <div class="card-hover group relative rounded-xl overflow-hidden aspect-square">
+            <img src="img/fosfato-amorfo.jpg" alt="Fosfato Amorfo" class="w-full h-full object-cover transition-transform group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+            <p class="absolute bottom-2 left-2 right-2 text-[11px] font-semibold text-white text-center">Fosfato Amorfo</p>
+          </div>
+          <div class="card-hover group relative rounded-xl overflow-hidden aspect-square">
+            <img src="img/bacterias.jpg" alt="Bactérias" class="w-full h-full object-cover transition-transform group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+            <p class="absolute bottom-2 left-2 right-2 text-[11px] font-semibold text-white text-center">Bactérias</p>
+          </div>
+          <div class="card-hover group relative rounded-xl overflow-hidden aspect-square">
+            <img src="img/leveduras-fungos.jpg" alt="Leveduras / Fungos" class="w-full h-full object-cover transition-transform group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+            <p class="absolute bottom-2 left-2 right-2 text-[11px] font-semibold text-white text-center">Leveduras / Fungos</p>
+          </div>
+          <div class="card-hover group relative rounded-xl overflow-hidden aspect-square">
+            <img src="img/cilindro-misto.jpg" alt="Cilindro Misto" class="w-full h-full object-cover transition-transform group-hover:scale-110">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+            <p class="absolute bottom-2 left-2 right-2 text-[11px] font-semibold text-white text-center">Cilindro Misto</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- DEPOIMENTOS -->
+      <section id="depoimentos" class="box-border w-full p-[48px_20px] md:p-[80px_60px] bg-[#111827]">
+        <div class="flex flex-col gap-4 mb-12">
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-2 bg-[#F59E0B] rounded-full"></span>
+            <span class="text-[12px] md:text-[13px] font-semibold text-[#F59E0B] uppercase tracking-wider">Depoimentos</span>
+          </div>
+          <h2 class="text-[28px] md:text-[40px] font-bold text-[#F9FAFB]">Veja o que nossos alunos têm a dizer</h2>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 stagger">
+          <div class="card-hover bg-[#0A0F1A] p-6 rounded-2xl border border-white/10">
+            <div class="flex items-center gap-4 mb-4">
+              <img src="img/avatar-marina.jpg" alt="Marina S." class="w-12 h-12 rounded-full object-cover border-2 border-[#F59E0B]">
               <div>
-                <p class="text-[14px] md:text-[15px] font-semibold text-[#F9FAFB]">Marina S.</p>
-                <p class="text-[12px] md:text-[13px] text-[#9CA3AF]">Biomédica de análises clínicas</p>
+                <p class="text-[14px] font-semibold text-[#F9FAFB]">Marina S.</p>
+                <p class="text-[12px] text-[#9CA3AF]">Biomédica</p>
               </div>
             </div>
-          </div>
-          <div class="card-hover bg-[#111827] p-6 md:p-8 rounded-2xl">
-            <p class="text-[15px] md:text-[16px] italic text-[#F9FAFB] leading-relaxed mb-5">"Finalmente entendi como correlacionar os achados da urina com o quadro clínico sem ficar perdido."</p>
-            <div class="flex items-center gap-4">
-              <span class="w-12 h-12 bg-[#F59E0B] rounded-full flex items-center justify-center text-xl">👨‍⚕️</span>
-              <div>
-                <p class="text-[14px] md:text-[15px] font-semibold text-[#F9FAFB]">Dr. Paulo R.</p>
-                <p class="text-[12px] md:text-[13px] text-[#9CA3AF]">Médico generalista</p>
-              </div>
+            <p class="text-[14px] text-[#9CA3AF] leading-relaxed italic">"Eu travava na microscopia urinária. Depois do curso, parei de olhar a lâmina no medo e comecei a interpretar com lógica."</p>
+            <div class="flex gap-1 mt-4">
+              <span class="text-[#F59E0B]">★</span>
+              <span class="text-[#F59E0B]">★</span>
+              <span class="text-[#F59E0B]">★</span>
+              <span class="text-[#F59E0B]">★</span>
+              <span class="text-[#F59E0B]">★</span>
             </div>
           </div>
-          <div class="card-hover bg-[#111827] p-6 md:p-8 rounded-2xl">
-            <p class="text-[15px] md:text-[16px] italic text-[#F9FAFB] leading-relaxed mb-5">"A parte pré-analítica mudou meu jeito de trabalhar. Hoje eu enxergo onde o erro começa antes de chegar no laudo."</p>
-            <div class="flex items-center gap-4">
-              <span class="w-12 h-12 bg-[#F59E0B] rounded-full flex items-center justify-center text-xl">👩‍⚕️</span>
+
+          <div class="card-hover bg-[#0A0F1A] p-6 rounded-2xl border border-white/10">
+            <div class="flex items-center gap-4 mb-4">
+              <img src="img/avatar-paulo.jpg" alt="Dr. Paulo R." class="w-12 h-12 rounded-full object-cover border-2 border-[#F59E0B]">
               <div>
-                <p class="text-[14px] md:text-[15px] font-semibold text-[#F9FAFB]">Juliana F.</p>
-                <p class="text-[12px] md:text-[13px] text-[#9CA3AF]">Farmacêutica bioquímica</p>
+                <p class="text-[14px] font-semibold text-[#F9FAFB]">Dr. Paulo R.</p>
+                <p class="text-[12px] text-[#9CA3AF]">Médico Generalista</p>
               </div>
             </div>
+            <p class="text-[14px] text-[#9CA3AF] leading-relaxed italic">"Finalmente entendi como correlacionar os achados da urina com o quadro clínico sem ficar perdido."</p>
+            <div class="flex gap-1 mt-4">
+              <span class="text-[#F59E0B]">★</span>
+              <span class="text-[#F59E0B]">★</span>
+              <span class="text-[#F59E0B]">★</span>
+              <span class="text-[#F59E0B]">★</span>
+              <span class="text-[#F59E0B]">★</span>
+            </div>
           </div>
-          <div class="card-hover bg-[#111827] p-6 md:p-8 rounded-2xl">
-            <p class="text-[15px] md:text-[16px] italic text-[#F9FAFB] leading-relaxed mb-5">"O conteúdo é direto, técnico e aplicável. Foi o que eu precisava para parar de decorar e começar a entender."</p>
-            <div class="flex items-center gap-4">
-              <span class="w-12 h-12 bg-[#F59E0B] rounded-full flex items-center justify-center text-xl">👩‍⚕️</span>
+
+          <div class="card-hover bg-[#0A0F1A] p-6 rounded-2xl border border-white/10">
+            <div class="flex items-center gap-4 mb-4">
+              <img src="img/avatar-juliana.jpg" alt="Juliana F." class="w-12 h-12 rounded-full object-cover border-2 border-[#F59E0B]">
               <div>
-                <p class="text-[14px] md:text-[15px] font-semibold text-[#F9FAFB]">Carla M.</p>
-                <p class="text-[12px] md:text-[13px] text-[#9CA3AF]">Enfermeira</p>
+                <p class="text-[14px] font-semibold text-[#F9FAFB]">Juliana F.</p>
+                <p class="text-[12px] text-[#9CA3AF]">Farmacêutica Bioquímica</p>
               </div>
+            </div>
+            <p class="text-[14px] text-[#9CA3AF] leading-relaxed italic">"A parte pré-analítica mudou meu jeito de trabalhar. Hoje eu enxergo onde o erro começa antes de chegar no laudo."</p>
+            <div class="flex gap-1 mt-4">
+              <span class="text-[#F59E0B]">★</span>
+              <span class="text-[#F59E0B]">★</span>
+              <span class="text-[#F59E0B]">★</span>
+              <span class="text-[#F59E0B]">★</span>
+              <span class="text-[#F59E0B]">★</span>
+            </div>
+          </div>
+
+          <div class="card-hover bg-[#0A0F1A] p-6 rounded-2xl border border-white/10">
+            <div class="flex items-center gap-4 mb-4">
+              <img src="img/avatar-carla.jpg" alt="Carla M." class="w-12 h-12 rounded-full object-cover border-2 border-[#F59E0B]">
+              <div>
+                <p class="text-[14px] font-semibold text-[#F9FAFB]">Carla M.</p>
+                <p class="text-[12px] text-[#9CA3AF]">Enfermeira</p>
+              </div>
+            </div>
+            <p class="text-[14px] text-[#9CA3AF] leading-relaxed italic">"O conteúdo é direto, técnico e aplicável. Foi o que eu precisava para parar de decorar e começar a entender."</p>
+            <div class="flex gap-1 mt-4">
+              <span class="text-[#F59E0B]">★</span>
+              <span class="text-[#F59E0B]">★</span>
+              <span class="text-[#F59E0B]">★</span>
+              <span class="text-[#F59E0B]">★</span>
+              <span class="text-[#F59E0B]">★</span>
+            </div>
+          </div>
+
+          <div class="card-hover bg-[#0A0F1A] p-6 rounded-2xl border border-white/10">
+            <div class="flex items-center gap-4 mb-4">
+              <img src="img/avatar-1.jpg" alt="Ana L." class="w-12 h-12 rounded-full object-cover border-2 border-[#F59E0B]">
+              <div>
+                <p class="text-[14px] font-semibold text-[#F9FAFB]">Ana L.</p>
+                <p class="text-[12px] text-[#9CA3AF]">Biomédica</p>
+              </div>
+            </div>
+            <p class="text-[14px] text-[#9CA3AF] leading-relaxed italic">"Recomendo para todos os colegas. O preço é imbatível e o conteúdo vale muito mais."</p>
+            <div class="flex gap-1 mt-4">
+              <span class="text-[#F59E0B]">★</span>
+              <span class="text-[#F59E0B]">★</span>
+              <span class="text-[#F59E0B]">★</span>
+              <span class="text-[#F59E0B]">★</span>
+              <span class="text-[#F59E0B]">★</span>
+            </div>
+          </div>
+
+          <div class="card-hover bg-[#0A0F1A] p-6 rounded-2xl border border-white/10">
+            <div class="flex items-center gap-4 mb-4">
+              <img src="img/avatar-2.jpg" alt="Ricardo P." class="w-12 h-12 rounded-full object-cover border-2 border-[#F59E0B]">
+              <div>
+                <p class="text-[14px] font-semibold text-[#F9FAFB]">Ricardo P.</p>
+                <p class="text-[12px] text-[#9CA3AF]">Farmacêutico</p>
+              </div>
+            </div>
+            <p class="text-[14px] text-[#9CA3AF] leading-relaxed italic">"Saí do curso sabendo laudar com segurança. A prática com imagens reais faz toda diferença."</p>
+            <div class="flex gap-1 mt-4">
+              <span class="text-[#F59E0B]">★</span>
+              <span class="text-[#F59E0B]">★</span>
+              <span class="text-[#F59E0B]">★</span>
+              <span class="text-[#F59E0B]">★</span>
+              <span class="text-[#F59E0B]">★</span>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- PREÇO -->
-      <section class="section-padding box-border w-full flex flex-col md:flex-row gap-[40px] md:gap-[60px] p-[48px_20px] md:p-[80px_60px] bg-[#111827] preco-grid items-start">
-        <div class="flex-1 bg-[#0A0F1A] p-8 md:p-10 rounded-2xl shadow-2xl">
-          <p class="text-[12px] md:text-[13px] font-semibold text-[#F59E0B] mb-4">ACESSO COMPLETO</p>
-          <p class="text-[16px] md:text-[18px] text-[#9CA3AF] line-through mb-1">R$ 158,00</p>
-          <p class="preco-title text-[48px] md:text-[64px] font-bold text-[#F59E0B] mb-1">R$ 67,00</p>
-          <p class="text-[14px] md:text-[16px] text-[#9CA3AF] mb-6">ou 6x de R$ 12,57 no cartão</p>
-          <a href="https://pay.hotmart.com/S102786906P?checkoutMode=2" target="_blank" rel="noopener" class="cta-btn flex items-center justify-center w-full bg-[#F59E0B] text-[#0A0F1A] font-bold text-[14px] md:text-[16px] px-8 py-5 rounded-lg no-underline mb-6">
-            GARANTIR MINHA VAGA AGORA
-          </a>
-          <div class="space-y-4 mb-6">
-            <div class="flex items-start gap-4 pb-4 border-t border-white/10 pt-4">
-              <span class="w-6 h-6 bg-[#10B981] rounded-full flex items-center justify-center text-xs text-[#0A0F1A] shrink-0 mt-0.5">✓</span>
-              <div class="flex-1">
-                <p class="text-[14px] md:text-[15px] font-semibold text-[#F9FAFB]">Guia Rápido de Parâmetros Urinários</p>
-                <p class="text-[12px] md:text-[13px] text-[#9CA3AF]">Evita confusão na leitura dos principais achados.</p>
-              </div>
-              <span class="text-[13px] md:text-[14px] font-semibold text-[#F59E0B]">R$ 27,00</span>
-            </div>
-            <div class="flex items-start gap-4 pb-4 border-t border-white/10 pt-4">
-              <span class="w-6 h-6 bg-[#10B981] rounded-full flex items-center justify-center text-xs text-[#0A0F1A] shrink-0 mt-0.5">✓</span>
-              <div class="flex-1">
-                <p class="text-[14px] md:text-[15px] font-semibold text-[#F9FAFB]">Checklist Pré-Analítico</p>
-                <p class="text-[12px] md:text-[13px] text-[#9CA3AF]">Reduz erro antes da análise começar.</p>
-              </div>
-              <span class="text-[13px] md:text-[14px] font-semibold text-[#F59E0B]">R$ 37,00</span>
-            </div>
-            <div class="flex items-start gap-4 pb-4 border-t border-white/10 pt-4">
-              <span class="w-6 h-6 bg-[#10B981] rounded-full flex items-center justify-center text-xs text-[#0A0F1A] shrink-0 mt-0.5">✓</span>
-              <div class="flex-1">
-                <p class="text-[14px] md:text-[15px] font-semibold text-[#F9FAFB]">Tabela de Interpretação do Sedimento</p>
-                <p class="text-[12px] md:text-[13px] text-[#9CA3AF]">Acelera a identificação de elementos figurados e cristais.</p>
-              </div>
-              <span class="text-[13px] md:text-[14px] font-semibold text-[#F59E0B]">R$ 47,00</span>
-            </div>
+      <!-- PROFESSORES -->
+      <section id="professores" class="box-border w-full p-[48px_20px] md:p-[80px_60px]">
+        <div class="flex flex-col gap-4 mb-12">
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-2 bg-[#F59E0B] rounded-full"></span>
+            <span class="text-[12px] md:text-[13px] font-semibold text-[#F59E0B] uppercase tracking-wider">Professores</span>
           </div>
-          <div class="flex items-start gap-4 bg-[#111827] p-5 rounded-xl">
-            <span class="w-10 h-10 bg-[#F59E0B] rounded-full flex items-center justify-center text-[#0A0F1A] shrink-0">✓</span>
-            <div>
-              <p class="text-[14px] md:text-[16px] font-semibold text-[#F9FAFB] mb-1">Garantia de 7 dias</p>
-              <p class="text-[12px] md:text-[13px] text-[#9CA3AF]">Se você não sentir mais segurança para entender os fundamentos da urianálise, devolvemos seu dinheiro.</p>
-            </div>
-          </div>
+          <h2 class="text-[28px] md:text-[40px] font-bold text-[#F9FAFB]">Conheça seu professor</h2>
         </div>
-        <div class="flex-1 flex flex-col gap-6">
-          <h3 class="text-[22px] md:text-[28px] font-semibold text-[#F9FAFB] leading-tight">Economize R$ 91,00 — acesso por tempo limitado</h3>
-          <p class="text-[15px] md:text-[16px] text-[#9CA3AF] leading-relaxed">Você investe R$ 67,00 e sai com uma base sólida para interpretar a urina — do pré-analítico à microscopia — e liberar laudos com muito mais confiança na sua rotina.</p>
-          <p class="text-[15px] md:text-[16px] text-[#9CA3AF] leading-relaxed">Acesso com condições especiais por tempo limitado, direto na plataforma da Hotmart.</p>
-          <div class="bg-[#0A0F1A] p-5 rounded-xl border border-[#F59E0B]/30">
-            <p class="text-[13px] md:text-[14px] text-[#F59E0B] font-semibold mb-2">🎯 Você está economizando 58%</p>
-            <p class="text-[13px] md:text-[14px] text-[#9CA3AF]">De R$ 158,00 por apenas R$ 67,00. Oferta por tempo limitado.</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="card-hover bg-[#111827] p-6 rounded-2xl flex gap-6 items-start border border-white/10">
+            <img src="img/dr-cleber-perfil.jpg" alt="Dr. Cleber Rocha" class="w-24 h-24 rounded-full object-cover border-4 border-[#F59E0B] shrink-0">
+            <div>
+              <h3 class="text-[18px] font-bold text-[#F9FAFB] mb-1">Dr. Cleber Rocha</h3>
+              <p class="text-[13px] text-[#F59E0B] mb-3">Biomédico · Especialista em Urianálise</p>
+              <p class="text-[13px] text-[#9CA3AF] leading-relaxed">Biomédico com experiência em análises clínicas, especialista em uroanálise e microscopia urinária. Criador do curso Urianálise na Prática com o objetivo de fechar a lacuna de conhecimento na área.</p>
+            </div>
           </div>
         </div>
       </section>
 
       <!-- FAQ -->
-      <section class="section-padding box-border w-full flex flex-col gap-[32px] md:gap-[48px] p-[48px_20px] md:p-[80px_60px]">
-        <div class="flex flex-col gap-4">
+      <section id="faq" class="box-border w-full p-[48px_20px] md:p-[80px_60px] bg-[#111827]">
+        <div class="flex flex-col gap-4 mb-12">
           <div class="flex items-center gap-2">
             <span class="w-2 h-2 bg-[#F59E0B] rounded-full"></span>
             <span class="text-[12px] md:text-[13px] font-semibold text-[#F59E0B] uppercase tracking-wider">Perguntas Frequentes</span>
           </div>
-          <h2 class="text-[28px] md:text-[40px] font-bold text-[#F9FAFB]">Antes de decidir</h2>
+          <h2 class="text-[28px] md:text-[40px] font-bold text-[#F9FAFB]">Dúvidas frequentes</h2>
         </div>
-        <div class="space-y-4">
-          <div class="bg-[#111827] p-6 rounded-xl">
-            <h3 class="text-[15px] md:text-[16px] font-semibold text-[#F9FAFB] mb-2">Esse curso serve para quem já trabalha com urina e quer parar de errar na interpretação?</h3>
-            <p class="text-[13px] md:text-[14px] text-[#9CA3AF] leading-relaxed">Sim. O foco é justamente fortalecer sua leitura da urina e te dar mais segurança na liberação do laudo.</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-[#0A0F1A] p-6 rounded-xl border border-white/10">
+            <h3 class="text-[15px] font-semibold text-[#F9FAFB] mb-3">Quando começam os cursos?</h3>
+            <p class="text-[13px] text-[#9CA3AF] leading-relaxed">Todas as aulas dos cursos já estão gravadas e disponíveis na plataforma para você ter acesso assim que sua inscrição for finalizada.</p>
           </div>
-          <div class="bg-[#111827] p-6 rounded-xl">
-            <h3 class="text-[15px] md:text-[16px] font-semibold text-[#F9FAFB] mb-2">Preciso ter muita experiência em microscopia urinária?</h3>
-            <p class="text-[13px] md:text-[14px] text-[#9CA3AF] leading-relaxed">Não. O curso começa pela base e avança até a identificação dos principais achados no sedimento urinário.</p>
+          <div class="bg-[#0A0F1A] p-6 rounded-xl border border-white/10">
+            <h3 class="text-[15px] font-semibold text-[#F9FAFB] mb-3">Tem material de apoio?</h3>
+            <p class="text-[13px] text-[#9CA3AF] leading-relaxed">Sim, os cursos possuem materiais em PDF para auxiliar nos estudos.</p>
           </div>
-          <div class="bg-[#111827] p-6 rounded-xl">
-            <h3 class="text-[15px] md:text-[16px] font-semibold text-[#F9FAFB] mb-2">Vai abordar a parte pré-analítica também?</h3>
-            <p class="text-[13px] md:text-[14px] text-[#9CA3AF] leading-relaxed">Vai, e isso é essencial. Muita falha no laudo nasce antes da análise, na coleta, conservação e transporte.</p>
+          <div class="bg-[#0A0F1A] p-6 rounded-xl border border-white/10">
+            <h3 class="text-[15px] font-semibold text-[#F9FAFB] mb-3">Quais são as formas de pagamento?</h3>
+            <p class="text-[13px] text-[#9CA3AF] leading-relaxed">Parcelamento em até 6x pelo cartão de crédito ou à vista no boleto ou pix.</p>
           </div>
-          <div class="bg-[#111827] p-6 rounded-xl">
-            <h3 class="text-[15px] md:text-[16px] font-semibold text-[#F9FAFB] mb-2">O conteúdo é útil para biomédicos, farmacêuticos, médicos e enfermagem?</h3>
-            <p class="text-[13px] md:text-[14px] text-[#9CA3AF] leading-relaxed">Sim. O material foi pensado para profissionais da área da saúde que lidam com urianálise na prática.</p>
+          <div class="bg-[#0A0F1A] p-6 rounded-xl border border-white/10">
+            <h3 class="text-[15px] font-semibold text-[#F9FAFB] mb-3">Por quanto tempo tenho acesso aos cursos?</h3>
+            <p class="text-[13px] text-[#9CA3AF] leading-relaxed">O acesso aos cursos é vitalício. Você pode assistir quantas vezes quiser.</p>
           </div>
-          <div class="bg-[#111827] p-6 rounded-xl">
-            <h3 class="text-[15px] md:text-[16px] font-semibold text-[#F9FAFB] mb-2">Vou aprender a identificar cristais e elementos do sedimento?</h3>
-            <p class="text-[13px] md:text-[14px] text-[#9CA3AF] leading-relaxed">Sim. A microscopia urinária inclui elementos figurados e a identificação/classificação dos cristais.</p>
+          <div class="bg-[#0A0F1A] p-6 rounded-xl border border-white/10">
+            <h3 class="text-[15px] font-semibold text-[#F9FAFB] mb-3">Tem certificado?</h3>
+            <p class="text-[13px] text-[#9CA3AF] leading-relaxed">Sim, cada curso tem sua certificação individual, que é liberada quando o aluno completa 100% do curso.</p>
           </div>
-          <div class="bg-[#111827] p-6 rounded-xl">
-            <h3 class="text-[15px] md:text-[16px] font-semibold text-[#F9FAFB] mb-2">Esse curso ajuda na rotina do laboratório?</h3>
-            <p class="text-[13px] md:text-[14px] text-[#9CA3AF] leading-relaxed">Ajuda diretamente. Ele foi estruturado para melhorar sua leitura técnica e reduzir insegurança na liberação do resultado.</p>
-          </div>
-          <div class="bg-[#111827] p-6 rounded-xl">
-            <h3 class="text-[15px] md:text-[16px] font-semibold text-[#F9FAFB] mb-2">Mas eu já sei interpretar urinálise...</h3>
-            <p class="text-[13px] md:text-[14px] text-[#9CA3AF] leading-relaxed">Você pode até saber os nomes dos cristais. Sabe que cilindro hialino indica problema renal. Sabe que leucócitos sugerem ITU. Mas a pergunta é: quando você olhou para uma lâmina pela última vez, teve 100% de certeza do que estava vendo? Mesmo profissionais experientes erram na diferenciação entre elementos reais e artefatos de coleta. O curso não é para quem não sabe nada. É para quem quer ter CERTEZA.</p>
+          <div class="bg-[#0A0F1A] p-6 rounded-xl border border-white/10">
+            <h3 class="text-[15px] font-semibold text-[#F9FAFB] mb-3">Como vou ter acesso aos cursos?</h3>
+            <p class="text-[13px] text-[#9CA3AF] leading-relaxed">Após a confirmação do pagamento você pode acessar a área de membros. Pagamentos por cartão liberam acesso imediato.</p>
           </div>
         </div>
       </section>
 
-      <!-- FECHAMENTO -->
-      <section class="section-padding box-border w-full flex flex-col items-center gap-8 p-[64px_20px] md:p-[100px_60px] bg-[#111827] text-center">
-        <div class="flex items-center gap-2">
-          <span class="w-2 h-2 bg-[#F59E0B] rounded-full"></span>
-          <span class="text-[12px] md:text-[13px] font-semibold text-[#F59E0B] uppercase tracking-wider">Decisão</span>
-        </div>
-        <h2 class="fechamento-title text-[28px] md:text-[44px] font-bold text-[#F9FAFB] leading-tight max-w-2xl">Não é sobre ser o melhor biomédico do laboratório.</h2>
-        <p class="fechamento-desc text-[16px] md:text-[18px] text-[#9CA3AF] leading-relaxed max-w-xl">É sobre ser o profissional que olha para o sedimento e sabe exatamente o que está vendo. Que libera o laudo com confiança. Que não depende apenas do laudo automático do equipamento. Que dorme tranquilo sabendo que o resultado está correto.</p>
-        <a href="https://pay.hotmart.com/S102786906P?checkoutMode=2" target="_blank" rel="noopener" class="cta-btn inline-flex items-center gap-3 bg-[#F59E0B] text-[#0A0F1A] font-bold text-[16px] md:text-[18px] px-8 md:px-10 py-5 rounded-lg no-underline">
+      <!-- CTA FINAL -->
+      <section class="box-border w-full p-[64px_20px] md:p-[100px_60px] text-center">
+        <h2 class="text-[28px] md:text-[44px] font-bold text-[#F9FAFB] leading-tight mb-4">Não é sobre ser o melhor biomédico do laboratório.</h2>
+        <p class="text-[16px] md:text-[18px] text-[#9CA3AF] leading-relaxed max-w-xl mx-auto mb-8">É sobre ser o profissional que olha para o sedimento e sabe exatamente o que está vendo. Que libera o laudo com confiança. Que dorme tranquilo sabendo que o resultado está correto.</p>
+        <a href="https://pay.hotmart.com/S102786906P?checkoutMode=2" target="_blank" rel="noopener" class="cta-btn inline-flex items-center gap-3 bg-[#F59E0B] text-[#0A0F1A] font-bold text-[16px] md:text-[18px] px-8 md:px-10 py-5 rounded-lg no-underline glow">
           GARANTIR MINHA VAGA — R$ 67,00
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
         </a>
-        <p class="text-[13px] md:text-[14px] text-[#9CA3AF]">Garantia de 7 dias · checkout seguro via Hotmart</p>
+        <p class="text-[13px] text-[#9CA3AF] mt-4">Garantia de 7 dias · checkout seguro via Hotmart</p>
       </section>
 
       <!-- FOOTER -->
       <footer class="box-border w-full flex flex-col md:flex-row justify-between items-center gap-4 p-[24px_20px] md:p-[32px_60px] border-t border-white/10">
         <p class="text-[12px] md:text-[13px] text-[#9CA3AF]">Urianálise na Prática — curso digital para profissionais da saúde.</p>
-        <p class="text-[12px] md:text-[13px] text-[#9CA3AF]">Comercializado via Hotmart</p>
+        <div class="flex gap-4">
+          <a href="https://www.instagram.com/cleber_rochabios/" target="_blank" rel="noopener" class="text-[#9CA3AF] hover:text-[#F59E0B] transition-colors">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="#" class="text-[#9CA3AF] hover:text-[#F59E0B] transition-colors">
+            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
+          </a>
+        </div>
+        <p class="text-[12px] text-[#9CA3AF]">Comercializado via Hotmart</p>
       </footer>
-
     </div>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"/></svg>
+    </button>
+
     <script>
-      // Scroll Reveal Animation
+      // Scroll Reveal
       function revealOnScroll() {
-        const elements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .stagger-children, .section-animate, .scroll-reveal, .scroll-reveal-left, .scroll-reveal-right, .scroll-reveal-scale');
+        const elements = document.querySelectorAll('.reveal, .stagger');
         elements.forEach(el => {
           const rect = el.getBoundingClientRect();
-          const windowHeight = window.innerHeight;
-          if (rect.top < windowHeight - 80) {
-            el.classList.add('active', 'revealed', 'visible');
+          if (rect.top < window.innerHeight - 80) {
+            el.classList.add('active');
           }
         });
       }
       window.addEventListener('scroll', revealOnScroll);
       window.addEventListener('load', revealOnScroll);
 
-      // Parallax effect on hero
+      // Scroll Progress
       window.addEventListener('scroll', () => {
-        const scrolled = window.pageYOffset;
-        const hero = document.querySelector('.hero-grid');
-        if (hero) {
-          hero.style.transform = `translateY(${scrolled * 0.15}px)`;
+        const scrollTop = document.documentElement.scrollTop;
+        const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        const progress = (scrollTop / scrollHeight) * 100;
+        document.getElementById('scrollProgress').style.width = progress + '%';
+      });
+
+      // Back to Top
+      window.addEventListener('scroll', () => {
+        const btn = document.getElementById('backToTop');
+        if (window.scrollY > 500) {
+          btn.classList.add('visible');
+        } else {
+          btn.classList.remove('visible');
         }
       });
 
-      // Smooth counter animation
-      function animateCounters() {
-        const counters = document.querySelectorAll('.counter');
-        counters.forEach(counter => {
-          const target = +counter.getAttribute('data-target');
-          const count = +counter.innerText.replace(/\D/g, '');
-          const inc = target / 60;
-          if (count < target) {
-            counter.innerText = Math.ceil(count + inc);
-          } else {
-            counter.innerText = target;
-          }
-        });
-      }
+      // Nav Scroll
+      const nav = document.querySelector('nav');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+          nav.style.background = 'rgba(10, 15, 26, 0.98)';
+          nav.style.boxShadow = '0 4px 20px rgba(0,0,0,0.3)';
+        } else {
+          nav.style.background = 'rgba(10, 15, 26, 0.95)';
+          nav.style.boxShadow = 'none';
+        }
+      });
 
-      // Add ripple effect to CTA buttons
+      // Ripple effect on CTA buttons
       document.querySelectorAll('.cta-btn').forEach(btn => {
         btn.addEventListener('click', function(e) {
           const ripple = document.createElement('span');
@@ -3654,91 +754,6 @@
           setTimeout(() => ripple.remove(), 600);
         });
       });
-
-      // Add hover tilt effect to cards
-      document.querySelectorAll('.card-hover').forEach(card => {
-        card.addEventListener('mousemove', function(e) {
-          const rect = this.getBoundingClientRect();
-          const x = e.clientX - rect.left;
-          const y = e.clientY - rect.top;
-          const centerX = rect.width / 2;
-          const centerY = rect.height / 2;
-          const rotateX = (y - centerY) / 10;
-          const rotateY = (centerX - x) / 10;
-          this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px) scale(1.02)`;
-        });
-        card.addEventListener('mouseleave', function() {
-          this.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0) scale(1)';
-        });
-      });
-
-      // Stagger animation for grid items
-      document.querySelectorAll('.modulos-grid, .beneficios-grid, .depoimentos-grid, .publico-grid, .camadas-grid').forEach(grid => {
-        grid.classList.add('stagger-children');
-      });
-
-      // Add floating particles to hero
-      const heroSection = document.querySelector('.hero-grid');
-      if (heroSection) {
-        for (let i = 0; i < 15; i++) {
-          const particle = document.createElement('div');
-          particle.className = 'particle';
-          particle.style.cssText = `
-            position: absolute;
-            width: ${Math.random() * 6 + 2}px;
-            height: ${Math.random() * 6 + 2}px;
-            background: rgba(245, 158, 11, ${Math.random() * 0.5 + 0.1});
-            border-radius: 50%;
-            left: ${Math.random() * 100}%;
-            top: ${Math.random() * 100}%;
-            animation: particleFloat ${Math.random() * 4 + 3}s ease-in-out infinite;
-            animation-delay: ${Math.random() * 3}s;
-            pointer-events: none;
-            z-index: 0;
-          `;
-          heroSection.style.position = 'relative';
-          heroSection.appendChild(particle);
-        }
-      }
-
-      // Animate section titles on scroll
-      const observerOptions = { threshold: 0.2 };
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('active', 'revealed', 'visible');
-          }
-        });
-      }, observerOptions);
-
-      document.querySelectorAll('section').forEach(section => {
-        observer.observe(section);
-      });
-
-      // Nav scroll effect
-      const nav = document.querySelector('.nav-inner');
-      if (nav) {
-        window.addEventListener('scroll', () => {
-          if (window.scrollY > 50) {
-            nav.classList.add('scrolled');
-          } else {
-            nav.classList.remove('scrolled');
-          }
-        });
-      }
-
-      // Animate price on scroll
-      const priceSection = document.querySelector('.preco-grid');
-      if (priceSection) {
-        const priceObserver = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.querySelector('.preco-title').classList.add('glow');
-            }
-          });
-        }, { threshold: 0.5 });
-        priceObserver.observe(priceSection);
-      }
     </script>
     <script src="chatbot.js"></script>
   </body>
