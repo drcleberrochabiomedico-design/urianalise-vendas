@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Obrigado pela sua compra! — Urianálise na Prática</title>
+    <meta name="robots" content="noindex, nofollow" />
+    <meta name="theme-color" content="#0A0F1A" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔬</text></svg>" />
+    <script>
+      tailwind = { config: { corePlugins: { preflight: false } } };
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      *, ::before, ::after { box-sizing: border-box; }
+      body { margin: 0; font-family: 'Inter', system-ui, sans-serif; background: #0A0F1A; color: #F9FAFB; }
+      
+      .cta-btn {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+      }
+      .cta-btn::before {
+        content: '';
+        position: absolute;
+        top: 0; left: -100%;
+        width: 100%; height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+        transition: left 0.5s ease;
+      }
+      .cta-btn:hover::before { left: 100%; }
+      .cta-btn:hover {
+        transform: translateY(-3px) scale(1.02);
+        box-shadow: 0 15px 40px -10px rgba(245, 158, 11, 0.6);
+      }
+      
+      .glow {
+        box-shadow: 0 0 30px rgba(245, 158, 11, 0.3);
+      }
+      
+      .countdown {
+        animation: pulse 2s infinite;
+      }
+      
+      @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.7; }
+      }
+      
+      .confetti {
+        position: fixed;
+        width: 10px;
+        height: 10px;
+        background: #F59E0B;
+        animation: fall 3s linear forwards;
+        z-index: 100;
+      }
+      
+      @keyframes fall {
+        to {
+          transform: translateY(100vh) rotate(720deg);
+          opacity: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="min-h-screen">
+      <!-- Header -->
+      <nav class="w-full p-6 flex items-center justify-between border-b border-white/10">
+        <div class="flex items-center gap-2">
+          <span class="text-[20px] md:text-[24px] font-bold text-[#F9FAFB]">Urianálise <span class="text-[#F59E0B]">na Prática</span></span>
+        </div>
+      </nav>
+
+      <!-- Confetti Container -->
+      <div id="confetti-container"></div>
+
+      <!-- Mensagem de Obrigado -->
+      <section class="w-full p-[48px_20px] md:p-[80px_60px] text-center">
+        <div class="max-w-2xl mx-auto">
+          <!-- Checkmark -->
+          <div class="w-24 h-24 bg-[#10B981] rounded-full flex items-center justify-center mx-auto mb-8">
+            <svg class="w-12 h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"/>
+            </svg>
+          </div>
+          
+          <h1 class="text-[32px] md:text-[48px] font-bold text-[#F9FAFB] mb-4">
+            Obrigado pela sua compra! 🎉
+          </h1>
+          
+          <p class="text-[18px] text-[#9CA3AF] leading-relaxed mb-6">
+            Seu pagamento foi confirmado com sucesso. Você receberá um email com os dados de acesso em poucos minutos.
+          </p>
+          
+          <div class="bg-[#111827] p-6 rounded-2xl border border-[#10B981]/30 mb-8">
+            <p class="text-[14px] text-[#10B981] font-semibold mb-2">📧 Verifique seu email</p>
+            <p class="text-[14px] text-[#9CA3AF]">Enviamos as instruções de acesso para o email cadastrado na compra. Confira também a pasta de spam.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ORDER BUMP - Oferta Especial -->
+      <section class="w-full p-[48px_20px] md:p-[60px_60px] bg-[#111827]">
+        <div class="max-w-3xl mx-auto">
+          <!-- Badge -->
+          <div class="flex items-center justify-center gap-2 mb-6">
+            <span class="w-2 h-2 bg-[#EF4444] rounded-full animate-pulse"></span>
+            <span class="text-[12px] md:text-[14px] font-bold text-[#EF4444] uppercase tracking-wider">Oferta Exclusiva — Só para quem já comprou</span>
+          </div>
+          
+          <h2 class="text-[28px] md:text-[36px] font-bold text-[#F9FAFB] text-center mb-4">
+            Aproveite <span class="text-[#F59E0B]">20% OFF</span> no próximo produto!
+          </h2>
+          
+          <p class="text-[16px] text-[#9CA3AF] text-center mb-8 max-w-xl mx-auto">
+            Você acabou de garantir um produto. Que tal completar sua biblioteca com o outro material com desconto exclusivo?
+          </p>
+
+          <!-- Cards de Oferta -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            
+            <!-- Oferta 1: Se comprou a apostila -->
+            <div class="bg-[#0A0F1A] rounded-2xl p-6 border border-[#F59E0B]/30 relative">
+              <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#EF4444] text-white px-4 py-1 rounded-full text-[12px] font-bold">
+                -20% OFF
+              </div>
+              
+              <div class="text-center mb-6">
+                <p class="text-[12px] text-[#9CA3AF] mb-2">Se você comprou a APOSTILA</p>
+                <h3 class="text-[20px] font-bold text-[#F9FAFB] mb-2">Garanta o CURSO COMPLETO</h3>
+                <div class="flex items-center justify-center gap-3">
+                  <span class="text-[14px] text-[#9CA3AF] line-through">R$ 67,00</span>
+                  <span class="text-[32px] font-bold text-[#F59E0B]">R$ 53,60</span>
+                </div>
+                <p class="text-[13px] text-[#10B981] font-semibold mt-2">Você economiza R$ 13,40</p>
+              </div>
+              
+              <ul class="text-[13px] text-[#9CA3AF] space-y-2 mb-6">
+                <li class="flex items-center gap-2">
+                  <span class="text-[#10B981]">✓</span>
+                  <span>5 módulos completos</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-[#10B981]">✓</span>
+                  <span>10 horas de certificado</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-[#10B981]">✓</span>
+                  <span>Acesso vitalício</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-[#10B981]">✓</span>
+                  <span>Garantia de 7 dias</span>
+                </li>
+              </ul>
+              
+              <a href="https://pay.hotmart.com/S102786906P?checkoutMode=2&coupon=20OFF" target="_blank" rel="noopener" class="cta-btn block text-center bg-[#F59E0B] text-[#0A0F1A] font-bold text-[14px] px-6 py-4 rounded-lg no-underline glow">
+                COMPRAR COM 20% OFF
+              </a>
+              
+              <p class="text-[11px] text-[#9CA3AF] text-center mt-3">Cupom aplicado automaticamente</p>
+            </div>
+
+            <!-- Oferta 2: Se comprou o curso -->
+            <div class="bg-[#0A0F1A] rounded-2xl p-6 border border-[#F59E0B]/30 relative">
+              <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#EF4444] text-white px-4 py-1 rounded-full text-[12px] font-bold">
+                -20% OFF
+              </div>
+              
+              <div class="text-center mb-6">
+                <p class="text-[12px] text-[#9CA3AF] mb-2">Se você comprou o CURSO</p>
+                <h3 class="text-[20px] font-bold text-[#F9FAFB] mb-2">Garanta a APOSTILA</h3>
+                <div class="flex items-center justify-center gap-3">
+                  <span class="text-[14px] text-[#9CA3AF] line-through">R$ 19,90</span>
+                  <span class="text-[32px] font-bold text-[#F59E0B]">R$ 15,92</span>
+                </div>
+                <p class="text-[13px] text-[#10B981] font-semibold mt-2">Você economiza R$ 3,98</p>
+              </div>
+              
+              <ul class="text-[13px] text-[#9CA3AF] space-y-2 mb-6">
+                <li class="flex items-center gap-2">
+                  <span class="text-[#10B981]">✓</span>
+                  <span>36 páginas com imagens</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-[#10B981]">✓</span>
+                  <span>Tabelas de referência</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-[#10B981]">✓</span>
+                  <span>Dicas de ouro</span>
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="text-[#10B981]">✓</span>
+                  <span>Pronto para imprimir</span>
+                </li>
+              </ul>
+              
+              <a href="https://pay.kiwify.com.br/R2BHjBI?discount=20OFF" target="_blank" rel="noopener" class="cta-btn block text-center bg-[#F59E0B] text-[#0A0F1A] font-bold text-[14px] px-6 py-4 rounded-lg no-underline glow">
+                COMPRAR COM 20% OFF
+              </a>
+              
+              <p class="text-[11px] text-[#9CA3AF] text-center mt-3">Cupom aplicado automaticamente</p>
+            </div>
+          </div>
+
+          <!-- Urgência -->
+          <div class="bg-[#0A0F1A] p-4 rounded-xl border border-[#EF4444]/30 text-center">
+            <p class="text-[14px] text-[#EF4444] font-semibold">
+              ⏰ Esta oferta expira em <span class="countdown font-bold" id="countdown">23:59:59</span>
+            </p>
+            <p class="text-[12px] text-[#9CA3AF] mt-1">Não perca essa oportunidade de completar seu material com desconto!</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Próximos Passos -->
+      <section class="w-full p-[48px_20px] md:p-[60px_60px]">
+        <div class="max-w-2xl mx-auto">
+          <h2 class="text-[24px] font-bold text-[#F9FAFB] text-center mb-8">O que fazer agora?</h2>
+          
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="bg-[#111827] p-6 rounded-xl text-center border border-white/10">
+              <div class="w-12 h-12 bg-[#F59E0B] rounded-full flex items-center justify-center mx-auto mb-4">
+                <span class="text-[20px] font-bold text-[#0A0F1A]">1</span>
+              </div>
+              <h3 class="text-[14px] font-semibold text-[#F9FAFB] mb-2">Verifique seu email</h3>
+              <p class="text-[12px] text-[#9CA3AF]">Acesse o link de acesso que enviamos</p>
+            </div>
+            
+            <div class="bg-[#111827] p-6 rounded-xl text-center border border-white/10">
+              <div class="w-12 h-12 bg-[#F59E0B] rounded-full flex items-center justify-center mx-auto mb-4">
+                <span class="text-[20px] font-bold text-[#0A0F1A]">2</span>
+              </div>
+              <h3 class="text-[14px] font-semibold text-[#F9FAFB] mb-2">Comece a estudar</h3>
+              <p class="text-[12px] text-[#9CA3AF]">Acesse a plataforma e inicie suas aulas</p>
+            </div>
+            
+            <div class="bg-[#111827] p-6 rounded-xl text-center border border-white/10">
+              <div class="w-12 h-12 bg-[#F59E0B] rounded-full flex items-center justify-center mx-auto mb-4">
+                <span class="text-[20px] font-bold text-[#0A0F1A]">3</span>
+              </div>
+              <h3 class="text-[14px] font-semibold text-[#F9FAFB] mb-2">Tire suas dúvidas</h3>
+              <p class="text-[12px] text-[#9CA3AF]">Fale conosco pelo Instagram</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Instagram -->
+      <section class="w-full p-[32px_20px] text-center">
+        <a href="https://www.instagram.com/cleber_rochabios/" target="_blank" rel="noopener" class="inline-flex items-center gap-3 bg-gradient-to-r from-[#F58529] via-[#DD2A7B] to-[#8134AF] text-white font-semibold text-[14px] px-8 py-4 rounded-lg no-underline hover:opacity-90 transition-opacity">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          Siga no Instagram para dicas
+        </a>
+      </section>
+
+      <!-- Footer -->
+      <footer class="w-full p-6 border-t border-white/10 text-center">
+        <p class="text-[12px] text-[#9CA3AF]">Urianálise na Prática — Dr. Cleber Rocha</p>
+      </footer>
+    </div>
+
+    <script>
+      // Countdown Timer
+      function startCountdown() {
+        const now = new Date();
+        const midnight = new Date(now);
+        midnight.setHours(24, 0, 0, 0);
+        
+        function update() {
+          const now = new Date();
+          const diff = midnight - now;
+          
+          const hours = Math.floor(diff / (1000 * 60 * 60));
+          const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+          const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+          
+          document.getElementById('countdown').textContent = 
+            `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+        }
+        
+        update();
+        setInterval(update, 1000);
+      }
+      
+      startCountdown();
+      
+      // Confetti Effect
+      function createConfetti() {
+        const container = document.getElementById('confetti-container');
+        const colors = ['#F59E0B', '#10B981', '#8B5CF6', '#EC4899', '#EF4444'];
+        
+        for (let i = 0; i < 50; i++) {
+          setTimeout(() => {
+            const confetti = document.createElement('div');
+            confetti.className = 'confetti';
+            confetti.style.left = Math.random() * 100 + 'vw';
+            confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+            confetti.style.animationDuration = (Math.random() * 2 + 2) + 's';
+            confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+            container.appendChild(confetti);
+            
+            setTimeout(() => confetti.remove(), 3000);
+          }, i * 50);
+        }
+      }
+      
+      // Run confetti on load
+      window.addEventListener('load', () => {
+        setTimeout(createConfetti, 500);
+      });
+    </script>
+  </body>
+</html>
